@@ -5,7 +5,7 @@ import CardiovascularJourney from './components/CardiovascularJourney'
 import HeartbeatLine from './components/HeartbeatLine'
 
 const navItems = [
-  { label: 'Team', href: '#team' },
+  { label: 'Team', href: '#providers' },
   { label: 'Community', href: '#community' },
   { label: 'Journey', href: '#journey' },
   { label: 'Services', href: '#services' },
@@ -405,7 +405,8 @@ export default function App() {
           const id = href.substring(1)
           const element = document.getElementById(id)
           if (element) {
-            lenis.scrollTo(element, { offset: -80 })
+            const offset = id === 'team' ? -120 : -88
+            lenis.scrollTo(element, { offset, duration: 0.9 })
           }
         }
       }
@@ -595,7 +596,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="providers-section">
+        <section id="providers" className="providers-section">
           <div className="section-heading">
             <p className="eyebrow">Our Providers</p>
             <h2>Meet the ACG Heart &amp; Vascular team.</h2>

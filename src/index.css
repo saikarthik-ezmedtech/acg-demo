@@ -116,6 +116,7 @@ svg {
 .nav_home {
   display: inline-flex;
   align-items: center;
+  min-width: 0;
 }
 
 .nav_logo-container,
@@ -128,6 +129,7 @@ svg {
   font-weight: 700;
   letter-spacing: 0;
   white-space: nowrap;
+  min-width: 0;
 }
 
 .u-sr-only {
@@ -252,7 +254,7 @@ svg {
   inset: 0;
   overflow: hidden;
   border-radius: 0;
-  background: #0e1a16;
+  background: #0b0d10;
 }
 
 .hero-bg video {
@@ -260,7 +262,7 @@ svg {
   height: 100%;
   object-fit: cover;
   opacity: 0.7;
-  filter: saturate(0.8) contrast(1.06) brightness(0.9);
+  filter: saturate(0.72) contrast(1.04) brightness(0.9);
 }
 
 .hero-bg::after {
@@ -268,8 +270,8 @@ svg {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(128deg, rgba(12,24,20,0.44) 0%, rgba(14,26,22,0.26) 52%, rgba(49,95,82,0.2) 100%),
-    radial-gradient(circle at 50% 46%, rgba(20, 40, 32, 0.14), transparent 28rem);
+    linear-gradient(128deg, rgba(10,12,16,0.48) 0%, rgba(12,14,18,0.3) 52%, rgba(24,35,31,0.22) 100%),
+    radial-gradient(circle at 50% 46%, rgba(20, 24, 30, 0.16), transparent 28rem);
 }
 
 .hero-vein {
@@ -3839,7 +3841,7 @@ img.cta-object {
     width: calc(100vw - 24px);
     grid-template-columns: 1fr auto;
     gap: 12px;
-    padding: 6px 10px 8px;
+    padding: 5px 10px 6px;
     background: #f0efee;
     border-color: rgba(23, 25, 28, 0.08);
     box-shadow: 0 10px 24px rgba(23, 25, 28, 0.08);
@@ -3851,10 +3853,18 @@ img.cta-object {
   .brand-mark {
     justify-self: start;
     color: #17191c;
-    font-size: 13px;
+    font-size: 14px;
     max-width: min(68vw, 290px);
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .brand-mark span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.2;
   }
 
   .nav_layout-2.is-open,
@@ -3882,8 +3892,8 @@ img.cta-object {
     justify-self: end;
     margin-left: auto;
     padding: 0 8px;
-    min-height: 40px;
-    width: 40px;
+    min-height: 38px;
+    width: 38px;
     border: 0;
     background: transparent;
     cursor: pointer;
@@ -3893,6 +3903,7 @@ img.cta-object {
   .nav_right {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .nav-menu-line {
