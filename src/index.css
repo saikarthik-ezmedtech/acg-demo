@@ -1285,49 +1285,6 @@ h3 {
   display: none;
 }
 
-.credential-strip {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.credential-intro {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 8px;
-  max-width: 760px;
-  margin-top: 4px;
-}
-
-.credential-intro h3 {
-  margin: 0;
-  color: var(--ink);
-  font-size: clamp(26px, 3.4vw, 44px);
-  line-height: 1;
-}
-
-.credential-strip span {
-  display: grid;
-  min-height: 92px;
-  place-items: center;
-  padding: 16px;
-  border-radius: 18px;
-  color: #fff;
-  text-align: center;
-  background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.18), transparent 6rem),
-    linear-gradient(145deg, #203129, #527269);
-  box-shadow: 0 22px 70px rgba(23, 25, 28, 0.12);
-}
-
-.credential-strip strong {
-  display: block;
-  font-size: 15px;
-  font-weight: 730;
-  line-height: 1.2;
-}
-
 .providers-section {
   padding: 110px 24px;
   background: #fff;
@@ -3435,9 +3392,9 @@ img.cta-object {
 }
 .gal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
-  max-width: 1240px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 .gc {

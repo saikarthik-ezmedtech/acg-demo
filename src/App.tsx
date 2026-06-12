@@ -230,6 +230,12 @@ const clinicalGallery = [
     tag: 'Everyday prevention',
     cap: 'Blood pressure trends, home readings, and risk factors help guide long-term prevention.',
   },
+  {
+    src: 'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Follow-up heart health discussion',
+    tag: 'Follow-up care',
+    cap: 'Ongoing visits keep symptoms, medications, testing, and prevention goals connected over time.',
+  },
 ]
 
 const whyChooseCards = [
@@ -717,26 +723,6 @@ export default function App() {
               <span>SICA</span>
               <strong>Personalized cardiovascular care</strong>
             </div>
-          </div>
-          <div className="credential-intro">
-            <p className="eyebrow">Clinical Focus</p>
-            <h3>Experienced specialists, advanced diagnostics, and care plans built around each patient.</h3>
-          </div>
-          <div className="credential-strip">
-            {[
-              'Preventive cardiology',
-              'Cardiac diagnostics',
-              'Interventional expertise',
-              'Heart failure management',
-              'Vascular studies',
-              'Hypertension management',
-              'Long-term monitoring',
-              'Patient education',
-            ].map((item) => (
-              <span key={item}>
-                <strong>{item}</strong>
-              </span>
-            ))}
           </div>
         </section>
 
