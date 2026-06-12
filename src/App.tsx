@@ -201,34 +201,40 @@ const physicians = [
 
 const clinicalGallery = [
   {
-    src: '/sica-assets/cardiovascular-imaging-suite.jpeg',
+    src: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=80',
     alt: 'Cardiovascular imaging suite',
     tag: 'Imaging and procedures',
     cap: 'Testing and procedures are used when they help answer a clear clinical question.',
   },
   {
-    src: '/sica-assets/dr-bapineedu-gondi.jpeg',
-    alt: 'Dr. Bapineedu Gondi',
+    src: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Cardiology office visit with physician and patient',
     tag: 'Office visits',
     cap: 'Visits start with symptoms, history, medications, and the questions patients bring in.',
   },
   {
-    src: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
-    alt: 'Dr. Srinivas Manchikalapudi',
+    src: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Physician and patient reviewing treatment options',
     tag: 'Treatment planning',
     cap: 'When treatment is needed, options are reviewed with attention to safety and follow-up.',
   },
   {
-    src: '/sica-assets/medical/stethoscope.png',
+    src: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1400&q=80',
     alt: 'Stethoscope on a clean clinical surface',
     tag: 'Exam room basics',
     cap: 'Good cardiology still begins with listening carefully and checking the fundamentals.',
   },
   {
-    src: '/sica-assets/medical/bp-monitor.png',
+    src: 'https://images.unsplash.com/photo-1588776813677-77aaf5595b83?auto=format&fit=crop&w=1400&q=80',
     alt: 'Blood pressure monitor',
     tag: 'Everyday prevention',
     cap: 'Blood pressure trends, home readings, and risk factors help guide long-term prevention.',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Follow-up heart health discussion',
+    tag: 'Follow-up care',
+    cap: 'Ongoing visits keep symptoms, medications, testing, and prevention goals connected over time.',
   },
 ]
 
@@ -718,26 +724,6 @@ export default function App() {
               <strong>Personalized cardiovascular care</strong>
             </div>
           </div>
-          <div className="credential-intro">
-            <p className="eyebrow">Clinical Focus</p>
-            <h3>Experienced specialists, advanced diagnostics, and care plans built around each patient.</h3>
-          </div>
-          <div className="credential-strip">
-            {[
-              'Preventive cardiology',
-              'Cardiac diagnostics',
-              'Interventional expertise',
-              'Heart failure management',
-              'Vascular studies',
-              'Hypertension management',
-              'Long-term monitoring',
-              'Patient education',
-            ].map((item) => (
-              <span key={item}>
-                <strong>{item}</strong>
-              </span>
-            ))}
-          </div>
         </section>
 
         <section id="providers" className="providers-section">
@@ -774,7 +760,7 @@ export default function App() {
           <div className="gal-grid">
             {clinicalGallery.map((item) => (
               <div className="gc" key={item.alt}>
-                <img src={item.src} alt={item.alt} />
+                <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                 <div className="gc-cap">
                   <div className="gc-tag">{item.tag}</div>
                   <p>{item.cap}</p>
