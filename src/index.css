@@ -2186,7 +2186,7 @@ img.cta-object {
 .footer-logo img {
   height: auto;
   width: auto;
-  max-width: min(420px, 100%);
+  max-width: min(320px, 100%);
   border-radius: 0;
   filter: none;
   display: block;
@@ -4510,6 +4510,10 @@ img.cta-object {
   .gc-cap p {
     font-size: 13px;
     line-height: 1.42;
+  }
+
+  .footer-logo img {
+    max-width: min(260px, 100%);
   }
 }
 
