@@ -177,14 +177,14 @@ const servicePhoneMeta: Record<string, { label: string; title: string; score: st
 
 const physicians = [
   {
-    name: 'Dr. Bapineedu Gondi, MD',
+    name: 'Dr. Srinivas Manchikalapudi, MD',
     role: 'Cardiologist',
     image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
       'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
   },
   {
-    name: 'Dr. Srinivas Manchikalapudi, MD',
+    name: 'Dr. Bapineedu Gondi, MD',
     role: 'Interventional Cardiologist',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
