@@ -47,7 +47,7 @@ const chapters: Chapter[] = [
     kicker: '01 — Prevention',
     headline: ['Catch heart disease', 'before it catches you.'],
     copy: 'Risk assessment starts with the full picture: blood pressure, cholesterol, diabetes risk, family history, lifestyle, and symptoms translated into a plan before trouble escalates.',
-    video: '/acg-assets/videos/prevention.mp4',
+    video: '/sica-assets/videos/prevention.mp4',
     overlay:
       'linear-gradient(128deg, rgba(12,24,20,0.92) 0%, rgba(14,26,22,0.72) 52%, rgba(49,95,82,0.62) 100%)',
     cards: [
@@ -82,7 +82,7 @@ const chapters: Chapter[] = [
     kicker: '02 — Diagnostics',
     headline: ['Precision imaging.', 'Real rhythm.', 'Vascular clarity.'],
     copy: 'Testing should reduce uncertainty. Echo, stress testing, vascular ultrasound, and rhythm monitoring are organized into one clear clinical picture.',
-    video: '/acg-assets/videos/diagnostics.mp4',
+    video: '/sica-assets/videos/diagnostics.mp4',
     overlay:
       'linear-gradient(152deg, rgba(6,12,16,0.96) 0%, rgba(18,28,38,0.78) 52%, rgba(185,106,98,0.48) 100%)',
     cards: [
@@ -120,7 +120,7 @@ const chapters: Chapter[] = [
     kicker: '03 — Intervention',
     headline: ['Treatment planning.', 'Human-centered care.'],
     copy: 'When treatment is needed, the plan stays specific: medication strategy, procedural guidance, vascular care, and follow-up matched to your cardiovascular story.',
-    video: '/acg-assets/videos/intelligence.mp4',
+    video: '/sica-assets/videos/treatment-planning.mp4',
     overlay:
       'linear-gradient(142deg, rgba(8,13,22,0.95) 0%, rgba(22,32,54,0.78) 52%, rgba(72,110,155,0.48) 100%)',
     cards: [
@@ -155,7 +155,7 @@ const chapters: Chapter[] = [
     kicker: '04 — Long-Term Monitoring',
     headline: ['Built for lifelong', 'heart health.'],
     copy: 'Ongoing care keeps your heart story visible. Symptoms, medications, trends, and follow-up are reviewed over time so subtle changes are not missed.',
-    video: '/acg-assets/videos/followup.mp4',
+    video: '/sica-assets/videos/followup.mp4',
     overlay:
       'linear-gradient(130deg, rgba(10,18,15,0.94) 0%, rgba(14,26,22,0.78) 52%, rgba(49,95,82,0.58) 100%)',
     cards: [
@@ -163,7 +163,7 @@ const chapters: Chapter[] = [
         id: 'next',
         label: 'Next Review',
         value: 'June 2026',
-        sub: 'Annual Cardiac Wellness',
+        sub: 'Long-term cardiology follow-up',
         badge: 'Scheduled',
         style: { top: '15vh', right: '4%' },
         initialX: 55,

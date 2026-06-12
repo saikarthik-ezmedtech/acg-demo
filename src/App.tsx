@@ -5,55 +5,83 @@ import CardiovascularJourney from './components/CardiovascularJourney'
 import HeartbeatLine from './components/HeartbeatLine'
 
 const navItems = [
-  { label: 'Team', href: '#providers' },
-  { label: 'Community', href: '#community' },
+  { label: 'About', href: '#team' },
+  { label: 'Physicians', href: '#providers' },
   { label: 'Journey', href: '#journey' },
   { label: 'Services', href: '#services' },
-  { label: 'News', href: '#news' },
+  { label: 'Why SICA', href: '#news' },
   { label: 'Contact', href: '#contact' },
 ]
 
 const cardiacServices = [
   {
-    id: 'diagnostics',
-    title: 'Cardiac Diagnostics',
-    sub: 'Advanced imaging & rhythm',
-    copy: 'Echocardiography, nuclear stress testing, Holter monitoring, and advanced imaging to identify the source of your symptoms.',
+    id: 'preventive-cardiology',
+    title: 'Preventive Cardiology',
+    copy: 'Risk assessment, lipid management, blood pressure control, and lifestyle guidance to reduce cardiovascular risk before symptoms escalate.',
+    details: ['Identifies risk factors early', 'Turns prevention into a practical long-term plan'],
     icon: '⬡',
   },
   {
-    id: 'prevention',
-    title: 'Preventive Cardiology',
-    sub: 'Risk before symptoms',
-    copy: 'Personalized risk assessment, lipid management, hypertension control, and lifestyle programs to stop heart disease before it starts.',
+    id: 'coronary-artery-disease',
+    title: 'Coronary Artery Disease',
+    copy: 'Evaluation and ongoing management for chest pain, blocked arteries, prior stents, and long-term coronary risk reduction.',
+    details: ['Connects symptoms, testing, and treatment history', 'Supports medication and follow-up decisions'],
     icon: '◎',
   },
   {
-    id: 'heartfailure',
-    title: 'Heart Failure & Transplant',
-    sub: 'Advanced cardiac management',
-    copy: 'Specialized management of advanced heart failure, medical optimization, and transplant evaluation coordination.',
+    id: 'heart-failure-management',
+    title: 'Heart Failure Management',
+    copy: 'Careful monitoring, medication optimization, symptom tracking, and coordination for patients living with heart failure.',
+    details: ['Tracks fluid status, symptoms, and daily stability', 'Refines treatment as needs change'],
     icon: '♡',
   },
   {
-    id: 'chronic',
-    title: 'Chronic Disease Management',
-    sub: 'AFib, CAD & more',
-    copy: 'Ongoing coordinated care for atrial fibrillation, coronary artery disease, and other long-term cardiac conditions.',
+    id: 'cardiac-diagnostics',
+    title: 'Cardiac Diagnostics',
+    copy: 'Advanced cardiovascular testing to clarify symptoms, measure heart function, and guide an accurate care plan.',
+    details: ['Brings imaging, rhythm, and clinical findings together', 'Helps patients understand the next best step'],
     icon: '∞',
   },
   {
-    id: 'vascular',
+    id: 'echocardiography',
+    title: 'Echocardiography',
+    copy: 'Ultrasound imaging that evaluates heart structure, valve function, chamber size, and pumping strength.',
+    details: ['Assesses heart function without invasive testing', 'Supports diagnosis and long-term monitoring'],
+    icon: '◌',
+  },
+  {
+    id: 'stress-testing',
+    title: 'Stress Testing',
+    copy: 'Exercise and medically supervised stress testing to evaluate blood flow, symptoms, rhythm, and exercise response.',
+    details: ['Pairs symptoms with measurable cardiac response', 'Helps identify ischemia and exercise tolerance'],
+    icon: '▵',
+  },
+  {
+    id: 'holter-monitoring',
+    title: 'Holter Monitoring',
+    copy: 'Ambulatory rhythm monitoring to connect palpitations, dizziness, fainting, or irregular heartbeat symptoms to real data.',
+    details: ['Captures rhythm patterns outside the office', 'Clarifies symptom-to-rhythm relationships'],
+    icon: '⌁',
+  },
+  {
+    id: 'interventional-cardiology',
+    title: 'Interventional Cardiology',
+    copy: 'Specialized procedural expertise for coronary interventions, cardiac catheterization, and advanced cardiovascular treatment.',
+    details: ['Supports catheterization and coronary intervention planning', 'Coordinates procedure decisions with follow-up care'],
+    icon: '✦',
+  },
+  {
+    id: 'vascular-studies',
     title: 'Vascular Studies',
-    sub: 'Non-invasive imaging',
-    copy: 'Non-invasive ultrasound and imaging to evaluate blood flow in the legs, neck, and major vessels.',
+    copy: 'Non-invasive imaging to evaluate blood flow, circulation, and vascular health in the neck, legs, and major vessels.',
+    details: ['Evaluates circulation with targeted imaging', 'Guides prevention and treatment decisions'],
     icon: '〜',
   },
   {
-    id: 'wellness',
-    title: 'Annual Cardiac Wellness',
-    sub: 'Proactive heart health',
-    copy: 'Comprehensive cardiovascular evaluations for executives, athletes, and anyone wanting a proactive look at their heart health.',
+    id: 'hypertension-management',
+    title: 'Hypertension Management',
+    copy: 'Diagnosis, treatment, and follow-up for high blood pressure with attention to long-term cardiovascular risk.',
+    details: ['Uses trends to guide treatment decisions', 'Protects heart, kidney, and vascular health over time'],
     icon: '✦',
   },
 ]
@@ -61,64 +89,171 @@ const cardiacServices = [
 
 const experienceNotes = [
   {
-    title: 'Clear answers',
+    title: 'Clear communication',
     meta: 'Patient experience',
-    quote: 'A calm visit should leave you understanding what your symptoms mean, what was measured, and what happens next.',
+    quote: 'Each visit is shaped around clear explanations, practical next steps, and time for patients to understand their heart health.',
   },
   {
-    title: 'Prevention first',
-    meta: 'ACG philosophy',
-    quote: 'The goal is to catch heart disease before it catches you, using evidence, listening, and precise diagnostics.',
+    title: 'Personalized care',
+    meta: 'Treatment planning',
+    quote: 'Care plans are tailored to the patient, the diagnosis, the risk profile, and the goals that matter most in daily life.',
   },
   {
-    title: 'Trusted guidance',
-    meta: 'Long-term care',
-    quote: 'Risk, rhythm, blood pressure, cholesterol, and family history should become one plan you can actually follow.',
+    title: 'Diagnostic accuracy',
+    meta: 'Advanced testing',
+    quote: 'Symptoms, imaging, rhythm data, and clinical history are brought together so decisions are grounded in the clearest picture possible.',
   },
   {
-    title: 'Human follow-up',
+    title: 'Long-term relationships',
     meta: 'Care continuity',
-    quote: 'Cardiovascular care should keep evolving after the first appointment, with next steps that feel specific and steady.',
-  },
-  {
-    title: 'Built for Gwinnett',
-    meta: 'Opening August 2026',
-    quote: 'A modern heart and vascular center designed for families, professionals, and communities across Metro Atlanta.',
+    quote: 'Cardiology care continues beyond the first test, with follow-up that supports prevention, treatment, and healthier years ahead.',
   },
 ]
 
-const servicePhoneMeta: Record<string, { label: string; title: string; score: string }> = {
-  diagnostics: {
-    label: 'Diagnostic review',
-    title: 'Echo, stress, and rhythm data aligned',
-    score: '98%',
-  },
-  prevention: {
+type ServiceVariant = 'diagnostics' | 'prevention' | 'heartfailure' | 'chronic' | 'vascular' | 'wellness' | 'interventional'
+
+const servicePhoneMeta: Record<string, { label: string; title: string; score: string; variant: ServiceVariant }> = {
+  'preventive-cardiology': {
     label: 'Prevention plan',
     title: 'Risk markers trending in range',
     score: '2.1%',
+    variant: 'prevention',
   },
-  heartfailure: {
+  'coronary-artery-disease': {
+    label: 'CAD review',
+    title: 'Symptoms, history, and testing aligned',
+    score: 'CAD',
+    variant: 'chronic',
+  },
+  'heart-failure-management': {
     label: 'Care stability',
     title: 'Weight, fluid, and symptoms synced',
     score: '0',
+    variant: 'heartfailure',
   },
-  chronic: {
-    label: 'Long-term care',
-    title: 'Medication and rhythm patterns current',
-    score: '100%',
+  'cardiac-diagnostics': {
+    label: 'Diagnostic review',
+    title: 'Echo, stress, and rhythm data aligned',
+    score: '98%',
+    variant: 'diagnostics',
   },
-  vascular: {
+  echocardiography: {
+    label: 'Echo study',
+    title: 'Valve and ventricular function reviewed',
+    score: 'EF 62%',
+    variant: 'diagnostics',
+  },
+  'stress-testing': {
+    label: 'Stress test',
+    title: 'Exercise response and symptoms measured',
+    score: '9.4',
+    variant: 'wellness',
+  },
+  'holter-monitoring': {
+    label: 'Rhythm monitor',
+    title: 'Palpitations matched with rhythm data',
+    score: '48h',
+    variant: 'chronic',
+  },
+  'interventional-cardiology': {
+    label: 'Procedure plan',
+    title: 'Cath, intervention, and follow-up coordinated',
+    score: '3D',
+    variant: 'interventional',
+  },
+  'vascular-studies': {
     label: 'Vascular flow',
     title: 'Bilateral arterial signals reviewed',
     score: '1.06',
+    variant: 'vascular',
   },
-  wellness: {
-    label: 'Wellness index',
-    title: 'Fitness and prevention goals on track',
-    score: '87',
+  'hypertension-management': {
+    label: 'BP trend',
+    title: 'Home and office readings reviewed',
+    score: '118',
+    variant: 'prevention',
   },
 }
+
+const physicians = [
+  {
+    name: 'Dr. Bapineedu Gondi, MD',
+    role: 'Cardiologist',
+    image: '/sica-assets/dr-bapineedu-gondi.jpeg',
+    description:
+      'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
+  },
+  {
+    name: 'Dr. Srinivas Manchikalapudi, MD',
+    role: 'Interventional Cardiologist',
+    image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
+    description:
+      'Interventional cardiologist specializing in coronary interventions, cardiac catheterization, vascular disease treatment, and advanced cardiovascular procedures.',
+  },
+  {
+    name: 'Dr. Surender K. Sandella, MD',
+    role: 'Board-Certified Cardiologist',
+    image: '/sica-assets/dr-surender-sandella.webp',
+    description:
+      'Board-certified cardiologist focused on comprehensive heart care, cardiovascular prevention, diagnostics, and long-term patient management.',
+  },
+]
+
+const clinicalGallery = [
+  {
+    src: '/sica-assets/cardiovascular-imaging-suite.jpeg',
+    alt: 'Cardiovascular imaging suite',
+    tag: 'Imaging and procedures',
+    cap: 'Testing and procedures are used when they help answer a clear clinical question.',
+  },
+  {
+    src: '/sica-assets/dr-bapineedu-gondi.jpeg',
+    alt: 'Dr. Bapineedu Gondi',
+    tag: 'Office visits',
+    cap: 'Visits start with symptoms, history, medications, and the questions patients bring in.',
+  },
+  {
+    src: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
+    alt: 'Dr. Srinivas Manchikalapudi',
+    tag: 'Treatment planning',
+    cap: 'When treatment is needed, options are reviewed with attention to safety and follow-up.',
+  },
+  {
+    src: '/sica-assets/medical/stethoscope.png',
+    alt: 'Stethoscope on a clean clinical surface',
+    tag: 'Exam room basics',
+    cap: 'Good cardiology still begins with listening carefully and checking the fundamentals.',
+  },
+  {
+    src: '/sica-assets/medical/bp-monitor.png',
+    alt: 'Blood pressure monitor',
+    tag: 'Everyday prevention',
+    cap: 'Blood pressure trends, home readings, and risk factors help guide long-term prevention.',
+  },
+]
+
+const whyChooseCards = [
+  {
+    title: 'Experienced Specialists',
+    meta: 'Physician-led care',
+    copy: 'Patients are cared for by cardiology specialists with experience across prevention, diagnosis, intervention, and chronic disease management.',
+  },
+  {
+    title: 'Advanced Diagnostics',
+    meta: 'Better clarity',
+    copy: 'Echo, stress testing, rhythm monitoring, vascular studies, and imaging help create a more complete cardiovascular picture.',
+  },
+  {
+    title: 'Personalized Treatment Plans',
+    meta: 'Care built around you',
+    copy: "Treatment recommendations are tailored to each patient's symptoms, history, risk factors, and long-term health goals.",
+  },
+  {
+    title: 'Long-Term Heart Health',
+    meta: 'Ongoing management',
+    copy: 'SICA supports patients through prevention, follow-up, medication optimization, and long-term cardiovascular care.',
+  },
+]
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 36, filter: 'blur(16px)' },
@@ -165,17 +300,18 @@ function StarRow() {
 }
 
 function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
-  const meta = servicePhoneMeta[serviceId] || servicePhoneMeta.diagnostics
+  const meta = servicePhoneMeta[serviceId] || servicePhoneMeta['cardiac-diagnostics']
+  const variant = meta.variant
 
   return (
     <div className="phone-shell phone-shell--light" aria-label="Animated cardiovascular service mockup">
       <div className="phone-sensor" />
       <div className="phone-screen phone-screen--light service-phone-screen">
         <div className="phone-top">
-          <span>ACG Digital Portal</span>
+          <span>SICA Digital Portal</span>
           <span>Live Sync</span>
         </div>
-        <div className={`phone-service-hero phone-service-hero--${serviceId}`}>
+        <div className={`phone-service-hero phone-service-hero--${variant}`}>
           <span>{meta.label}</span>
           <strong>{meta.score}</strong>
           <small>{meta.title}</small>
@@ -190,7 +326,7 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
           >
-            {serviceId === 'diagnostics' && (
+            {variant === 'diagnostics' && (
               <div className="screen-content diagnostics-screen">
                 <div className="offers-metric-grid">
                   <div className="offer-metric">
@@ -215,7 +351,7 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
               </div>
             )}
 
-            {serviceId === 'prevention' && (
+            {variant === 'prevention' && (
               <div className="screen-content prevention-screen">
                 <div className="offers-metric-grid">
                   <div className="offer-metric">
@@ -244,7 +380,7 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
               </div>
             )}
 
-            {serviceId === 'heartfailure' && (
+            {variant === 'heartfailure' && (
               <div className="screen-content heartfailure-screen">
                 <div className="offers-metric-grid">
                   <div className="offer-metric">
@@ -273,12 +409,12 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
               </div>
             )}
 
-            {serviceId === 'chronic' && (
+            {variant === 'chronic' && (
               <div className="screen-content chronic-screen">
                 <div className="offers-metric-grid">
                   <div className="offer-metric">
-                    <span>AFib Burden</span>
-                    <strong>0% (Clear)</strong>
+                    <span>Rhythm Burden</span>
+                    <strong>0% events</strong>
                   </div>
                   <div className="offer-metric">
                     <span>Medications</span>
@@ -291,13 +427,13 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
                   <div className="screen-log-row"><span>Symp. Log</span><span className="badge">No events</span></div>
                 </div>
                 <div className="screen-pill-row">
-                  <span>AFib clear</span>
+                  <span>Rhythm clear</span>
                   <span>CAD follow-up</span>
                 </div>
               </div>
             )}
 
-            {serviceId === 'vascular' && (
+            {variant === 'vascular' && (
               <div className="screen-content vascular-screen">
                 <div className="offers-metric-grid">
                   <div className="offer-metric">
@@ -311,7 +447,7 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
                 </div>
                 <div className="screen-pulse-wave">
                   <svg viewBox="0 0 100 35" className="pulse-svg">
-                    <path d="M 0 17 C 10 5, 20 5, 30 17 C 40 30, 50 30, 60 17 C 70 5, 80 5, 90 17" fill="none" stroke="#315f52" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M 0 17 C 10 5, 20 5, 30 17 C 40 30, 50 30, 60 17 C 70 5, 80 5, 90 17" fill="none" stroke="#0A3A78" strokeWidth="2.5" strokeLinecap="round" />
                   </svg>
                 </div>
                 <div className="vessel-map">
@@ -323,23 +459,46 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
               </div>
             )}
 
-            {serviceId === 'wellness' && (
+            {variant === 'wellness' && (
               <div className="screen-content wellness-screen">
                 <div className="offers-metric-grid">
                   <div className="offer-metric" style={{ gridColumn: 'span 2' }}>
-                    <span>Cardio Fitness</span>
-                    <strong>VO2 Max 44.2 (Excellent)</strong>
+                    <span>Stress Response</span>
+                    <strong>Target achieved</strong>
                   </div>
                 </div>
                 <div className="screen-wellness-meter">
-                  <div className="meter-track"><div className="meter-fill" style={{ width: '87%' }} /></div>
-                  <div className="meter-label">Wellness Index: 87 / 100</div>
+                  <div className="meter-track"><div className="meter-fill" style={{ width: '82%' }} /></div>
+                  <div className="meter-label">Exercise response: reviewed</div>
                 </div>
                 <div className="screen-pill-row">
-                  <span>VO2 target</span>
-                  <span>Annual plan</span>
+                  <span>Symptoms</span>
+                  <span>ECG trend</span>
                 </div>
-                <p className="screen-subtext">Optimized for athletic targets</p>
+                <p className="screen-subtext">Reviewed for cardiovascular risk and symptoms</p>
+              </div>
+            )}
+            {variant === 'interventional' && (
+              <div className="screen-content chronic-screen">
+                <div className="offers-metric-grid">
+                  <div className="offer-metric">
+                    <span>Cath review</span>
+                    <strong>Planned</strong>
+                  </div>
+                  <div className="offer-metric">
+                    <span>Follow-up</span>
+                    <strong>Coordinated</strong>
+                  </div>
+                </div>
+                <div className="screen-logs">
+                  <div className="screen-log-row"><span>Coronary anatomy</span><span className="badge checked">Reviewed</span></div>
+                  <div className="screen-log-row"><span>Procedure options</span><span className="badge checked">Discussed</span></div>
+                  <div className="screen-log-row"><span>Recovery plan</span><span className="badge">Next step</span></div>
+                </div>
+                <div className="screen-pill-row">
+                  <span>Cath lab</span>
+                  <span>Vascular care</span>
+                </div>
               </div>
             )}
           </motion.div>
@@ -426,14 +585,14 @@ export default function App() {
       <div className="page-wipe" aria-hidden="true" />
       <header className="navigation">
         <div className={`nav_layout-2${navOpen ? ' is-open' : ''}`}>
-          <a className="nav_home" href="#top" aria-label="ACG Heart and Vascular home">
+          <a className="nav_home" href="#top" aria-label="Southern Indiana Cardiology Associates home">
             <div className="nav_logo-container">
               <div className="logo brand-mark">
-                <img src="/acg-logo.png" alt="" />
-                <span>ACG Heart & Vascular</span>
+                <img src="/sica-assets/sica-mark.png" alt="" />
+                <span>SICA</span>
               </div>
             </div>
-            <span className="u-sr-only">ACG Heart and Vascular Home</span>
+            <span className="u-sr-only">Southern Indiana Cardiology Associates Home</span>
           </a>
 
           <div className="nav_main-wrapper">
@@ -492,29 +651,29 @@ export default function App() {
       <main id="top">
         <section className="hero-section">
           <motion.div className="hero-bg" style={{ y: heroLift, opacity: heroOpacity }}>
-            <video src="/acg-assets/videos/heart-hero.mp4" autoPlay muted loop playsInline />
+            <video src="/sica-assets/videos/heart-hero.mp4" autoPlay muted loop playsInline />
           </motion.div>
           <div className="hero-vein" />
           <div className="hero-content">
             <Reveal>
-              <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.58)' }}>Now Accepting Patients - Opening August 2026</p>
+              <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.58)' }}>Southern Indiana Cardiology Associates (SICA)</p>
             </Reveal>
             <Reveal delay={0.08}>
-              <h1 style={{ color: '#fff' }}>Advanced Heart Care. Rooted in Community. Built on Trust.</h1>
+              <h1 style={{ color: '#fff' }}>Advanced Cardiovascular Care. Experienced Specialists. Personalized Treatment.</h1>
             </Reveal>
             <Reveal delay={0.16}>
               <p className="hero-copy" style={{ color: 'rgba(255,255,255,0.72)' }}>
-                ACG Heart &amp; Vascular is Gwinnett County's destination for expert cardiovascular care, combining precision
-                diagnostics, evidence-based prevention, and 25+ years of physician leadership.
+                Southern Indiana Cardiology Associates provides comprehensive cardiovascular care through advanced diagnostics,
+                preventive cardiology, interventional expertise, and long-term heart health management.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
               <div className="hero-actions">
                 <a className="button primary" href="#contact" style={{ background: 'rgba(255,255,255,0.92)', color: '#111' }}>
-                  Request appointment <ArrowIcon />
+                  Request Appointment <ArrowIcon />
                 </a>
-                <a className="button secondary" href="#team" style={{ color: '#fff', border: '1px solid rgba(255,255,255,0.32)', background: 'rgba(255,255,255,0.08)' }}>
-                  Meet Dr. G
+                <a className="button secondary" href="#providers" style={{ color: '#fff', border: '1px solid rgba(255,255,255,0.32)', background: 'rgba(255,255,255,0.08)' }}>
+                  Meet Our Physicians
                 </a>
               </div>
             </Reveal>
@@ -524,70 +683,55 @@ export default function App() {
 
         <section id="team" className="team-section">
           <div className="team-copy">
-            <p className="eyebrow">About Your Cardiologist</p>
-            <h2>Dr. Sreeni Gangasani, MD, FACC</h2>
+            <p className="eyebrow">About Southern Indiana Cardiology Associates</p>
+            <h2>Comprehensive heart care built around prevention, diagnosis, treatment, and long-term management.</h2>
             <div className="doctor-card doctor-card--mobile-inline">
-              <img src="/acg-assets/dr-g-primary.jpg" alt="Dr. Sreeni Gangasani" />
+              <img src="/sica-assets/cardiovascular-imaging-suite.jpeg" alt="Cardiovascular imaging suite" />
               <div>
-                <span>FACC</span>
-                <strong>Founder & CEO</strong>
+                <span>SICA</span>
+                <strong>Patient-centered cardiology</strong>
               </div>
             </div>
             <p>
-              Known as Dr. G, he has spent 25+ years earning the trust of Metro Atlanta patients,
-              families, and fellow physicians. Born in Hyderabad, India, he trained at Kurnool Medical
-              College and William Beaumont Hospital before building ACG Heart &amp; Vascular around one
-              conviction: better heart care begins before a crisis.
+              Southern Indiana Cardiology Associates is dedicated to delivering comprehensive cardiovascular care
+              through prevention, diagnosis, treatment, and long-term disease management. Our physicians combine
+              clinical expertise with compassionate care to help patients achieve better heart health and improved
+              quality of life.
             </p>
             <p className="team-story-note">
-              Patients come to him for answers, but they remember the steadiness: a physician who listens
-              closely, explains clearly, and treats prevention as an act of protection.
+              From first symptoms to ongoing follow-up, SICA focuses on clear communication, diagnostic accuracy,
+              practical treatment planning, and lasting patient relationships.
             </p>
-            <div className="founder-story-meta" aria-label="Dr. Gangasani practice highlights">
-              <span><strong>25+</strong><small>Years serving Metro Atlanta</small></span>
-              <span><strong>5x</strong><small>Board and fellowship credentials</small></span>
-              <span><strong>16</strong><small>Years with GAPI Sewa Clinic</small></span>
+            <div className="founder-story-meta" aria-label="SICA care priorities">
+              <span><strong>01</strong><small>Prevention and risk reduction</small></span>
+              <span><strong>02</strong><small>Advanced diagnostics</small></span>
+              <span><strong>03</strong><small>Long-term heart health</small></span>
             </div>
             <blockquote>
-              My philosophy is simple: catch heart disease before it catches you.
+              Prevention, early detection, and effective treatment guide every patient relationship.
             </blockquote>
-            <div className="award-highlights" aria-label="Selected awards and recognition">
-              {[
-                { label: 'Circle of Hope', detail: '2012 & 2017' },
-                { label: 'GAPI Physician', detail: 'of the Year' },
-                { label: 'Top Doctor', detail: 'Gwinnett Health' },
-              ].map((award) => (
-                <span key={award.label}>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 3l2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />
-                  </svg>
-                  <strong>{award.label}</strong>
-                  <small>{award.detail}</small>
-                </span>
-              ))}
-            </div>
           </div>
           <div className="doctor-card doctor-card--desktop">
-            <img src="/acg-assets/dr-g-primary.jpg" alt="Dr. Sreeni Gangasani" />
+            <img src="/sica-assets/cardiovascular-imaging-suite.jpeg" alt="Cardiovascular imaging suite" />
             <div>
-              <span>FACC</span>
-              <strong>Founder & CEO</strong>
+              <span>SICA</span>
+              <strong>Personalized cardiovascular care</strong>
             </div>
           </div>
           <div className="credential-intro">
-            <p className="eyebrow">Credentials & Awards</p>
-            <h3>Nationally respected expertise, brought home to Gwinnett County.</h3>
+            <p className="eyebrow">Clinical Focus</p>
+            <h3>Experienced specialists, advanced diagnostics, and care plans built around each patient.</h3>
           </div>
           <div className="credential-strip">
             {[
-              'Fellow, American College of Cardiology',
-              'Board Certified, Cardiovascular Disease',
-              'Board Certified, Heart Failure & Transplant',
-              'Board Certified, Nuclear Cardiology',
-              'Board Certified, Echocardiography',
-              'Past Chair, Georgia Composite Medical Board',
-              'Founder, GAPI Sewa Clinic (16 years)',
-              'Gold Medalist, Kurnool Medical College',
+              'Preventive cardiology',
+              'Cardiac diagnostics',
+              'Interventional expertise',
+              'Heart failure management',
+              'Vascular studies',
+              'Hypertension management',
+              'Long-term monitoring',
+              'Patient education',
             ].map((item) => (
               <span key={item}>
                 <strong>{item}</strong>
@@ -598,59 +742,37 @@ export default function App() {
 
         <section id="providers" className="providers-section">
           <div className="section-heading">
-            <p className="eyebrow">Our Providers</p>
-            <h2>Meet the ACG Heart &amp; Vascular team.</h2>
+            <p className="eyebrow">Our Physicians</p>
+            <h2>Meet the Southern Indiana Cardiology Associates team.</h2>
           </div>
           <div className="provider-grid">
-            <article>
-              <img alt="Dr. Sreeni Gangasani" src="/acg-assets/dr-g-secondary.webp" />
-              <div>
-                <span>Founder &amp; CEO</span>
-                <h3>Dr. Sreeni Gangasani</h3>
-                <p>MD, FACC. Board certified in cardiovascular disease, heart failure, nuclear cardiology, and echocardiography.</p>
-              </div>
-            </article>
-            <article>
-              <img alt="Rosa Garcia FNP-C" src="/acg-assets/rosa-garcia.jpg" />
-              <div>
-                <span>Advanced Practice Provider</span>
-                <h3>Rosa Garcia</h3>
-                <p>FNP-C. Focused on cardiovascular care, patient education, and chronic disease management.</p>
-              </div>
-            </article>
+            {physicians.map((physician) => (
+              <article key={physician.name}>
+                <img alt={physician.name} src={physician.image} />
+                <div>
+                  <span>{physician.role}</span>
+                  <h3>{physician.name}</h3>
+                  <p>{physician.description}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* ─── COMMUNITY IMPACT ─── */}
+        {/* ─── CLINICAL CARE GALLERY ─── */}
         <section id="community" className="community-section">
           <div className="section-heading">
-            <p className="eyebrow">Beyond the Clinic</p>
-            <h2>Community Impact & Leadership</h2>
-            <p>From free clinics in Atlanta to healthcare summits in India — a physician with a mission beyond medicine.</p>
+            <p className="eyebrow">What Care Looks Like</p>
+            <h2>Straightforward heart care, from the first conversation to follow-up.</h2>
+            <p>SICA visits are built around practical details: what symptoms mean, which tests are useful, and what the next step should be.</p>
           </div>
-          <div className="leadership-proof" aria-label="Community leadership highlights">
-            <span><strong>Medical board leadership</strong><small>Past Chair, Georgia Composite Medical Board</small></span>
-            <span><strong>Public health service</strong><small>Free cardiac care through GAPI Sewa Clinic</small></span>
-            <span><strong>Global healthcare work</strong><small>AAPI leadership and international initiatives</small></span>
+          <div className="leadership-proof" aria-label="SICA clinical care highlights">
+            <span><strong>Plain-language visits</strong><small>Results are explained clearly, without making the visit feel rushed.</small></span>
+            <span><strong>Care built around you</strong><small>Plans are based on symptoms, history, test results, and health goals.</small></span>
+            <span><strong>Organized follow-up</strong><small>Medications, testing, and next steps stay connected over time.</small></span>
           </div>
           <div className="gal-grid">
-            {[
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974664/SG_healthfair_ijn06e.webp', alt: 'Health Fair', tag: 'Community Health', cap: 'Bringing cardiovascular screenings and heart health education directly to the public at community health fairs.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974664/SG_India_ICD_program_b6bzgt.webp', alt: 'India ICD Program', tag: 'Global Health Initiative', cap: 'Leading the installation of 171 AEDs in emergency ambulances across Telangana, India — saving lives across two continents.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974663/SG_GHS_djx3uj.webp', alt: 'AAPI Global Healthcare Summit', tag: 'AAPI Leadership', cap: 'At the AAPI Global Healthcare Summit 2019 in Hyderabad as Chair — receiving recognition from India\'s Union Minister of Health.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974663/SG_GAPIclinic_opening_df1iuz.webp', alt: 'GAPI SEWA Clinic Opening', tag: 'GAPI SEWA Free Clinic', cap: 'Ribbon-cutting at the GAPI SEWA Clinic opening — bringing free cardiovascular care to the underserved in Metro Atlanta.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974663/SG_Gov_Kemp_ir4yxs.webp', alt: 'With Governor Brian Kemp', tag: 'Civic Engagement', cap: 'With Georgia Governor Brian Kemp — active voice in community health advocacy at the highest levels of state leadership.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974663/GCMB_team_2025_agnhby.webp', alt: 'GCMB Team 2025', tag: 'Medical Board Leadership', cap: 'With the Georgia Composite Medical Board team 2025 — protecting public health and elevating physician standards statewide.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778974664/SG_MG_Mayor_Dickens_sbqlsq.webp', alt: 'With Mayor Dickens', tag: 'Civic Engagement', cap: 'With Atlanta Mayor Andre Dickens — building bridges with city leadership to advance community health across Metro Atlanta.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/GCMB_2024_gtve63.jpg', alt: 'GCMB 2024', tag: 'Medical Board Leadership', cap: 'Georgia Composite Medical Board 2024 — Dr. Gangasani\'s historic tenure as Chair, protecting public health statewide.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/GAPISewa_Clinic_ox7bm0.jpg', alt: 'GAPI SEWA Clinic', tag: 'GAPI Sewa Clinic', cap: 'Serving the underserved community through the GAPI Sewa Clinic — 16+ years of compassionate free cardiac care in Metro Atlanta.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/SG_Cricketer_Virat_Kohli_cfjyrn.jpg', alt: 'Dr. Gangasani with Virat Kohli', tag: 'Community & Cricket', cap: 'With cricket legend Virat Kohli — Dr. Gangasani\'s passion for cricket connects him to communities across the world.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/GCMB_chair_recognition_jt9pag.jpg', alt: 'GCMB Chair Recognition', tag: 'Medical Board Leadership', cap: 'Recognized as Chair of the Georgia Composite Medical Board — a historic milestone for international medical graduates.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/Circle_of_Hope_Award_ivijti.jpg', alt: 'Circle of Hope Award', tag: 'Award', cap: 'Receiving the Circle of Hope Award — recognizing outstanding contributions to cardiovascular care and community health.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/GCMB_Oath_xrqpgp.jpg', alt: 'GCMB Oath of Office', tag: 'Medical Board Leadership', cap: 'Taking the oath of office as a Member of the Georgia Composite Medical Board — the beginning of a distinguished chapter.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1779624729/AAPI_Con2019_oun1sl.jpg', alt: 'AAPI Convention 2019', tag: 'AAPI Leadership', cap: 'At the AAPI Convention 2019 — representing 100,000+ physicians of Indian origin and championing health equity.' },
-              { src: 'https://res.cloudinary.com/dpmznvg6o/image/upload/v1778977914/GAPI_Clinic_photo_z4uk71.jpg', alt: 'GAPI Sewa Clinic Patient Care', tag: 'GAPI Sewa Clinic', cap: 'Dr. Gangasani seeing patients at the GAPI Sewa Clinic — bringing compassionate cardiac care to those without insurance.' },
-            ].map((item) => (
+            {clinicalGallery.map((item) => (
               <div className="gc" key={item.alt}>
                 <img src={item.src} alt={item.alt} />
                 <div className="gc-cap">
@@ -671,12 +793,12 @@ export default function App() {
               <span>What We Offer</span>
               Comprehensive Cardiac Services
             </h2>
-            <p>From advanced diagnostics to long-term prevention — all under one roof in Lawrenceville, Georgia.</p>
+            <p>From advanced diagnostics to long-term prevention, SICA provides cardiovascular care tailored to each patient&apos;s needs.</p>
           </div>
 
           <div className="offers-container">
             <div className="offers-mobile-phone">
-              <ServicePhoneMockup serviceId={cardiacServices[activeServiceIndex]?.id || 'diagnostics'} />
+              <ServicePhoneMockup serviceId={cardiacServices[activeServiceIndex]?.id || 'cardiac-diagnostics'} />
             </div>
             <div className="offers-left">
               {cardiacServices.map((svc, idx) => (
@@ -697,44 +819,10 @@ export default function App() {
                     <h3>{svc.title}</h3>
                     <p className="offer-copy">{svc.copy}</p>
                     
-                    {/* Detailed bullets for visual structure */}
                     <ul className="offer-details-list">
-                      {svc.id === 'diagnostics' && (
-                        <>
-                          <li>Clarifies symptoms with imaging, stress testing, and rhythm data</li>
-                          <li>Turns testing into a clear next-step plan</li>
-                        </>
-                      )}
-                      {svc.id === 'prevention' && (
-                        <>
-                          <li>Finds risk early through labs, history, and blood pressure patterns</li>
-                          <li>Builds a prevention plan patients can follow</li>
-                        </>
-                      )}
-                      {svc.id === 'heartfailure' && (
-                        <>
-                          <li>Optimizes medications and symptom tracking</li>
-                          <li>Coordinates advanced care when needed</li>
-                        </>
-                      )}
-                      {svc.id === 'chronic' && (
-                        <>
-                          <li>Keeps complex conditions organized over time</li>
-                          <li>Connects medications, rhythm, symptoms, and follow-up</li>
-                        </>
-                      )}
-                      {svc.id === 'vascular' && (
-                        <>
-                          <li>Evaluates blood flow in the neck, legs, and major vessels</li>
-                          <li>Uses non-invasive imaging to guide prevention</li>
-                        </>
-                      )}
-                      {svc.id === 'wellness' && (
-                        <>
-                          <li>Creates an annual snapshot of cardiovascular health</li>
-                          <li>Helps active patients reduce risk before symptoms</li>
-                        </>
-                      )}
+                      {svc.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
                     </ul>
                   </div>
                   <div className="offer-card-phone">
@@ -747,7 +835,7 @@ export default function App() {
 
             <div className="offers-right">
               <div className="offers-phone-sticky">
-                <ServicePhoneMockup serviceId={cardiacServices[activeServiceIndex]?.id || 'diagnostics'} />
+                <ServicePhoneMockup serviceId={cardiacServices[activeServiceIndex]?.id || 'cardiac-diagnostics'} />
               </div>
             </div>
           </div>
@@ -755,13 +843,13 @@ export default function App() {
 
         <section className="extra-section">
           <div className="extra-copy">
-            <p className="eyebrow">And that's not all</p>
-            <h2>More ways ACG connects the dots.</h2>
+            <p className="eyebrow">Coordinated Care</p>
+            <h2>Support that connects diagnosis, treatment, and long-term heart health.</h2>
             <div className="extra-list">
               <button className="extra-item" id="extra-item-0">
                 <span>
-                  <strong>Annual cardiac wellness</strong>
-                  <small>A proactive cardiovascular review for patients who want a clearer picture before symptoms escalate.</small>
+                  <strong>Stress testing</strong>
+                  <small>Exercise and monitored testing to evaluate symptoms, rhythm, blood flow, and cardiac response.</small>
                 </span>
                 <div className="extra-item-control">
                   <svg viewBox="0 0 120 120" className="progress-ring">
@@ -794,7 +882,7 @@ export default function App() {
               </button>
               <button className="extra-item is-active" id="extra-item-2">
                 <span>
-                  <strong>Rhythm monitoring</strong>
+                  <strong>Holter monitoring</strong>
                   <small>Holter and extended monitoring to connect palpitations, dizziness, and symptoms to real rhythm data.</small>
                 </span>
                 <div className="extra-item-control">
@@ -812,7 +900,7 @@ export default function App() {
               </button>
               <button className="extra-item" id="extra-item-3">
                 <span>
-                  <strong>Preventive labs</strong>
+                  <strong>Preventive cardiology</strong>
                   <small>Cholesterol, blood pressure, diabetes risk, family history, and lifestyle translated into a prevention plan.</small>
                 </span>
                 <div className="extra-item-control">
@@ -829,7 +917,7 @@ export default function App() {
               </button>
               <button className="extra-item" id="extra-item-4">
                 <span>
-                  <strong>Heart failure care</strong>
+                  <strong>Heart failure management</strong>
                   <small>Medication optimization, longitudinal monitoring, and coordination for advanced cardiovascular needs.</small>
                 </span>
                 <div className="extra-item-control">
@@ -850,7 +938,7 @@ export default function App() {
             <div className="phone-shell phone-shell--light" aria-label="Animated cardiovascular insight phone mockup">
               <div className="phone-sensor" />
               <div className="phone-screen phone-screen--light">
-                <div className="phone-top"><span>ACG</span><span>Treatment Journey</span></div>
+                <div className="phone-top"><span>SICA</span><span>Treatment Journey</span></div>
                 <div className="vital-ring"><span>03</span><div className="ring-pulse" /></div>
                 <div className="phone-copy">
                   <p>Every step feels connected.</p>
@@ -869,83 +957,56 @@ export default function App() {
           </div>
         </section>
 
-        {/* ─── PRESS & RECOGNITION ─── */}
+        {/* ─── WHY CHOOSE SICA ─── */}
         <section id="news" className="news-section">
           <div className="section-heading">
-            <p className="eyebrow">Press & Recognition</p>
-            <h2>Trusted voices have taken notice.</h2>
-            <p>National, regional, and global outlets have recognized Dr. Gangasani's leadership in medicine, service, and public health.</p>
+            <p className="eyebrow">Why Choose SICA</p>
+            <h2>Experienced cardiovascular care with clarity, precision, and follow-through.</h2>
+            <p>Southern Indiana Cardiology Associates combines specialist expertise, advanced testing, and personalized care planning.</p>
           </div>
           <div className="news-grid">
-            <a className="nc" href="https://edition.cnn.com/2021/05/09/us/india-covid-doctors-us-telehealth-help" target="_blank" rel="noreferrer" style={{ border: '2px solid rgba(196,30,30,.2)' }}>
-              <div className="nc-body"><div className="ns"><span className="ns-tag cnn">CNN</span><span className="ns-yr">2021</span></div><h3>Indian American Doctors Provide Free Telehealth During India's Covid Crisis</h3><p>Dr. Gangasani featured as chairman of eGlobalDoctors, providing free telehealth to 1,500+ Covid-19 patients in India.</p><div className="nc-link">Read on CNN <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://www.fox5atlanta.com/news/georgia-cardiologist-part-of-team-working-to-help-india-covid-19-patients" target="_blank" rel="noreferrer">
-              <div className="nc-body"><div className="ns"><span className="ns-tag fox">FOX 5 Atlanta</span><span className="ns-yr">2021</span></div><h3>Georgia Cardiologist Helping India Covid-19 Patients</h3><p>FOX 5 Atlanta profiled Dr. Gangasani's volunteer work through eGlobalDoctors, providing nightly virtual consultations.</p><div className="nc-link">Read Article <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://www.weforum.org/stories/2021/05/indian-doctors-living-abroad-are-helping-their-country-through-online-consultations/" target="_blank" rel="noreferrer">
-              <div className="nc-body"><div className="ns"><span className="ns-tag def">World Economic Forum</span><span className="ns-yr">2021</span></div><h3>Indian Doctors Abroad Help Country Fight Covid-19</h3><p>The World Economic Forum highlighted Dr. Gangasani's eGlobalDoctors network of 120+ volunteer doctors.</p><div className="nc-link">Read Article <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://www.khabar.com/magazine/community-newsmakers/sreeni-gangasani-is-chairman-of-the-georgia-composite-medical-board" target="_blank" rel="noreferrer">
-              <div className="nc-body"><div className="ns"><span className="ns-tag def">Khabar Magazine</span><span className="ns-yr">2024</span></div><h3>Dr. Gangasani Elected Chairman of Georgia Composite Medical Board</h3><p>Only the second international medical graduate to Chair the Board in over 100 years.</p><div className="nc-link">Read Article <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://www.khabar.com/magazine/features/spotlight-heart-to-heart-with-dr-sreeni-gangasani" target="_blank" rel="noreferrer">
-              <div className="nc-body"><div className="ns"><span className="ns-tag def">Khabar Magazine</span><span className="ns-yr">Feature</span></div><h3>Spotlight: Heart-to-Heart with Dr. Sreeni Gangasani</h3><p>An in-depth profile on Dr. Gangasani's journey from Hyderabad to leading cardiology in Gwinnett County.</p><div className="nc-link">Read Article <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://nripulse.com/dr-sreeni-gangasanis-inspiring-journey-of-heart-and-community/" target="_blank" rel="noreferrer">
-              <div className="nc-body"><div className="ns"><span className="ns-tag def">NRI Pulse</span><span className="ns-yr">2023</span></div><h3>Dr. Gangasani's Inspiring Journey of Heart and Service</h3><p>In-depth profile including Q&amp;A on heart health for patients across Metro Atlanta.</p><div className="nc-link">Read Article <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://youtu.be/c0A7XAUGTK4" target="_blank" rel="noreferrer">
-              <div className="vid-thumb"><img src="https://img.youtube.com/vi/c0A7XAUGTK4/hqdefault.jpg" alt="NBC Interview" /><div className="play-btn"><div style={{ background: '#0b4ea2' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="10 8 16 12 10 16 10 8" /></svg></div></div></div>
-              <div className="nc-body"><div className="ns"><span className="ns-tag nbc">NBC</span><span className="ns-yr">TV Interview</span></div><h3>NBC: Understanding & Controlling High Cholesterol</h3><p>Dr. Gangasani on NBC breaking down cholesterol management — risk factors, diet, and medication.</p><div className="nc-link">Watch Interview <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://youtu.be/4b1JBS__ClE" target="_blank" rel="noreferrer">
-              <div className="vid-thumb"><img src="https://img.youtube.com/vi/4b1JBS__ClE/hqdefault.jpg" alt="Fox News Interview" /><div className="play-btn"><div style={{ background: '#003366' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="10 8 16 12 10 16 10 8" /></svg></div></div></div>
-              <div className="nc-body"><div className="ns"><span className="ns-tag fox">FOX NEWS</span><span className="ns-yr">TV Interview</span></div><h3>Fox News: Pacemakers Explained — What Patients Need to Know</h3><p>Dr. Gangasani on Fox News explaining who needs a pacemaker and what life looks like afterward.</p><div className="nc-link">Watch Interview <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://youtu.be/kj116NfEXig" target="_blank" rel="noreferrer">
-              <div className="vid-thumb"><img src="https://img.youtube.com/vi/kj116NfEXig/hqdefault.jpg" alt="TV Interview" /><div className="play-btn"><div style={{ background: '#C41E1E' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="10 8 16 12 10 16 10 8" /></svg></div></div></div>
-              <div className="nc-body"><div className="ns"><span className="ns-tag def">TV Interview</span><span className="ns-yr">Media</span></div><h3>Dr. Gangasani — Television Interview</h3><p>Expert cardiovascular insights shared in this television appearance.</p><div className="nc-link">Watch Interview <ArrowIcon /></div></div>
-            </a>
-            <a className="nc" href="https://youtu.be/qQYb5s9Llmw" target="_blank" rel="noreferrer">
-              <div className="vid-thumb"><img src="https://img.youtube.com/vi/qQYb5s9Llmw/hqdefault.jpg" alt="Fox News" /><div className="play-btn"><div style={{ background: '#003366' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="10 8 16 12 10 16 10 8" /></svg></div></div></div>
-              <div className="nc-body"><div className="ns"><span className="ns-tag fox">FOX NEWS</span><span className="ns-yr">TV Feature</span></div><h3>Fox News Feature: Dr. Gangasani on Cardiovascular Health</h3><p>Dr. Gangasani featured on Fox News discussing heart health and cardiovascular disease prevention.</p><div className="nc-link">Watch on Fox News <ArrowIcon /></div></div>
-            </a>
+            {whyChooseCards.map((card, index) => (
+              <article className="nc" key={card.title}>
+                <div className="nc-body">
+                  <div className="ns">
+                    <span className="ns-tag def">SICA</span>
+                    <span className="ns-yr">0{index + 1}</span>
+                  </div>
+                  <h3>{card.title}</h3>
+                  <p>{card.copy}</p>
+                  <div className="nc-link">{card.meta} <ArrowIcon /></div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section id="why-amma" className="amma-section">
+        <section id="commitment" className="amma-section">
           <div className="amma-layout">
             <div className="amma-copy">
-              <p className="eyebrow">The Meaning Behind the Name</p>
-              <h2>Why Amma</h2>
+              <p className="eyebrow">Our Commitment</p>
+              <h2>Compassionate, evidence-based cardiovascular care for healthier lives.</h2>
               <p>
-                In many languages, including many Indian languages, Amma means mother - the most sacred word,
-                spoken first and felt forever. This practice carries that name as a tribute to the woman who
-                made everything possible.
+                At Southern Indiana Cardiology Associates, our commitment is simple: provide compassionate,
+                evidence-based cardiovascular care that helps patients live healthier lives through prevention,
+                early detection, and effective treatment.
               </p>
               <p>
-                Dr. Gangasani&apos;s mother saw something in her son long before he saw it in himself. Her quiet
-                conviction - her belief that compassion and science together create a healer - set him on the
-                path to medicine. When she passed away in 2026, she left behind a legacy that lives on in every
-                patient he serves.
-              </p>
-              <p>
-                Naming this practice Amma Cardiovascular Centers of Georgia is both gratitude and promise: every
-                patient will be cared for with patience, warmth, and relentless commitment.
+                Our physicians support patients with clear communication, advanced diagnostics, personalized
+                treatment plans, and long-term management for heart and vascular health.
               </p>
               <blockquote className="amma-quote">
-                &quot;My mother believed I could heal people before I ever held a stethoscope. Amma is named for
-                her, and for every mother whose love has been the heartbeat behind someone else&apos;s greatness.&quot;
-                <span>- Dr. Sreeni Gangasani, MD, FACC</span>
+                &quot;Better heart health starts with prevention, accurate diagnosis, and care that stays connected over time.&quot;
+                <span>Southern Indiana Cardiology Associates</span>
               </blockquote>
             </div>
             <div className="amma-awards">
-              <h3>The Amma promise</h3>
+              <h3>The SICA promise</h3>
               <ul>
-                <li>Care that feels personal, never transactional.</li>
-                <li>Clinical precision delivered with patience and warmth.</li>
-                <li>A practice culture shaped by gratitude, family, and service.</li>
+                <li>Listen carefully and communicate clearly.</li>
+                <li>Use diagnostics to guide accurate care decisions.</li>
+                <li>Build treatment plans around each patient&apos;s needs.</li>
+                <li>Support prevention and long-term heart health.</li>
               </ul>
             </div>
           </div>
@@ -954,7 +1015,7 @@ export default function App() {
         <section className="testimonial-section">
           <div className="section-heading">
             <p className="eyebrow">Patient experience</p>
-            <h2>Designed to earn trust before, during, and after the visit.</h2>
+            <h2>Clear communication, personalized care, diagnostic accuracy, and long-term relationships.</h2>
           </div>
           <div className="testimonial-marquee">
             {Array.from({ length: 2 }).map((_, group) => (
@@ -977,31 +1038,30 @@ export default function App() {
             <div className="privacy-lock"></div>
             <p className="eyebrow">Built for trust</p>
             <h2>Secure, private, and intentionally calm.</h2>
-            <p>Cardiovascular care is personal. The experience is designed to feel precise and protective from the first call to every follow-up.</p>
+            <p>Cardiovascular care is personal. SICA creates a visit experience built around privacy, clarity, accuracy, and steady follow-up.</p>
           </div>
         </section>
         <section id="contact" className="final-cta">
           <div className="final-copy">
             <p className="eyebrow">Ready when you are</p>
-            <h2>Begin with a clearer heart plan.</h2>
+            <h2>Ready to Take Control of Your Heart Health?</h2>
             <p>
-              Request a consultation with ACG Heart & Vascular and take the first step toward prevention,
-              diagnostics, and long-term confidence.
+              Schedule a consultation with Southern Indiana Cardiology Associates and receive expert cardiovascular
+              care tailored to your needs.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="tel:6788418412">
-                Call 678-841-8412 <ArrowIcon />
+              <a className="button primary" href="#contact">
+                Request Appointment <ArrowIcon />
               </a>
-              <a className="button secondary" href="mailto:info@acgheart.com">
-                Email the clinic
+              <a className="button secondary" href="#contact">
+                Contact Us
               </a>
             </div>
           </div>
-          <div className="final-visual" aria-label="Modern cardiovascular care essentials arranged on a clean white surface">
-            <img src="/acg-assets/custom/cta-stethoscope.png" className="cta-object cta-object--stethoscope" alt="Stethoscope" />
-            <img src="/acg-assets/custom/cta-bp-monitor.png" className="cta-object cta-object--bp" alt="Blood Pressure Monitor" />
-            <img src="/acg-assets/custom/cta-phone-app.png" className="cta-object cta-object--phone" alt="ACG Prevention Plan App" />
-            <img src="/acg-assets/custom/cta-smartwatch.png" className="cta-object cta-object--watch" alt="Smartwatch" />
+          <div className="final-visual final-visual--three" aria-label="Modern cardiovascular care essentials arranged on a clean white surface">
+            <img src="/sica-assets/cta/stethoscope.png" className="cta-object cta-object--stethoscope" alt="Stethoscope" />
+            <img src="/sica-assets/cta/bp-monitor-cutout.png" className="cta-object cta-object--bp" alt="Blood pressure monitor" />
+            <img src="/sica-assets/cta/smartwatch.png" className="cta-object cta-object--watch" alt="Smartwatch" />
           </div>
         </section>
       </main>
@@ -1012,49 +1072,49 @@ export default function App() {
           <div className="footer-top">
             <div className="footer-brand-col">
               <div className="footer-logo">
-                <img src="/acg-logo.png" alt="ACG Heart & Vascular" />
+                <img src="/sica-assets/sica-logo.jpeg" alt="Southern Indiana Cardiology Associates" />
               </div>
-              <p className="footer-tagline">Amma CardioVascular Centers of Georgia</p>
-              <p className="footer-sub">Opening August 2026 · Lawrenceville, Georgia</p>
+              <p className="footer-tagline">Southern Indiana Cardiology Associates</p>
+              <p className="footer-sub">Comprehensive cardiovascular care for Southern Indiana.</p>
             </div>
             <div className="footer-col">
               <strong>Services</strong>
-              <a href="#services">Diagnostics</a>
-              <a href="#services">Prevention</a>
-              <a href="#services">Heart Failure Care</a>
-              <a href="#services">Chronic Disease Management</a>
+              <a href="#services">Preventive Cardiology</a>
+              <a href="#services">Cardiac Diagnostics</a>
+              <a href="#services">Interventional Cardiology</a>
+              <a href="#services">Heart Failure Management</a>
               <a href="#services">Vascular Studies</a>
-              <a href="#services">Annual Wellness</a>
+              <a href="#services">Hypertension Management</a>
             </div>
             <div className="footer-col">
               <strong>Visit</strong>
-              <span>310 Philip Blvd, Suite 102</span>
-              <span>Lawrenceville, GA 30046</span>
+              <span>Southern Indiana</span>
+              <span>Office details available by appointment</span>
             </div>
             <div className="footer-col">
               <strong>Contact</strong>
-              <a href="tel:6788418412">678-841-8412</a>
-              <a href="mailto:info@acgheart.com">info@acgheart.com</a>
+              <a href="#contact">Request Appointment</a>
+              <a href="#contact">Contact Us</a>
             </div>
             <div className="footer-col">
               <strong>Navigate</strong>
               <a href="#journey">Our Journey</a>
               <a href="#services">Services</a>
-              <a href="#team">Team</a>
-              <a href="#community">Community</a>
-              <a href="#news">In the News</a>
+              <a href="#providers">Physicians</a>
+              <a href="#community">Clinical Care</a>
+              <a href="#news">Why SICA</a>
               <a href="#contact">Request Appointment</a>
             </div>
           </div>
 
           <div className="footer-legal-bar">
             <p>Educational information only. Always consult a qualified healthcare provider for diagnosis and treatment.</p>
-            <p>© {currentYear} Amma CardioVascular Centers of Georgia, LLC.</p>
+            <p>© {currentYear} Southern Indiana Cardiology Associates.</p>
           </div>
         </footer>
         <div className="footer-wordmark">
           <div className="footer-wordmark-inner">
-            <span>ACG HEART &amp; VASCULAR</span>
+            <span>SICA</span>
           </div>
         </div>
       </div>
