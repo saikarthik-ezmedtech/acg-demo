@@ -25,12 +25,14 @@
 }
 
 html {
+  width: 100%;
   scroll-behavior: smooth;
   background: #fff;
 }
 
 body,
 #root {
+  width: 100%;
   min-height: 100%;
   margin: 0;
 }
@@ -322,6 +324,7 @@ h2,
 h3,
 p {
   margin-top: 0;
+  overflow-wrap: break-word;
 }
 
 h1,
@@ -3424,7 +3427,7 @@ img.cta-object {
 }
 .gal-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 24px;
   max-width: 1240px;
   margin: 0 auto;
@@ -3434,6 +3437,7 @@ img.cta-object {
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 4 / 3;
+  min-height: 260px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
@@ -4441,5 +4445,91 @@ img.cta-object {
 @media (max-width: 700px) {
   .gal-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Final responsive polish for compact screens and mixed-width devices. */
+@media (max-width: 900px) {
+  .community-section {
+    padding-inline: 18px;
+  }
+
+  .gal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .gal-grid .gc {
+    width: 100%;
+    min-height: 240px;
+    flex: initial;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section,
+  .community-section,
+  .providers-section,
+  .offers-section,
+  .extra-section,
+  .news-section,
+  .testimonial-section,
+  .final-cta,
+  .footer-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .gal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .gal-grid .gc {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    min-height: 250px;
+  }
+
+  .gc-cap {
+    padding: 18px;
+  }
+
+  .gc-tag {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .gc-cap p {
+    font-size: 13px;
+    line-height: 1.42;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .final-visual {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-object {
+    height: clamp(220px, 68vw, 300px);
   }
 }
