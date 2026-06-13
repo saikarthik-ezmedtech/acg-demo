@@ -177,14 +177,14 @@ const servicePhoneMeta: Record<string, { label: string; title: string; score: st
 
 const physicians = [
   {
-    name: 'Dr. Bapineedu Gondi, MD',
+    name: 'Dr. Srinivas Manchikalapudi, MD',
     role: 'Cardiologist',
     image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
       'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
   },
   {
-    name: 'Dr. Srinivas Manchikalapudi, MD',
+    name: 'Dr. Bapineedu Gondi, MD',
     role: 'Interventional Cardiologist',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
@@ -198,6 +198,19 @@ const physicians = [
       'Board-certified cardiologist focused on comprehensive heart care, cardiovascular prevention, diagnostics, and long-term patient management.',
   },
 ]
+
+function PhysicianCollage() {
+  return (
+    <div className="doctor-collage" aria-label="Southern Indiana Cardiology Associates physicians">
+      {physicians.map((physician, index) => (
+        <div className={`doctor-collage__item doctor-collage__item--${index + 1}`} key={`collage-${physician.name}`}>
+          <img src={physician.image} alt={physician.name} loading="lazy" decoding="async" />
+          <span>{physician.name.replace(', MD', '')}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 const clinicalGallery = [
   {
@@ -594,7 +607,7 @@ export default function App() {
           <a className="nav_home" href="#top" aria-label="Southern Indiana Cardiology Associates home">
             <div className="nav_logo-container">
               <div className="logo brand-mark">
-                <img src="/sica-assets/sica-mark.png" alt="" />
+                <img src="/sica-assets/sica-symbol.png" alt="" />
                 <span>SICA</span>
               </div>
             </div>
@@ -692,8 +705,8 @@ export default function App() {
             <p className="eyebrow">About Southern Indiana Cardiology Associates</p>
             <h2>Comprehensive heart care built around prevention, diagnosis, treatment, and long-term management.</h2>
             <div className="doctor-card doctor-card--mobile-inline">
-              <img src="/sica-assets/cardiovascular-imaging-suite.jpeg" alt="Cardiovascular imaging suite" />
-              <div>
+              <PhysicianCollage />
+              <div className="doctor-card-caption">
                 <span>SICA</span>
                 <strong>Patient-centered cardiology</strong>
               </div>
@@ -718,8 +731,8 @@ export default function App() {
             </blockquote>
           </div>
           <div className="doctor-card doctor-card--desktop">
-            <img src="/sica-assets/cardiovascular-imaging-suite.jpeg" alt="Cardiovascular imaging suite" />
-            <div>
+            <PhysicianCollage />
+            <div className="doctor-card-caption">
               <span>SICA</span>
               <strong>Personalized cardiovascular care</strong>
             </div>
@@ -1058,7 +1071,7 @@ export default function App() {
           <div className="footer-top">
             <div className="footer-brand-col">
               <div className="footer-logo">
-                <img src="/sica-assets/sica-logo.jpeg" alt="Southern Indiana Cardiology Associates" />
+                <img src="/sica-assets/sica-wordmark.jpeg" alt="Southern Indiana Cardiology Associates" />
               </div>
               <p className="footer-tagline">Southern Indiana Cardiology Associates</p>
               <p className="footer-sub">Comprehensive cardiovascular care for Southern Indiana.</p>
