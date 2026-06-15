@@ -2218,20 +2218,21 @@ img.cta-object {
 .footer-logo {
   display: flex;
   width: min(360px, 100%);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 12 / 5;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 10px 14px;
+  padding: 0;
   border-radius: 8px;
   background: #ffffff;
 }
 
 .footer-logo img {
-  width: 100%;
-  height: 100%;
+  width: 112%;
+  height: 112%;
   max-width: none;
-  object-fit: contain;
+  flex: 0 0 auto;
+  object-fit: cover;
   object-position: center;
   border-radius: 0;
   filter: none;
@@ -3934,10 +3935,10 @@ img.cta-object {
   .site-nav {
     width: 100%;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    min-height: 54px;
-    padding: 3px 10px;
+    min-height: 56px;
+    padding: 2px 12px;
     background: rgba(255, 255, 255, 0.94);
     border-color: rgba(23, 25, 28, 0.08);
     box-shadow: 0 10px 24px rgba(23, 25, 28, 0.08);
@@ -3950,39 +3951,43 @@ img.cta-object {
     display: flex;
     align-items: center;
     align-self: center;
-    min-height: 44px;
+    min-height: 50px;
+    height: 50px;
+    transform: translateY(2px);
   }
 
   .nav_logo-container {
     display: flex;
     align-items: center;
     align-self: center;
-    min-height: 44px;
+    min-height: 50px;
+    height: 50px;
   }
 
   .brand-mark {
     display: inline-flex;
     align-items: center;
     align-self: center;
-    gap: 6px;
+    gap: 7px;
     max-width: min(68vw, 290px);
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1;
+    line-height: 0;
   }
 
   .brand-mark span {
     display: block;
-    font-size: clamp(27px, 7.2vw, 32px);
+    font-size: clamp(31px, 7.8vw, 36px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     line-height: 1;
+    transform: translateY(2px);
   }
 
   .brand-mark img {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     transform: none;
   }
 
@@ -4011,13 +4016,14 @@ img.cta-object {
     justify-self: end;
     align-self: center;
     margin-left: auto;
-    padding: 0 7px;
-    min-height: 44px;
-    width: 44px;
+    padding: 0 6px;
+    min-height: 50px;
+    width: 46px;
     border: 0;
     background: transparent;
     cursor: pointer;
     position: relative;
+    transform: translateY(2px);
   }
 
   .nav_right {
@@ -4025,15 +4031,16 @@ img.cta-object {
     justify-content: flex-end;
     align-items: center;
     align-self: center;
-    min-height: 44px;
+    min-height: 50px;
+    height: 50px;
   }
 
   .nav-menu-line {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1.7rem;
-    height: 2.75px;
+    width: 1.65rem;
+    height: 2.65px;
     border-radius: 999px;
     background: rgba(23, 25, 28, 0.88);
     transform-origin: center;
@@ -4629,7 +4636,7 @@ img.cta-object {
   .footer-logo {
     width: min(320px, 100%);
     margin-inline: auto;
-    padding: 8px 12px;
+    padding: 0;
   }
 }
 
