@@ -216,8 +216,11 @@ const diagnosticTests = [
   {
     id: 'ekg',
     title: 'Electrocardiogram (EKG)',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Electrical activity tracing',
+    media: {
+      src: '/sica-assets/diagnostic-ekg-room.png',
+      label: 'Cardiac diagnostic testing room with ECG monitor and stress treadmill',
+    },
     what: 'A quick, non-invasive test that records the electrical activity of your heart using small stickers placed on the chest.',
     why: 'Used to check heart rhythm, look for signs of heart strain, and help evaluate symptoms such as chest discomfort, palpitations, or dizziness.',
     expect: 'You will lie still while leads record the tracing. The test is painless and usually takes only a few minutes.',
@@ -226,8 +229,11 @@ const diagnosticTests = [
   {
     id: 'echo',
     title: 'Echocardiogram',
-    image: 'https://images.unsplash.com/photo-1666214277657-b0bdb84dfd1f?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Ultrasound heart imaging',
+    media: {
+      src: '/sica-assets/diagnostic-echo-room.png',
+      label: 'Echocardiogram exam with ultrasound imaging in a cardiology clinic',
+    },
     what: 'An ultrasound test that creates moving images of the heart to show structure, pumping function, and valve performance.',
     why: 'Used to evaluate heart muscle function, valve disease, murmurs, fluid around the heart, and how blood is moving through the chambers.',
     expect: 'A technician moves an ultrasound probe over the chest with gel while images are recorded on a monitor. The test is painless and commonly takes 30 to 60 minutes.',
@@ -236,8 +242,11 @@ const diagnosticTests = [
   {
     id: 'nuclear-stress',
     title: 'Nuclear Stress Test',
-    image: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Stress imaging equipment',
+    media: {
+      src: '/sica-assets/diagnostic-stress-room.png',
+      label: 'Stress testing room with treadmill and cardiac monitoring equipment',
+    },
     what: 'A stress test combined with imaging that helps show blood flow to the heart during exertion or medication-induced stress.',
     why: 'Used to look for reduced blood flow, assess symptoms such as chest pain or shortness of breath, and help evaluate coronary artery disease risk.',
     expect: 'You may walk on a treadmill or receive medicine through an IV if exercise is not possible. Imaging is done before and after the stress portion.',
@@ -246,8 +255,11 @@ const diagnosticTests = [
   {
     id: 'carotid',
     title: 'Carotid Ultrasound',
-    image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Blood flow and plaque screening',
+    media: {
+      src: '/sica-assets/diagnostic-carotid-ultrasound.png',
+      label: 'Ultrasound testing used to evaluate blood flow and circulation',
+    },
     what: 'An ultrasound of the carotid arteries in the neck to assess blood flow and look for narrowing or plaque buildup.',
     why: 'Used when clinicians need more information about stroke risk, circulation to the brain, or possible carotid artery narrowing.',
     expect: 'A handheld ultrasound probe is placed gently on the neck to capture images. The test is non-invasive and usually comfortable.',
@@ -256,8 +268,11 @@ const diagnosticTests = [
   {
     id: 'calcium-score',
     title: 'Calcium Score Screening',
-    image: 'https://images.unsplash.com/photo-1580281657527-47d3a94ac6ca?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'CT coronary calcium scan',
+    media: {
+      src: '/sica-assets/diagnostic-calcium-ct.png',
+      label: 'Cardiology diagnostic equipment used for imaging and risk evaluation',
+    },
     what: 'A CT scan that measures calcified plaque in the coronary arteries and helps estimate long-term coronary risk.',
     why: 'Useful for refining cardiovascular risk in selected patients and helping guide prevention planning.',
     expect: 'You lie on a CT table for a very short scan, sometimes with brief breath-holds. The scan itself usually takes only a few minutes.',
@@ -266,8 +281,11 @@ const diagnosticTests = [
   {
     id: 'holter',
     title: 'Holter Monitoring',
-    image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Continuous rhythm recording',
+    media: {
+      src: '/sica-assets/diagnostic-holter-monitor.png',
+      label: 'clinician placing electrodes for a holter monitor in a cardiology exam room',
+    },
     what: 'A portable monitor worn over a day or longer to continuously record the heart rhythm during normal daily activity.',
     why: 'Used when symptoms such as palpitations, skipped beats, dizziness, or fainting may come and go and are not always captured during an office EKG.',
     expect: 'Small electrodes attach to the chest and connect to a compact recorder that you wear home.',
@@ -276,8 +294,11 @@ const diagnosticTests = [
   {
     id: 'event',
     title: 'Event Monitoring',
-    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Longer-term symptom capture',
+    media: {
+      src: '/sica-assets/diagnostic-event-monitor.png',
+      label: 'patient wearing an event monitor patch during a cardiology follow-up visit',
+    },
     what: 'A rhythm monitor used over a longer period when symptoms happen less often and need more time to capture.',
     why: 'Helps match intermittent symptoms with the heart rhythm at that exact time.',
     expect: 'Depending on the device, you may press a button during symptoms or wear a monitor that records automatically.',
@@ -286,8 +307,11 @@ const diagnosticTests = [
   {
     id: 'vascular',
     title: 'Vascular Testing',
-    image: 'https://images.unsplash.com/photo-1579684453377-58fe1adf2b05?auto=format&fit=crop&w=1400&q=80',
     visualLabel: 'Circulation and vessel studies',
+    media: {
+      src: '/sica-assets/diagnostic-vascular-testing.png',
+      label: 'Clinical vascular and circulation testing image in a cardiology setting',
+    },
     what: 'A group of circulation studies that check blood flow in the arteries and veins.',
     why: 'Used to help evaluate circulation problems, vascular symptoms, and prevention or treatment planning.',
     expect: 'Testing may include blood pressure cuffs, ultrasound probes, or waveform measurements depending on the study being ordered.',
@@ -311,7 +335,7 @@ const physicians: Physician[] = [
     name: 'Dr. Srinivas Manchikalapudi, MD',
     cardName: 'Dr. Srini Manchi',
     role: 'Cardiologist',
-    image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
+    image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
       'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
     profileHeading: 'Dr. Srini Manchi',
@@ -351,7 +375,7 @@ const physicians: Physician[] = [
     name: 'Dr. Bapineedu Gondi, MD',
     cardName: 'Dr. Bapineedu Gondi, MD',
     role: 'Interventional Cardiologist',
-    image: '/sica-assets/dr-bapineedu-gondi.jpeg',
+    image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
       'Interventional cardiologist specializing in coronary interventions, cardiac catheterization, vascular disease treatment, and advanced cardiovascular procedures.',
     profileHeading: 'Dr. Gondi',
@@ -489,45 +513,6 @@ function HeroPhysicianCollage() {
   )
 }
 
-const clinicalGallery = [
-  {
-    src: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Cardiovascular imaging suite',
-    tag: 'Imaging and procedures',
-    cap: 'Testing and procedures are used when they help answer a clear clinical question.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Cardiology office visit with physician and patient',
-    tag: 'Office visits',
-    cap: 'Visits start with symptoms, history, medications, and the questions patients bring in.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Physician and patient reviewing treatment options',
-    tag: 'Treatment planning',
-    cap: 'When treatment is needed, options are reviewed with attention to safety and follow-up.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Stethoscope on a clean clinical surface',
-    tag: 'Exam room basics',
-    cap: 'Good cardiology still begins with listening carefully and checking the fundamentals.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1588776813677-77aaf5595b83?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Blood pressure monitor',
-    tag: 'Everyday prevention',
-    cap: 'Blood pressure trends, home readings, and risk factors help guide long-term prevention.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Follow-up heart health discussion',
-    tag: 'Follow-up care',
-    cap: 'Ongoing visits keep symptoms, medications, testing, and prevention goals connected over time.',
-  },
-]
-
 const whyChooseCards = [
   {
     title: 'Experienced Specialists',
@@ -585,8 +570,10 @@ function ArrowIcon() {
 
 function PhoneIcon() {
   return (
-    <svg viewBox="0 0 20 20" aria-hidden="true">
-      <path d="M6.1 3.3 7.6 6.7 5.9 8.1c.8 1.8 2.2 3.2 4 4l1.4-1.7 3.4 1.5-.5 2.9c-.2.9-1 1.5-1.9 1.4C7.7 15.7 4.3 12.3 3.8 7.7c-.1-.9.5-1.7 1.4-1.9l.9-2.5Z" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2.1Z" />
+      <path d="M14 2a8 8 0 0 1 8 8" />
+      <path d="M14 6a4 4 0 0 1 4 4" />
     </svg>
   )
 }
@@ -950,6 +937,19 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
   )
 }
 
+function DiagnosticMedia({ test }: { test: (typeof diagnosticTests)[number] }) {
+  return (
+    <figure className={`diagnostic-zigzag-card__media diagnostic-zigzag-card__media--${test.id}`}>
+      <img
+        src={test.media.src}
+        alt={test.media.label}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  )
+}
+
 function PhysicianProfilePage({
   physician,
   onNavigate,
@@ -1186,9 +1186,7 @@ function DiagnosticTestingPage({ onNavigate }: { onNavigate: (href: string) => v
         <div className="diagnostic-zigzag-list">
           {diagnosticTests.map((test, index) => (
             <article className={`diagnostic-zigzag-card${index % 2 === 1 ? ' is-reversed' : ''}`} key={test.id}>
-              <div className="diagnostic-zigzag-card__image">
-                <img src={test.image} alt={test.title} loading="lazy" decoding="async" />
-              </div>
+              <DiagnosticMedia test={test} />
               <div className="diagnostic-zigzag-card__content">
                 <p className="diagnostic-kicker">{test.visualLabel}</p>
                 <h2>{test.title}</h2>
@@ -1401,6 +1399,9 @@ export default function App() {
           </div>
 
           <div className="nav_right">
+            <a className="nav-mobile-phone" href="tel:8129247065" aria-label="Call Southern Indiana Cardiology Associates at 812-924-7065">
+              <PhoneIcon />
+            </a>
             <button
               className={`nav_menu-2 nav-menu-btn${navOpen ? ' is-open' : ''}`}
               type="button"
@@ -1506,31 +1507,6 @@ export default function App() {
                   </InternalLink>
                 </div>
               </article>
-            ))}
-          </div>
-        </section>
-
-        {/* ─── CLINICAL CARE GALLERY ─── */}
-        <section id="community" className="community-section">
-          <div className="section-heading">
-            <p className="eyebrow">What Care Looks Like</p>
-            <h2>Straightforward heart care, from the first conversation to follow-up.</h2>
-            <p>SICA visits are built around practical details: what symptoms mean, which tests are useful, and what the next step should be.</p>
-          </div>
-          <div className="leadership-proof" aria-label="SICA clinical care highlights">
-            <span><strong>Plain-language visits</strong><small>Results are explained clearly, without making the visit feel rushed.</small></span>
-            <span><strong>Care built around you</strong><small>Plans are based on symptoms, history, test results, and health goals.</small></span>
-            <span><strong>Organized follow-up</strong><small>Medications, testing, and next steps stay connected over time.</small></span>
-          </div>
-          <div className="gal-grid">
-            {clinicalGallery.map((item) => (
-              <div className="gc" key={item.alt}>
-                <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
-                <div className="gc-cap">
-                  <div className="gc-tag">{item.tag}</div>
-                  <p>{item.cap}</p>
-                </div>
-              </div>
             ))}
           </div>
         </section>
