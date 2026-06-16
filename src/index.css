@@ -732,7 +732,7 @@ svg {
   position: relative;
   isolation: isolate;
   display: grid;
-  min-height: clamp(420px, 42vw, 560px);
+  min-height: clamp(456px, 45vw, 596px);
   grid-template-columns: minmax(0, 1.08fr) minmax(170px, 0.82fr);
   grid-template-rows: repeat(2, minmax(200px, 1fr));
   gap: 12px;
@@ -792,25 +792,27 @@ svg {
   left: 0;
   display: grid;
   gap: 4px;
-  padding: 40px 14px 14px;
+  padding: 52px 14px 16px;
   color: #ffffff;
-  background: linear-gradient(180deg, transparent 0%, rgba(6, 13, 28, 0.82) 100%);
+  background: linear-gradient(180deg, rgba(4, 9, 20, 0) 0%, rgba(5, 11, 24, 0.48) 44%, rgba(5, 11, 24, 0.92) 100%);
 }
 
 .hero-portrait figcaption span {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 10px;
-  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 11px;
+  font-weight: 760;
   line-height: 1.15;
   letter-spacing: 0;
   text-transform: none;
+  text-shadow: 0 1px 10px rgba(4, 9, 20, 0.35);
 }
 
 .hero-portrait figcaption strong {
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.2vw, 18px);
-  font-weight: 700;
+  font-weight: 760;
   line-height: 1.1;
+  text-shadow: 0 2px 12px rgba(4, 9, 20, 0.42);
 }
 
 .eyebrow {
@@ -1841,7 +1843,8 @@ h3 {
 
 .providers-section {
   padding: 110px 24px;
-  background: #fff;
+  background:
+    linear-gradient(180deg, #EFFAFD 0%, #F8FDFF 62%, #FFFFFF 100%);
 }
 
 .provider-grid {
@@ -5943,7 +5946,7 @@ img.cta-object {
   }
 
   .hero-physician-collage {
-    min-height: clamp(340px, 62vw, 470px);
+    min-height: clamp(380px, 66vw, 510px);
   }
 
   .story-stage,
@@ -6208,15 +6211,17 @@ img.cta-object {
   }
 
   .hero-portrait figcaption {
-    padding: 34px 12px 12px;
+    padding: 42px 12px 14px;
   }
 
   .hero-portrait figcaption span {
-    font-size: 9px;
+    font-size: 10px;
+    font-weight: 750;
   }
 
   .hero-portrait figcaption strong {
     font-size: 13px;
+    font-weight: 760;
   }
 
   .appointment-modal {
