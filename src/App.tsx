@@ -1,91 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion'
 import Lenis from 'lenis'
-import CardiovascularJourney from './components/CardiovascularJourney'
 import HeartbeatLine from './components/HeartbeatLine'
 
 const navItems = [
-  { label: 'About', href: '#team' },
   { label: 'Physicians', href: '#providers' },
-  { label: 'Journey', href: '#journey' },
   { label: 'Services', href: '#services' },
   { label: 'Why SICA', href: '#news' },
   { label: 'Contact', href: '#contact' },
 ]
-
-const cardiacServices = [
-  {
-    id: 'preventive-cardiology',
-    title: 'Preventive Cardiology',
-    copy: 'Risk assessment, lipid management, blood pressure control, and lifestyle guidance to reduce cardiovascular risk before symptoms escalate.',
-    details: ['Identifies risk factors early', 'Turns prevention into a practical long-term plan'],
-    icon: '⬡',
-  },
-  {
-    id: 'coronary-artery-disease',
-    title: 'Coronary Artery Disease',
-    copy: 'Evaluation and ongoing management for chest pain, blocked arteries, prior stents, and long-term coronary risk reduction.',
-    details: ['Connects symptoms, testing, and treatment history', 'Supports medication and follow-up decisions'],
-    icon: '◎',
-  },
-  {
-    id: 'heart-failure-management',
-    title: 'Heart Failure Management',
-    copy: 'Careful monitoring, medication optimization, symptom tracking, and coordination for patients living with heart failure.',
-    details: ['Tracks fluid status, symptoms, and daily stability', 'Refines treatment as needs change'],
-    icon: '♡',
-  },
-  {
-    id: 'cardiac-diagnostics',
-    title: 'Cardiac Diagnostics',
-    copy: 'Advanced cardiovascular testing to clarify symptoms, measure heart function, and guide an accurate care plan.',
-    details: ['Brings imaging, rhythm, and clinical findings together', 'Helps patients understand the next best step'],
-    icon: '∞',
-  },
-  {
-    id: 'echocardiography',
-    title: 'Echocardiography',
-    copy: 'Ultrasound imaging that evaluates heart structure, valve function, chamber size, and pumping strength.',
-    details: ['Assesses heart function without invasive testing', 'Supports diagnosis and long-term monitoring'],
-    icon: '◌',
-  },
-  {
-    id: 'stress-testing',
-    title: 'Stress Testing',
-    copy: 'Exercise and medically supervised stress testing to evaluate blood flow, symptoms, rhythm, and exercise response.',
-    details: ['Pairs symptoms with measurable cardiac response', 'Helps identify ischemia and exercise tolerance'],
-    icon: '▵',
-  },
-  {
-    id: 'holter-monitoring',
-    title: 'Holter Monitoring',
-    copy: 'Ambulatory rhythm monitoring to connect palpitations, dizziness, fainting, or irregular heartbeat symptoms to real data.',
-    details: ['Captures rhythm patterns outside the office', 'Clarifies symptom-to-rhythm relationships'],
-    icon: '⌁',
-  },
-  {
-    id: 'interventional-cardiology',
-    title: 'Interventional Cardiology',
-    copy: 'Specialized procedural expertise for coronary interventions, cardiac catheterization, and advanced cardiovascular treatment.',
-    details: ['Supports catheterization and coronary intervention planning', 'Coordinates procedure decisions with follow-up care'],
-    icon: '✦',
-  },
-  {
-    id: 'vascular-studies',
-    title: 'Vascular Studies',
-    copy: 'Non-invasive imaging to evaluate blood flow, circulation, and vascular health in the neck, legs, and major vessels.',
-    details: ['Evaluates circulation with targeted imaging', 'Guides prevention and treatment decisions'],
-    icon: '〜',
-  },
-  {
-    id: 'hypertension-management',
-    title: 'Hypertension Management',
-    copy: 'Diagnosis, treatment, and follow-up for high blood pressure with attention to long-term cardiovascular risk.',
-    details: ['Uses trends to guide treatment decisions', 'Protects heart, kidney, and vascular health over time'],
-    icon: '✦',
-  },
-]
-
 
 const experienceNotes = [
   {
@@ -111,6 +34,29 @@ const experienceNotes = [
 ]
 
 type ServiceVariant = 'diagnostics' | 'prevention' | 'heartfailure' | 'chronic' | 'vascular' | 'wellness' | 'interventional'
+
+type Physician = {
+  id: string
+  name: string
+  role: string
+  image: string
+  cardName: string
+  description: string
+  profileHeading: string
+  specialtySummary: string
+  homeHighlights: string[]
+  experienceLabel: string
+  trustHighlights: string[]
+  biography: string[]
+  philosophy: string
+  whyChoose: string[]
+  faqs: Array<{ question: string; answer: string }>
+  education: string[]
+  boardCertifications: string[]
+  specialInterests: string[]
+  languages: string[]
+  memberships: string[]
+}
 
 const servicePhoneMeta: Record<string, { label: string; title: string; score: string; variant: ServiceVariant }> = {
   'preventive-cardiology': {
@@ -175,38 +121,369 @@ const servicePhoneMeta: Record<string, { label: string; title: string; score: st
   },
 }
 
-const physicians = [
+const serviceFeatures = [
   {
-    name: 'Dr. Srinivas Manchikalapudi, MD',
-    role: 'Cardiologist',
-    image: '/sica-assets/dr-bapineedu-gondi.jpeg',
-    description:
-      'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
+    id: 'preventive-cardiology',
+    mockupId: 'preventive-cardiology',
+    icon: '⬡',
+    title: 'Preventive Cardiology',
+    copy: 'Risk reduction, lifestyle guidance, and long-term planning before symptoms escalate.',
+    details: ['Heart disease prevention', 'Cholesterol management', 'Risk assessments'],
   },
   {
-    name: 'Dr. Bapineedu Gondi, MD',
-    role: 'Interventional Cardiologist',
+    id: 'hypertension',
+    mockupId: 'hypertension-management',
+    icon: '✦',
+    title: 'Hypertension',
+    copy: 'Diagnosis and treatment plans built around office and home blood pressure patterns.',
+    details: ['Home and office trend review', 'Medication adjustment', 'Long-term risk reduction'],
+  },
+  {
+    id: 'cholesterol-management',
+    mockupId: 'preventive-cardiology',
+    icon: '◌',
+    title: 'Cholesterol Management',
+    copy: 'Lipid strategy and follow-up to reduce cardiovascular risk over time.',
+    details: ['Prevention-focused planning', 'Medication review', 'Ongoing monitoring'],
+  },
+  {
+    id: 'heart-disease-prevention',
+    mockupId: 'preventive-cardiology',
+    icon: '◎',
+    title: 'Heart Disease Prevention',
+    copy: 'Practical care that focuses on keeping disease from progressing.',
+    details: ['Lifestyle guidance', 'Risk-factor control', 'Prevention planning'],
+  },
+  {
+    id: 'risk-assessments',
+    mockupId: 'cardiac-diagnostics',
+    icon: '∞',
+    title: 'Risk Assessments',
+    copy: 'A fuller view of family history, medications, symptoms, and test results.',
+    details: ['Clearer cardiovascular picture', 'Visit-based planning', 'Targeted next steps'],
+  },
+  {
+    id: 'cardiac-conditions',
+    mockupId: 'coronary-artery-disease',
+    icon: '♡',
+    title: 'Cardiac Conditions',
+    copy: 'Support for the broad spectrum of ongoing cardiovascular concerns.',
+    details: ['Chronic disease management', 'Symptoms and testing aligned', 'Treatment follow-through'],
+  },
+  {
+    id: 'coronary-artery-disease',
+    mockupId: 'coronary-artery-disease',
+    icon: '◎',
+    title: 'Coronary Artery Disease',
+    copy: 'Chest pain, prior stents, and coronary risk tracked in one plan.',
+    details: ['Coronary interventions', 'Medication strategy', 'Long-term follow-up'],
+  },
+  {
+    id: 'heart-failure',
+    mockupId: 'heart-failure-management',
+    icon: '♡',
+    title: 'Heart Failure',
+    copy: 'Medication optimization, monitoring, and follow-up for heart failure care.',
+    details: ['Fluid and symptom monitoring', 'Care stability', 'Coordinated management'],
+  },
+  {
+    id: 'arrhythmias',
+    mockupId: 'holter-monitoring',
+    icon: '⌁',
+    title: 'Arrhythmias',
+    copy: 'Management for irregular rhythms, palpitations, and rhythm-related symptoms.',
+    details: ['Rhythm data review', 'Holter and event monitoring', 'Symptom correlation'],
+  },
+  {
+    id: 'atrial-fibrillation',
+    mockupId: 'holter-monitoring',
+    icon: '▵',
+    title: 'Atrial Fibrillation',
+    copy: 'AFib care focused on rate, rhythm, stroke prevention, and follow-up.',
+    details: ['Rhythm control planning', 'Stroke-risk review', 'Ongoing management'],
+  },
+  {
+    id: 'diagnostic-testing',
+    mockupId: 'cardiac-diagnostics',
+    icon: '∞',
+    title: 'Diagnostic Testing',
+    copy: 'Testing arranged to answer a specific clinical question with clarity.',
+    details: ['Electrocardiogram (EKG)', 'Echocardiogram', 'Nuclear stress test', 'Carotid ultrasound', 'Holter and event monitoring', 'Vascular testing'],
+  },
+]
+
+const diagnosticTests = [
+  {
+    id: 'ekg',
+    title: 'Electrocardiogram (EKG)',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Electrical activity tracing',
+    what: 'A quick, non-invasive test that records the electrical activity of your heart using small stickers placed on the chest.',
+    why: 'Used to check heart rhythm, look for signs of heart strain, and help evaluate symptoms such as chest discomfort, palpitations, or dizziness.',
+    expect: 'You will lie still while leads record the tracing. The test is painless and usually takes only a few minutes.',
+    prep: 'No special preparation is usually needed.',
+  },
+  {
+    id: 'echo',
+    title: 'Echocardiogram',
+    image: 'https://images.unsplash.com/photo-1666214277657-b0bdb84dfd1f?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Ultrasound heart imaging',
+    what: 'An ultrasound test that creates moving images of the heart to show structure, pumping function, and valve performance.',
+    why: 'Used to evaluate heart muscle function, valve disease, murmurs, fluid around the heart, and how blood is moving through the chambers.',
+    expect: 'A technician moves an ultrasound probe over the chest with gel while images are recorded on a monitor. The test is painless and commonly takes 30 to 60 minutes.',
+    prep: 'Resting echocardiograms usually require no preparation.',
+  },
+  {
+    id: 'nuclear-stress',
+    title: 'Nuclear Stress Test',
+    image: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Stress imaging equipment',
+    what: 'A stress test combined with imaging that helps show blood flow to the heart during exertion or medication-induced stress.',
+    why: 'Used to look for reduced blood flow, assess symptoms such as chest pain or shortness of breath, and help evaluate coronary artery disease risk.',
+    expect: 'You may walk on a treadmill or receive medicine through an IV if exercise is not possible. Imaging is done before and after the stress portion.',
+    prep: 'Preparation varies, but patients are often asked to avoid caffeine for a period before testing and to follow medication instructions from the office.',
+  },
+  {
+    id: 'carotid',
+    title: 'Carotid Ultrasound',
+    image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Blood flow and plaque screening',
+    what: 'An ultrasound of the carotid arteries in the neck to assess blood flow and look for narrowing or plaque buildup.',
+    why: 'Used when clinicians need more information about stroke risk, circulation to the brain, or possible carotid artery narrowing.',
+    expect: 'A handheld ultrasound probe is placed gently on the neck to capture images. The test is non-invasive and usually comfortable.',
+    prep: 'Usually no special preparation is needed.',
+  },
+  {
+    id: 'calcium-score',
+    title: 'Calcium Score Screening',
+    image: 'https://images.unsplash.com/photo-1580281657527-47d3a94ac6ca?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'CT coronary calcium scan',
+    what: 'A CT scan that measures calcified plaque in the coronary arteries and helps estimate long-term coronary risk.',
+    why: 'Useful for refining cardiovascular risk in selected patients and helping guide prevention planning.',
+    expect: 'You lie on a CT table for a very short scan, sometimes with brief breath-holds. The scan itself usually takes only a few minutes.',
+    prep: 'Preparation is minimal, and the office will review whether the test is appropriate for your situation.',
+  },
+  {
+    id: 'holter',
+    title: 'Holter Monitoring',
+    image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Continuous rhythm recording',
+    what: 'A portable monitor worn over a day or longer to continuously record the heart rhythm during normal daily activity.',
+    why: 'Used when symptoms such as palpitations, skipped beats, dizziness, or fainting may come and go and are not always captured during an office EKG.',
+    expect: 'Small electrodes attach to the chest and connect to a compact recorder that you wear home.',
+    prep: 'You may be asked to avoid getting the monitor wet and to keep a simple symptom diary while wearing it.',
+  },
+  {
+    id: 'event',
+    title: 'Event Monitoring',
+    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Longer-term symptom capture',
+    what: 'A rhythm monitor used over a longer period when symptoms happen less often and need more time to capture.',
+    why: 'Helps match intermittent symptoms with the heart rhythm at that exact time.',
+    expect: 'Depending on the device, you may press a button during symptoms or wear a monitor that records automatically.',
+    prep: 'The office will explain how long to wear it and how to mark symptoms when they happen.',
+  },
+  {
+    id: 'vascular',
+    title: 'Vascular Testing',
+    image: 'https://images.unsplash.com/photo-1579684453377-58fe1adf2b05?auto=format&fit=crop&w=1400&q=80',
+    visualLabel: 'Circulation and vessel studies',
+    what: 'A group of circulation studies that check blood flow in the arteries and veins.',
+    why: 'Used to help evaluate circulation problems, vascular symptoms, and prevention or treatment planning.',
+    expect: 'Testing may include blood pressure cuffs, ultrasound probes, or waveform measurements depending on the study being ordered.',
+    prep: 'Preparation depends on the exact study, and your care team will give instructions ahead of time.',
+  },
+]
+
+const profileSectionLinks = [
+  { id: 'physician-overview', label: 'Overview' },
+  { id: 'physician-philosophy', label: 'Philosophy of care' },
+  { id: 'physician-conditions', label: 'Conditions treated' },
+  { id: 'physician-education', label: 'Education' },
+  { id: 'physician-certifications', label: 'Board certifications' },
+  { id: 'physician-memberships', label: 'Professional memberships' },
+  { id: 'physician-faq', label: 'FAQ' },
+]
+
+const physicians: Physician[] = [
+  {
+    id: 'srinivas',
+    name: 'Dr. Srinivas Manchikalapudi, MD',
+    cardName: 'Dr. Srini Manchi',
+    role: 'Cardiologist',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
-      'Interventional cardiologist specializing in coronary interventions, cardiac catheterization, vascular disease treatment, and advanced cardiovascular procedures.',
+      'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
+    profileHeading: 'Dr. Srini Manchi',
+    specialtySummary: 'Board Certified Cardiologist. Echocardiography, preventive cardiology, and cardiovascular disease management are central to his clinical focus.',
+    homeHighlights: ['Board-certified cardiologist with expertise in echocardiography, preventive cardiology, and comprehensive cardiovascular disease management, dedicated to delivering personalized heart care and long-term wellness solutions.'],
+    experienceLabel: 'Long-standing cardiology experience',
+    trustHighlights: ['Board Certified', 'Preventive cardiology focus', 'Cardiovascular disease management'],
+    biography: [
+      'Dr. Srinivas Manchikalapudi cares for patients across prevention, diagnosis, and long-term cardiovascular management. His practice emphasizes careful evaluation, practical treatment planning, and follow-up that stays connected over time.',
+      'His clinical focus includes echocardiography, hypertension, coronary artery disease, preventive cardiology, and ongoing management for chronic heart conditions. Patients benefit from a steady, relationship-based approach that balances day-to-day symptoms with long-term heart health goals.',
+    ],
+    philosophy:
+      'He approaches each visit with an emphasis on clarity, prevention, and continuity, helping patients understand what the findings mean, what the next step should be, and how to protect heart health over time.',
+    whyChoose: ['Long-term cardiovascular management', 'Preventive cardiology focus', 'Echocardiography expertise', 'Board-certified heart care'],
+    faqs: [
+      {
+        question: 'What kinds of patients does Dr. Srini commonly see?',
+        answer: 'He commonly sees patients for prevention, blood pressure concerns, coronary artery disease, heart failure follow-up, and broader cardiovascular disease management.',
+      },
+      {
+        question: 'Does this profile support long-term heart care?',
+        answer: 'Yes. His care approach is especially suited to patients who need a clear long-term plan, ongoing follow-up, and coordinated chronic cardiovascular management.',
+      },
+      {
+        question: 'When might echocardiography be part of my visit?',
+        answer: 'Echocardiography may be used when the care team needs more information about heart structure, pumping function, valve performance, or the cause of symptoms.',
+      },
+    ],
+    education: ['Long-standing cardiology practice centered on prevention, diagnostics, and chronic cardiovascular management.'],
+    boardCertifications: ['Board Certified Cardiologist'],
+    specialInterests: ['Echocardiography', 'Preventive Cardiology', 'Cardiovascular Disease Management'],
+    languages: ['Please contact the office for current language support options.'],
+    memberships: ['Additional professional membership details are available through the office.'],
   },
   {
+    id: 'gondi',
+    name: 'Dr. Bapineedu Gondi, MD',
+    cardName: 'Dr. Bapineedu Gondi, MD',
+    role: 'Interventional Cardiologist',
+    image: '/sica-assets/dr-bapineedu-gondi.jpeg',
+    description:
+      'Interventional cardiologist specializing in coronary interventions, cardiac catheterization, vascular disease treatment, and advanced cardiovascular procedures.',
+    profileHeading: 'Dr. Gondi',
+    specialtySummary: 'Interventional cardiologist specializing in coronary interventions, coronary artery disease, hypertension, heart failure, and atrial fibrillation.',
+    homeHighlights: ['Interventional cardiologist specializing in coronary interventions and the treatment of coronary artery disease, hypertension, heart failure, and atrial fibrillation, with a focus on advanced cardiovascular care and improved patient outcomes.'],
+    experienceLabel: '40+ years of cardiovascular experience',
+    trustHighlights: ['Board Certified', 'Advanced procedures', 'Coronary and vascular expertise'],
+    biography: [
+      'Dr. Bapineedu Gondi is an interventional cardiologist focused on coronary interventions, cardiac catheterization, vascular disease treatment, and complex cardiovascular evaluation. His profile is especially suited to patients who need both diagnostic clarity and procedure-based treatment planning.',
+      'He also cares for patients with coronary artery disease, hypertension, heart failure, and atrial fibrillation. His visits center on understanding the full cardiovascular picture, reviewing symptoms carefully, and helping patients move through testing, procedures, and follow-up with confidence.',
+    ],
+    philosophy:
+      'His care approach combines experience, technical precision, and direct patient communication so that treatment plans feel clear, informed, and tailored to the person in front of him.',
+    whyChoose: ['Interventional expertise', 'Coronary artery disease management', 'Advanced cardiovascular procedures', 'Board-certified cardiovascular care'],
+    faqs: [
+      {
+        question: 'When would I see an interventional cardiologist?',
+        answer: 'Patients often see an interventional cardiologist when symptoms, test findings, or coronary artery disease concerns may require advanced evaluation, cardiac catheterization, or procedure-based treatment planning.',
+      },
+      {
+        question: 'Does Dr. Gondi treat conditions beyond procedures?',
+        answer: 'Yes. He also manages hypertension, heart failure, atrial fibrillation, and broader coronary artery disease follow-up as part of ongoing cardiovascular care.',
+      },
+      {
+        question: 'Will my visit include discussion of testing and next steps?',
+        answer: 'Yes. Visits are structured to explain findings clearly, review diagnostic options, and connect those results to the next step in treatment or follow-up.',
+      },
+    ],
+    education: [
+      'University of Rochester Medical Center, Fellowship in Cardiovascular Disease, 1979 - 1981',
+      'Cook County Health and Hospitals System, Residency in Internal Medicine, 1976 - 1979',
+      'Guntur Medical College NTR, Class of 1975',
+    ],
+    boardCertifications: ['Internal Medicine', 'Cardiovascular Disease'],
+    specialInterests: ['Coronary Interventions', 'Coronary Artery Disease', 'Hypertension', 'Heart Failure', 'Atrial Fibrillation'],
+    languages: ['Please contact the office for current language support options.'],
+    memberships: ['American College of Cardiology (ACC)'],
+  },
+  {
+    id: 'sandella',
     name: 'Dr. Surender K. Sandella, MD',
+    cardName: 'Dr. Surender K. Sandella, MD',
     role: 'Board-Certified Cardiologist',
     image: '/sica-assets/dr-surender-sandella.webp',
     description:
       'Board-certified cardiologist focused on comprehensive heart care, cardiovascular prevention, diagnostics, and long-term patient management.',
+    profileHeading: 'Dr. Surender',
+    specialtySummary: 'Board-certified cardiologist specializing in nuclear cardiology, echocardiography, and cardiovascular diagnostics.',
+    homeHighlights: ['Board-certified cardiologist specializing in nuclear cardiology, echocardiography, and advanced cardiovascular diagnostics, dedicated to delivering accurate evaluations and comprehensive heart care for optimal patient outcomes.'],
+    experienceLabel: '25+ years of cardiovascular experience',
+    trustHighlights: ['Board Certified', 'Diagnostic expertise', 'Comprehensive heart care'],
+    biography: [
+      'Dr. Surender K. Sandella provides comprehensive heart care with a strong focus on cardiovascular prevention, diagnostics, and long-term management. His work often supports patients who need a detailed understanding of test findings and a structured path forward.',
+      'His clinical interests include nuclear cardiology, echocardiography, and cardiovascular diagnostics. Patients benefit from a balanced approach that combines careful interpretation, prevention planning, and ongoing support for changing cardiovascular needs.',
+    ],
+    philosophy:
+      'He emphasizes thoughtful diagnosis, patient education, and treatment plans that connect advanced testing with clear, practical follow-up care.',
+    whyChoose: ['Nuclear cardiology expertise', 'Diagnostic clarity', 'Prevention and long-term care', 'Board-certified cardiovascular care'],
+    faqs: [
+      {
+        question: 'What is Dr. Surender’s clinical focus?',
+        answer: 'His focus includes comprehensive heart care, cardiovascular prevention, nuclear cardiology, echocardiography, and broader diagnostic evaluation.',
+      },
+      {
+        question: 'Who may benefit from this kind of profile?',
+        answer: 'Patients who need detailed cardiovascular testing, clearer interpretation of symptoms, or long-term management often benefit from this diagnostic-centered care approach.',
+      },
+      {
+        question: 'Can testing and prevention be discussed in the same visit?',
+        answer: 'Yes. The goal is to connect symptoms, risk factors, testing, and prevention into one organized treatment plan.',
+      },
+    ],
+    education: [
+      'University of Louisville School of Medicine, Fellowship in Cardiovascular Disease, 1995 - 1998',
+      'Case Western Reserve University/University Hospitals Cleveland Medical Center, Residency in Internal Medicine, 1993 - 1995',
+      'Zucker School of Medicine at Hofstra/Northwell, Internship in Internal Medicine, 1992 - 1993',
+      'Osmania Medical College NTR UHS, Class of 1989',
+    ],
+    boardCertifications: ['Cardiovascular Disease', 'Interventional Cardiology'],
+    specialInterests: ['Nuclear Cardiology', 'Echocardiography', 'Cardiovascular Diagnostics'],
+    languages: ['Please contact the office for current language support options.'],
+    memberships: ['American College of Cardiology (ACC)'],
   },
 ]
 
-function PhysicianCollage() {
+const physicianCards = [...physicians].sort((a, b) => {
+  const surnameA = a.name.replace(/, MD$/, '').split(' ').at(-1) ?? a.name
+  const surnameB = b.name.replace(/, MD$/, '').split(' ').at(-1) ?? b.name
+  return surnameA.localeCompare(surnameB)
+})
+
+function getRouteState() {
+  return {
+    pathname: window.location.pathname || '/',
+    hash: window.location.hash || '',
+  }
+}
+
+function getPhysicianPath(id: string) {
+  return `/physicians/${id}`
+}
+
+function getDiagnosticTestingPath() {
+  return '/diagnostic-testing'
+}
+
+function getPhysicianFromPath(pathname: string) {
+  const match = pathname.match(/^\/physicians\/([^/]+)$/)
+  if (!match) return null
+
+  return physicians.find((physician) => physician.id === match[1]) ?? null
+}
+
+function isDiagnosticTestingPath(pathname: string) {
+  return pathname === getDiagnosticTestingPath()
+}
+
+function isHomePath(pathname: string) {
+  return pathname === '/' || pathname === ''
+}
+
+function HeroPhysicianCollage() {
   return (
-    <div className="doctor-collage" aria-label="Southern Indiana Cardiology Associates physicians">
-      {physicians.map((physician, index) => (
-        <div className={`doctor-collage__item doctor-collage__item--${index + 1}`} key={`collage-${physician.name}`}>
-          <img src={physician.image} alt={physician.name} loading="lazy" decoding="async" />
-          <span>{physician.name.replace(', MD', '')}</span>
-        </div>
+    <div className="hero-physician-collage" aria-label="Southern Indiana Cardiology Associates physician team">
+      {physicianCards.map((physician, index) => (
+        <figure className={`hero-portrait hero-portrait--${index + 1}`} key={`hero-${physician.name}`}>
+          <img src={physician.image} alt={physician.name} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+          <figcaption>
+            <span>{physician.role}</span>
+            <strong>{physician.cardName.replace(', MD', '')}</strong>
+          </figcaption>
+        </figure>
       ))}
     </div>
   )
@@ -303,6 +580,151 @@ function ArrowIcon() {
     <svg viewBox="0 0 20 20" aria-hidden="true">
       <path d="M4 10h10.4m0 0-4.2-4.2M14.4 10l-4.2 4.2" />
     </svg>
+  )
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M6.1 3.3 7.6 6.7 5.9 8.1c.8 1.8 2.2 3.2 4 4l1.4-1.7 3.4 1.5-.5 2.9c-.2.9-1 1.5-1.9 1.4C7.7 15.7 4.3 12.3 3.8 7.7c-.1-.9.5-1.7 1.4-1.9l.9-2.5Z" />
+    </svg>
+  )
+}
+
+function CalendarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7" />
+      <path d="M16 3v4" />
+      <path d="M8 3v4" />
+      <path d="M4 11h16" />
+      <path d="M11 15h1" />
+      <path d="M12 15v3" />
+    </svg>
+  )
+}
+
+function MapPinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s6-4.35 6-11a6 6 0 0 0-12 0c0 6.65 6 11 6 11" />
+      <path d="M12 10a2 2 0 1 0 0.01 0" />
+    </svg>
+  )
+}
+
+function InternalLink({
+  href,
+  onNavigate,
+  className,
+  children,
+  onClick,
+  ...rest
+}: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string
+  onNavigate: (href: string) => void
+}) {
+  return (
+    <a
+      {...rest}
+      href={href}
+      className={className}
+      onClick={(event) => {
+        if (href.startsWith('#') || href.startsWith('/')) {
+          event.preventDefault()
+          onNavigate(href)
+        }
+
+        onClick?.(event)
+      }}
+    >
+      {children}
+    </a>
+  )
+}
+
+function AppointmentModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (!isOpen) return
+
+    const scrollY = window.scrollY
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
+    document.body.style.width = '100%'
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.width = ''
+      window.scrollTo(0, scrollY)
+    }
+  }, [isOpen, onClose])
+
+  if (!isOpen) return null
+
+  return (
+    <div className="appointment-modal" role="presentation" onClick={onClose}>
+      <div
+        className="appointment-modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="appointment-modal-title"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button type="button" aria-label="Close appointment form" className="appointment-modal__close" onClick={onClose}>
+          ×
+        </button>
+        <div className="appointment-modal__header">
+          <div className="appointment-modal__eyebrow">
+            <CalendarIcon />
+            <span>Request an Appointment</span>
+          </div>
+          <h3 id="appointment-modal-title">Tell us a little about you</h3>
+          <p>Office requests are reviewed by our team, and we will follow up to confirm the next step.</p>
+        </div>
+        <form className="appointment-form" onSubmit={(event) => event.preventDefault()}>
+          <div className="appointment-form__row">
+            <label>
+              First name
+              <input type="text" name="firstName" autoComplete="given-name" />
+            </label>
+            <label>
+              Last name
+              <input type="text" name="lastName" autoComplete="family-name" />
+            </label>
+          </div>
+          <label>
+            Phone
+            <input type="tel" name="phone" autoComplete="tel" placeholder="812-924-7065" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autoComplete="email" placeholder="you@email.com" />
+          </label>
+          <label>
+            Reason for visit
+            <textarea name="reason" rows={4} placeholder="Briefly describe your symptoms or what you'd like to discuss." />
+          </label>
+          <button type="submit" className="button primary appointment-form__submit">
+            Send Request
+          </button>
+        </form>
+      </div>
+    </div>
   )
 }
 
@@ -528,42 +950,377 @@ function ServicePhoneMockup({ serviceId }: { serviceId: string }) {
   )
 }
 
+function PhysicianProfilePage({
+  physician,
+  onNavigate,
+  onOpenAppointment,
+}: {
+  physician: Physician
+  onNavigate: (href: string) => void
+  onOpenAppointment: () => void
+}) {
+  const [activeSection, setActiveSection] = useState(profileSectionLinks[0].id)
+
+  useEffect(() => {
+    const sections = profileSectionLinks
+      .map((item) => document.getElementById(item.id))
+      .filter((element): element is HTMLElement => Boolean(element))
+
+    if (!sections.length) return
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+      if (visible[0]?.target?.id) {
+        setActiveSection(visible[0].target.id)
+      }
+    }, {
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: [0.15, 0.35, 0.55],
+    })
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section className="physician-profile-page">
+      <div className="physician-profile-shell">
+        <div className="physician-profile-breadcrumbs">
+          <InternalLink href="/#providers" onNavigate={onNavigate}>
+            Physicians
+          </InternalLink>
+          <span>/</span>
+          <strong>{physician.profileHeading}</strong>
+        </div>
+
+        <div className="physician-profile-hero">
+          <div className="physician-profile-hero__content">
+            <h1>{physician.profileHeading}</h1>
+            <span className="physician-profile-hero__role">{physician.role}</span>
+            <p>{physician.description}</p>
+            <div className="physician-profile-hero__actions">
+              <button type="button" className="button primary" onClick={onOpenAppointment}>
+                Request Appointment <ArrowIcon />
+              </button>
+              <a href="tel:8129482232" className="button secondary">
+                Call Office <PhoneIcon />
+              </a>
+            </div>
+            <div className="physician-profile-trust physician-profile-trust--hero">
+              <span>Board Certified</span>
+              <span>{physician.experienceLabel}</span>
+              <span>{physician.role}</span>
+            </div>
+          </div>
+          <div className="physician-profile-hero__media">
+            <img src={physician.image} alt={physician.name} />
+          </div>
+        </div>
+
+        <div className="physician-profile-layout">
+          <main className="physician-profile-main">
+            <section id="physician-overview" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Overview</h2>
+              </div>
+              <div className="physician-profile-copy">
+                {physician.biography.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </section>
+
+            <section id="physician-philosophy" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Philosophy of care</h2>
+              </div>
+              <div className="physician-profile-copy">
+                <p>{physician.philosophy}</p>
+              </div>
+            </section>
+
+            <section id="physician-conditions" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Conditions treated</h2>
+              </div>
+              <ul className="physician-simple-list">
+                {physician.specialInterests.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="physician-education" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Education</h2>
+              </div>
+              <div className="physician-simple-timeline">
+                {physician.education.map((item) => (
+                  <div className="physician-simple-timeline__item" key={item}>
+                    <span />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section id="physician-certifications" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Board certifications</h2>
+              </div>
+              <ul className="physician-simple-list">
+                {physician.boardCertifications.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="physician-memberships" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Professional memberships</h2>
+              </div>
+              <ul className="physician-simple-list">
+                {physician.memberships.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="physician-faq" className="physician-profile-section">
+              <div className="physician-section-heading physician-section-heading--left">
+                <h2>Frequently asked questions</h2>
+              </div>
+              <div className="physician-faq-list physician-faq-list--simple">
+                {physician.faqs.map((item) => (
+                  <article className="physician-faq-card physician-faq-card--simple" key={item.question}>
+                    <h3>{item.question}</h3>
+                    <p>{item.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </main>
+
+          <aside className="physician-profile-sidebar">
+            <nav className="physician-profile-sidebar__nav" aria-label={`${physician.profileHeading} profile sections`}>
+              <ol>
+                {profileSectionLinks.map((item) => (
+                  <li key={item.id}>
+                    <InternalLink
+                      href={`${window.location.pathname}#${item.id}`}
+                      onNavigate={onNavigate}
+                      className={activeSection === item.id ? 'is-current' : ''}
+                    >
+                      {item.label}
+                    </InternalLink>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+            <div className="physician-profile-sidebar__cta">
+              <button type="button" className="button primary" onClick={onOpenAppointment}>
+                Request Appointment <ArrowIcon />
+              </button>
+            </div>
+          </aside>
+        </div>
+
+        <section className="physician-profile-final-cta physician-profile-final-cta--simple">
+          <div>
+            <p className="eyebrow">Request an Appointment</p>
+            <h2>Take the next step with trusted cardiovascular care.</h2>
+            <p>
+              Request a visit with {physician.profileHeading} and our office will help coordinate the right next step
+              for evaluation, treatment, or follow-up.
+            </p>
+          </div>
+          <div className="physician-profile-final-cta__actions">
+            <button type="button" className="button primary" onClick={onOpenAppointment}>
+              Request Appointment <ArrowIcon />
+            </button>
+            <a href="tel:8129482232" className="button secondary">
+              Call Office <PhoneIcon />
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  )
+}
+
+function DiagnosticTestingPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  return (
+    <section className="diagnostic-page">
+      <div className="diagnostic-page-shell">
+        <div className="physician-profile-breadcrumbs">
+          <InternalLink href="/#services" onNavigate={onNavigate}>
+            Services
+          </InternalLink>
+          <span>/</span>
+          <strong>Diagnostic Testing</strong>
+        </div>
+
+        <div className="diagnostic-page-hero">
+          <div>
+            <p className="eyebrow">Diagnostic Testing</p>
+            <h1>Heart testing explained in a clearer, more patient-friendly way.</h1>
+            <p>
+              When symptoms, risk factors, or prior findings need a closer look, testing helps answer a specific
+              question. Each study below is used to improve clarity around rhythm, blood flow, heart structure, or
+              circulation and to help guide the next step in care.
+            </p>
+            <div className="diagnostic-page-hero__actions">
+              <InternalLink href="/#contact" onNavigate={onNavigate} className="button primary">
+                Request Appointment <ArrowIcon />
+              </InternalLink>
+              <a href="tel:8129482232" className="button secondary">
+                Call Office <PhoneIcon />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="diagnostic-zigzag-list">
+          {diagnosticTests.map((test, index) => (
+            <article className={`diagnostic-zigzag-card${index % 2 === 1 ? ' is-reversed' : ''}`} key={test.id}>
+              <div className="diagnostic-zigzag-card__image">
+                <img src={test.image} alt={test.title} loading="lazy" decoding="async" />
+              </div>
+              <div className="diagnostic-zigzag-card__content">
+                <p className="diagnostic-kicker">{test.visualLabel}</p>
+                <h2>{test.title}</h2>
+                <div className="diagnostic-zigzag-card__copy">
+                  <div>
+                    <h3>What is it?</h3>
+                    <p>{test.what}</p>
+                  </div>
+                  <div>
+                    <h3>Why is it performed?</h3>
+                    <p>{test.why}</p>
+                  </div>
+                  <div>
+                    <h3>What to expect?</h3>
+                    <p>{test.expect}</p>
+                  </div>
+                  <div>
+                    <h3>Preparation</h3>
+                    <p>{test.prep}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <section className="physician-profile-final-cta diagnostic-page-final-cta">
+          <div>
+            <p className="eyebrow">Need Help Deciding?</p>
+            <h2>We can help determine which test makes sense for your symptoms.</h2>
+            <p>
+              Diagnostic testing is most useful when it answers a clear clinical question. Our team can help match
+              symptoms, history, and risk factors to the right next step.
+            </p>
+          </div>
+          <div className="physician-profile-final-cta__actions">
+            <InternalLink href="/#contact" onNavigate={onNavigate} className="button primary">
+              Request Appointment <ArrowIcon />
+            </InternalLink>
+            <InternalLink href="/#services" onNavigate={onNavigate} className="button secondary">
+              Back to Services
+            </InternalLink>
+          </div>
+        </section>
+      </div>
+    </section>
+  )
+}
+
 export default function App() {
   const { scrollYProgress } = useScroll()
   const heroLift = useTransform(scrollYProgress, [0, 0.18], [0, -90])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.16], [1, 0.35])
 
   const currentYear = useMemo(() => new Date().getFullYear(), [])
+  const [route, setRoute] = useState(getRouteState)
   const [activeServiceIndex, setActiveServiceIndex] = useState(0)
   const [navOpen, setNavOpen] = useState(false)
+  const [appointmentOpen, setAppointmentOpen] = useState(false)
   const cardRefs = useRef<(HTMLElement | null)[]>([])
+  const lenisRef = useRef<Lenis | null>(null)
+  const activePhysician = useMemo(() => getPhysicianFromPath(route.pathname), [route.pathname])
+  const diagnosticTestingOpen = useMemo(() => isDiagnosticTestingPath(route.pathname), [route.pathname])
 
   useEffect(() => {
+    if (activePhysician || diagnosticTestingOpen) return
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const index = Number(entry.target.getAttribute('data-index'))
-          if (!isNaN(index)) {
-            setActiveServiceIndex(index)
-          }
+          if (!Number.isNaN(index)) setActiveServiceIndex(index)
         }
       })
     }, {
       rootMargin: '-30% 0px -30% 0px',
-      threshold: 0.15
+      threshold: 0.15,
     })
 
     cardRefs.current.forEach((card) => {
       if (card) observer.observe(card)
     })
 
-    return () => {
-      observer.disconnect()
+    return () => observer.disconnect()
+  }, [activePhysician, diagnosticTestingOpen])
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (!element) return
+
+    const offset = -88
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(element, { offset, duration: 0.9 })
+      return
     }
-  }, [])
+
+    const top = element.getBoundingClientRect().top + window.scrollY + offset
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+
+  const navigateTo = (href: string) => {
+    setNavOpen(false)
+
+    if (href.startsWith('#')) {
+      const destination = `/${href}`
+      window.history.pushState({}, '', destination)
+      setRoute(getRouteState())
+      requestAnimationFrame(() => scrollToSection(href.slice(1)))
+      return
+    }
+
+    const url = new URL(href, window.location.origin)
+    if (url.origin !== window.location.origin) {
+      window.location.assign(url.toString())
+      return
+    }
+
+    window.history.pushState({}, '', `${url.pathname}${url.hash}`)
+    setRoute(getRouteState())
+
+    requestAnimationFrame(() => {
+      if (url.hash) {
+        scrollToSection(url.hash.slice(1))
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' })
+      }
+    })
+  }
 
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.85 })
+    lenisRef.current = lenis
     let frame = 0
 
     const raf = (time: number) => {
@@ -573,64 +1330,73 @@ export default function App() {
 
     frame = requestAnimationFrame(raf)
 
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      const anchor = target.closest('a')
-      if (anchor) {
-        const href = anchor.getAttribute('href')
-        if (href && href.startsWith('#')) {
-          e.preventDefault()
-          const id = href.substring(1)
-          const element = document.getElementById(id)
-          if (element) {
-            const offset = id === 'team' ? -120 : -88
-            lenis.scrollTo(element, { offset, duration: 0.9 })
-          }
-        }
-      }
-    }
-
-    document.addEventListener('click', handleAnchorClick)
-
     return () => {
       cancelAnimationFrame(frame)
       lenis.destroy()
-      document.removeEventListener('click', handleAnchorClick)
+      lenisRef.current = null
     }
   }, [])
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setNavOpen(false)
+      setRoute(getRouteState())
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  useEffect(() => {
+    if (route.hash) {
+      const frame = requestAnimationFrame(() => scrollToSection(route.hash.slice(1)))
+      return () => cancelAnimationFrame(frame)
+    }
+
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [route.hash, route.pathname])
 
   return (
     <div className="site-shell">
       <div className="page-wipe" aria-hidden="true" />
       <header className="navigation">
         <div className={`nav_layout-2${navOpen ? ' is-open' : ''}`}>
-          <a className="nav_home" href="#top" aria-label="Southern Indiana Cardiology Associates home">
+          <InternalLink className="nav_home" href="/" onNavigate={navigateTo} aria-label="Southern Indiana Cardiology Associates home">
             <div className="nav_logo-container">
               <div className="logo brand-mark">
-                <img src="/sica-assets/sica-symbol.png" alt="" />
-                <span>SICA</span>
+                <img src="/sica-assets/sica-symbol.png" alt="Southern Indiana Cardiology Associates" />
+                <span className="nav-brand-copy">
+                  <strong>Southern Indiana Cardiology Associates</strong>
+                </span>
               </div>
             </div>
             <span className="u-sr-only">Southern Indiana Cardiology Associates Home</span>
-          </a>
+          </InternalLink>
 
           <div className="nav_main-wrapper">
             <div className="nav_main">
               <div className="nav_main-inner">
                 {navItems.map((item) => (
-                  <a
+                  <InternalLink
                     key={item.href}
-                    href={item.href}
+                    href={isHomePath(route.pathname) ? item.href : `/${item.href}`}
                     className="navigation_link"
                     onClick={() => setNavOpen(false)}
+                    onNavigate={navigateTo}
                   >
                     {item.label}
-                  </a>
+                  </InternalLink>
                 ))}
               </div>
-              <a className="nav-cta btn cc-navigation" href="#contact">
-                Request <ArrowIcon />
-              </a>
+              <div className="nav-actions">
+                <a className="nav-phone" href="tel:8129247065" aria-label="Call Southern Indiana Cardiology Associates at 812-924-7065">
+                  <PhoneIcon />
+                  <span>812-924-7065</span>
+                </a>
+                <button type="button" className="nav-cta btn cc-navigation" onClick={() => setAppointmentOpen(true)}>
+                  Request Appointment <ArrowIcon />
+                </button>
+              </div>
             </div>
           </div>
 
@@ -650,13 +1416,25 @@ export default function App() {
 
           <div className={`nav-mobile-panel${navOpen ? ' is-open' : ''}`}>
             {navItems.map((item) => (
-              <a key={`mobile-${item.href}`} href={item.href} onClick={() => setNavOpen(false)}>
+              <InternalLink
+                key={`mobile-${item.href}`}
+                href={isHomePath(route.pathname) ? item.href : `/${item.href}`}
+                onClick={() => setNavOpen(false)}
+                onNavigate={navigateTo}
+              >
                 {item.label}
-              </a>
+              </InternalLink>
             ))}
-            <a href="#contact" className="nav-mobile-cta" onClick={() => setNavOpen(false)}>
+            <button
+              type="button"
+              className="nav-mobile-cta"
+              onClick={() => {
+                setNavOpen(false)
+                setAppointmentOpen(true)
+              }}
+            >
               Request appointment
-            </a>
+            </button>
           </div>
         </div>
       </header>
@@ -668,75 +1446,46 @@ export default function App() {
       />
 
       <main id="top">
+        {activePhysician ? (
+          <PhysicianProfilePage physician={activePhysician} onNavigate={navigateTo} onOpenAppointment={() => setAppointmentOpen(true)} />
+        ) : diagnosticTestingOpen ? (
+          <DiagnosticTestingPage onNavigate={navigateTo} />
+        ) : (
+          <>
         <section className="hero-section">
           <motion.div className="hero-bg" style={{ y: heroLift, opacity: heroOpacity }}>
             <video src="/sica-assets/videos/heart-hero.mp4" autoPlay muted loop playsInline />
           </motion.div>
           <div className="hero-vein" />
-          <div className="hero-content">
-            <Reveal>
-              <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.58)' }}>Southern Indiana Cardiology Associates (SICA)</p>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h1 style={{ color: '#fff' }}>Advanced Cardiovascular Care. Experienced Specialists. Personalized Treatment.</h1>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <p className="hero-copy" style={{ color: 'rgba(255,255,255,0.72)' }}>
-                Southern Indiana Cardiology Associates provides comprehensive cardiovascular care through advanced diagnostics,
-                preventive cardiology, interventional expertise, and long-term heart health management.
-              </p>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <div className="hero-actions">
-                <a className="button primary" href="#contact" style={{ background: 'rgba(255,255,255,0.92)', color: '#111' }}>
-                  Request Appointment <ArrowIcon />
-                </a>
-                <a className="button secondary" href="#providers" style={{ color: '#fff', border: '1px solid rgba(255,255,255,0.32)', background: 'rgba(255,255,255,0.08)' }}>
-                  Meet Our Physicians
-                </a>
-              </div>
-            </Reveal>
+          <div className="hero-shell">
+            <div className="hero-content">
+              <Reveal delay={0.08}>
+                <h1>
+                  <span>Expert Cardiovascular Care.</span>
+                  <span>Experienced Specialists.</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <p className="hero-copy">
+                  Now welcoming new patients for comprehensive cardiovascular evaluation, treatment, and long-term heart health management.
+                </p>
+              </Reveal>
+              <Reveal delay={0.24}>
+                <div className="hero-actions">
+                  <button type="button" className="button primary" onClick={() => setAppointmentOpen(true)}>
+                    Request Appointment <ArrowIcon />
+                  </button>
+                  <InternalLink className="button secondary" href="#providers" onNavigate={navigateTo}>
+                    Meet Our Physicians
+                  </InternalLink>
+                </div>
+              </Reveal>
+            </div>
+            <div className="hero-visual">
+              <HeroPhysicianCollage />
+            </div>
           </div>
           <HeartbeatLine className="hero-heartbeat" />
-        </section>
-
-        <section id="team" className="team-section">
-          <div className="team-copy">
-            <p className="eyebrow">About Southern Indiana Cardiology Associates</p>
-            <h2>Comprehensive heart care built around prevention, diagnosis, treatment, and long-term management.</h2>
-            <div className="doctor-card doctor-card--mobile-inline">
-              <PhysicianCollage />
-              <div className="doctor-card-caption">
-                <span>SICA</span>
-                <strong>Patient-centered cardiology</strong>
-              </div>
-            </div>
-            <p>
-              Southern Indiana Cardiology Associates is dedicated to delivering comprehensive cardiovascular care
-              through prevention, diagnosis, treatment, and long-term disease management. Our physicians combine
-              clinical expertise with compassionate care to help patients achieve better heart health and improved
-              quality of life.
-            </p>
-            <p className="team-story-note">
-              From first symptoms to ongoing follow-up, SICA focuses on clear communication, diagnostic accuracy,
-              practical treatment planning, and lasting patient relationships.
-            </p>
-            <div className="founder-story-meta" aria-label="SICA care priorities">
-              <span><strong>01</strong><small>Prevention and risk reduction</small></span>
-              <span><strong>02</strong><small>Advanced diagnostics</small></span>
-              <span><strong>03</strong><small>Long-term heart health</small></span>
-            </div>
-            <blockquote>
-              Prevention, early detection, and effective treatment guide every patient relationship.
-            </blockquote>
-          </div>
-          <div className="doctor-card doctor-card--desktop">
-            <PhysicianCollage />
-            <div className="doctor-card-caption">
-              <span>SICA</span>
-              <strong>Personalized cardiovascular care</strong>
-            </div>
-          </div>
         </section>
 
         <section id="providers" className="providers-section">
@@ -745,13 +1494,16 @@ export default function App() {
             <h2>Meet the Southern Indiana Cardiology Associates team.</h2>
           </div>
           <div className="provider-grid">
-            {physicians.map((physician) => (
+            {physicianCards.map((physician) => (
               <article key={physician.name}>
                 <img alt={physician.name} src={physician.image} />
                 <div>
                   <span>{physician.role}</span>
-                  <h3>{physician.name}</h3>
+                  <h3>{physician.cardName}</h3>
                   <p>{physician.description}</p>
+                  <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={navigateTo}>
+                    View Full Profile <ArrowIcon />
+                  </InternalLink>
                 </div>
               </article>
             ))}
@@ -783,175 +1535,63 @@ export default function App() {
           </div>
         </section>
 
-        <CardiovascularJourney />
-
-        {/* ─── COMPREHENSIVE CARDIAC SERVICES (Embedded Mockup Rows) ─── */}
         <section id="services" className="offers-section">
           <div className="offers-header">
             <h2>
-              <span>What We Offer</span>
-              Comprehensive Cardiac Services
+              <span>Services</span>
+              Cardiology Care
             </h2>
-            <p>From advanced diagnostics to long-term prevention, SICA provides cardiovascular care tailored to each patient&apos;s needs.</p>
+            <p>
+              Cardiology care organized around prevention, chronic management, and testing, with the right visit, the
+              right follow-up, and the right diagnostic test for each question we need to answer.
+            </p>
           </div>
 
           <div className="offers-container">
             <div className="offers-mobile-phone">
-              <ServicePhoneMockup serviceId={cardiacServices[activeServiceIndex]?.id || 'cardiac-diagnostics'} />
+              <ServicePhoneMockup serviceId={serviceFeatures[activeServiceIndex]?.mockupId || 'cardiac-diagnostics'} />
             </div>
+
             <div className="offers-left">
-              {cardiacServices.map((svc, idx) => (
-                <motion.article 
-                  key={svc.id} 
-                  ref={(el) => { cardRefs.current[idx] = el; }}
-                  data-index={idx}
-                  className={`offer-scroll-card ${idx === activeServiceIndex ? 'is-active' : ''}`}
+              {serviceFeatures.map((service, index) => (
+                <motion.article
+                  key={service.id}
+                  ref={(el) => { cardRefs.current[index] = el }}
+                  data-index={index}
+                  className={`offer-scroll-card ${index === activeServiceIndex ? 'is-active' : ''}`}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.7, ease: 'easeOut' }}
                 >
                   <div className="offer-row-content">
                     <div className="offer-title-row">
-                      <span className="offer-icon">{svc.icon}</span>
+                      <span className="offer-icon">{service.icon}</span>
                     </div>
-                    <h3>{svc.title}</h3>
-                    <p className="offer-copy">{svc.copy}</p>
-                    
+                    <h3>{service.title}</h3>
+                    <p className="offer-copy">{service.copy}</p>
                     <ul className="offer-details-list">
-                      {svc.details.map((detail) => (
+                      {service.details.map((detail) => (
                         <li key={detail}>{detail}</li>
                       ))}
                     </ul>
+                    {service.id === 'diagnostic-testing' && (
+                      <InternalLink className="offer-education-link" href={getDiagnosticTestingPath()} onNavigate={navigateTo}>
+                        Click here to know more about these tests <ArrowIcon />
+                      </InternalLink>
+                    )}
                   </div>
                   <div className="offer-card-phone">
-                    <ServicePhoneMockup serviceId={svc.id} />
+                    <ServicePhoneMockup serviceId={service.mockupId} />
                   </div>
-
                 </motion.article>
               ))}
             </div>
 
             <div className="offers-right">
               <div className="offers-phone-sticky">
-                <ServicePhoneMockup serviceId={cardiacServices[activeServiceIndex]?.id || 'cardiac-diagnostics'} />
+                <ServicePhoneMockup serviceId={serviceFeatures[activeServiceIndex]?.mockupId || 'cardiac-diagnostics'} />
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="extra-section">
-          <div className="extra-copy">
-            <p className="eyebrow">Coordinated Care</p>
-            <h2>Support that connects diagnosis, treatment, and long-term heart health.</h2>
-            <div className="extra-list">
-              <button className="extra-item" id="extra-item-0">
-                <span>
-                  <strong>Stress testing</strong>
-                  <small>Exercise and monitored testing to evaluate symptoms, rhythm, blood flow, and cardiac response.</small>
-                </span>
-                <div className="extra-item-control">
-                  <svg viewBox="0 0 120 120" className="progress-ring">
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="var(--moss)" strokeWidth="8" style={{ strokeDasharray: 339.292, strokeDashoffset: 339.292, transformOrigin: 'center center', transform: 'rotate(-90deg)', transition: 'none' }} />
-                  </svg>
-                  <div className="control-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-              </button>
-              <button className="extra-item" id="extra-item-1">
-                <span>
-                  <strong>Vascular studies</strong>
-                  <small>Non-invasive ultrasound and imaging to evaluate blood flow in the neck, legs, and major vessels.</small>
-                </span>
-                <div className="extra-item-control">
-                  <svg viewBox="0 0 120 120" className="progress-ring">
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="var(--moss)" strokeWidth="8" style={{ strokeDasharray: 339.292, strokeDashoffset: 339.292, transformOrigin: 'center center', transform: 'rotate(-90deg)', transition: 'none' }} />
-                  </svg>
-                  <div className="control-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-              </button>
-              <button className="extra-item is-active" id="extra-item-2">
-                <span>
-                  <strong>Holter monitoring</strong>
-                  <small>Holter and extended monitoring to connect palpitations, dizziness, and symptoms to real rhythm data.</small>
-                </span>
-                <div className="extra-item-control">
-                  <svg viewBox="0 0 120 120" className="progress-ring">
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="var(--moss)" strokeWidth="8" style={{ strokeDasharray: 339.292, strokeDashoffset: 0, transformOrigin: 'center center', transform: 'rotate(-90deg)', transition: 'stroke-dashoffset 3.2s linear, stroke 0.3s' }} />
-                  </svg>
-                  <div className="control-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <rect x="7" y="6" width="3" height="12" rx="1" fill="currentColor" />
-                      <rect x="14" y="6" width="3" height="12" rx="1" fill="currentColor" />
-                    </svg>
-                  </div>
-                </div>
-              </button>
-              <button className="extra-item" id="extra-item-3">
-                <span>
-                  <strong>Preventive cardiology</strong>
-                  <small>Cholesterol, blood pressure, diabetes risk, family history, and lifestyle translated into a prevention plan.</small>
-                </span>
-                <div className="extra-item-control">
-                  <svg viewBox="0 0 120 120" className="progress-ring">
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="var(--moss)" strokeWidth="8" style={{ strokeDasharray: 339.292, strokeDashoffset: 339.292, transformOrigin: 'center center', transform: 'rotate(-90deg)', transition: 'none' }} />
-                  </svg>
-                  <div className="control-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-              </button>
-              <button className="extra-item" id="extra-item-4">
-                <span>
-                  <strong>Heart failure management</strong>
-                  <small>Medication optimization, longitudinal monitoring, and coordination for advanced cardiovascular needs.</small>
-                </span>
-                <div className="extra-item-control">
-                  <svg viewBox="0 0 120 120" className="progress-ring">
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="var(--moss)" strokeWidth="8" style={{ strokeDasharray: 339.292, strokeDashoffset: 339.292, transformOrigin: 'center center', transform: 'rotate(-90deg)', transition: 'none' }} />
-                  </svg>
-                  <div className="control-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-              </button>
-            </div>
-          </div>
-          <div className="extra-phone-stage">
-            <div className="phone-shell phone-shell--light" aria-label="Animated cardiovascular insight phone mockup">
-              <div className="phone-sensor" />
-              <div className="phone-screen phone-screen--light">
-                <div className="phone-top"><span>SICA</span><span>Treatment Journey</span></div>
-                <div className="vital-ring"><span>03</span><div className="ring-pulse" /></div>
-                <div className="phone-copy">
-                  <p>Every step feels connected.</p>
-                  <span>Medication strategy, procedures, follow-up, and recovery guidance move together instead of feeling fragmented.</span>
-                </div>
-                <div className="phone-thread">
-                  <span>Treatment Journey insight</span>
-                  <p>Keep medication, follow-up, and recovery moving together.</p>
-                </div>
-                <div className="mini-chart">
-                  <i style={{ height: '26%' }} /><i style={{ height: '39%' }} /><i style={{ height: '52%' }} /><i style={{ height: '65%' }} /><i style={{ height: '34%' }} /><i style={{ height: '47%' }} /><i style={{ height: '60%' }} /><i style={{ height: '29%' }} /><i style={{ height: '42%' }} /><i style={{ height: '55%' }} /><i style={{ height: '68%' }} /><i style={{ height: '37%' }} /><i style={{ height: '50%' }} /><i style={{ height: '63%' }} /><i style={{ height: '32%' }} /><i style={{ height: '45%' }} /><i style={{ height: '58%' }} /><i style={{ height: '27%' }} /><i style={{ height: '40%' }} /><i style={{ height: '53%' }} /><i style={{ height: '66%' }} /><i style={{ height: '35%' }} />
-                </div>
-              </div>
-              <div className="phone-shadow" />
             </div>
           </div>
         </section>
@@ -964,12 +1604,11 @@ export default function App() {
             <p>Southern Indiana Cardiology Associates combines specialist expertise, advanced testing, and personalized care planning.</p>
           </div>
           <div className="news-grid">
-            {whyChooseCards.map((card, index) => (
+            {whyChooseCards.map((card) => (
               <article className="nc" key={card.title}>
                 <div className="nc-body">
                   <div className="ns">
                     <span className="ns-tag def">SICA</span>
-                    <span className="ns-yr">0{index + 1}</span>
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.copy}</p>
@@ -1032,6 +1671,55 @@ export default function App() {
           </div>
         </section>
 
+        <section id="visit-us" className="office-section">
+          <div className="office-section__content">
+            <div>
+              <p className="eyebrow office-section__eyebrow">Find Us</p>
+              <h2>Visit Southern Indiana Cardiology Associates</h2>
+              <p className="office-section__lead">
+                Conveniently located in New Albany, Indiana, with easy access for patients across Southern Indiana.
+              </p>
+            </div>
+            <dl className="office-section__details">
+              <div>
+                <dt>Office address</dt>
+                <dd>
+                  <span>2109 Green Valley Road</span>
+                  <span>New Albany</span>
+                  <span>Indiana 47150</span>
+                </dd>
+              </div>
+              <div>
+                <dt>Telephone</dt>
+                <dd>
+                  <a href="tel:8129247065">812-924-7065</a>
+                </dd>
+              </div>
+            </dl>
+            <div className="office-section__actions">
+              <button type="button" className="button primary" onClick={() => setAppointmentOpen(true)}>
+                Request Appointment <ArrowIcon />
+              </button>
+              <a
+                href="https://maps.google.com/?q=2109+Green+Valley+Road+New+Albany+Indiana+47150"
+                className="button secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Directions <MapPinIcon />
+              </a>
+            </div>
+          </div>
+          <div className="office-section__map">
+            <iframe
+              title="Southern Indiana Cardiology Associates location"
+              src="https://maps.google.com/maps?q=2109+Green+Valley+Road+New+Albany+Indiana+47150&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </section>
+
         <section className="privacy-section">
           <div className="privacy-card">
             <div className="privacy-lock"></div>
@@ -1049,12 +1737,12 @@ export default function App() {
               care tailored to your needs.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="#contact">
+              <button type="button" className="button primary" onClick={() => setAppointmentOpen(true)}>
                 Request Appointment <ArrowIcon />
-              </a>
-              <a className="button secondary" href="#contact">
+              </button>
+              <InternalLink className="button secondary" href="#contact" onNavigate={navigateTo}>
                 Contact Us
-              </a>
+              </InternalLink>
             </div>
           </div>
           <div className="final-visual final-visual--three" aria-label="Modern cardiovascular care essentials arranged on a clean white surface">
@@ -1063,7 +1751,11 @@ export default function App() {
             <img src="/sica-assets/cta/smartwatch.png" className="cta-object cta-object--watch" alt="Smartwatch" />
           </div>
         </section>
+          </>
+        )}
       </main>
+
+      <AppointmentModal isOpen={appointmentOpen} onClose={() => setAppointmentOpen(false)} />
 
       <div className="footer-wrap">
         <footer className="site-footer">
@@ -1071,19 +1763,19 @@ export default function App() {
           <div className="footer-top">
             <div className="footer-brand-col">
               <div className="footer-logo">
-                <img src="/sica-assets/sica-wordmark.jpeg" alt="Southern Indiana Cardiology Associates" />
+                <img alt="Southern Indiana Cardiology Associates" src="/sica-assets/sica-logo-full.png" />
               </div>
               <p className="footer-tagline">Southern Indiana Cardiology Associates</p>
               <p className="footer-sub">Comprehensive cardiovascular care for Southern Indiana.</p>
             </div>
             <div className="footer-col">
               <strong>Services</strong>
-              <a href="#services">Preventive Cardiology</a>
-              <a href="#services">Cardiac Diagnostics</a>
-              <a href="#services">Interventional Cardiology</a>
-              <a href="#services">Heart Failure Management</a>
-              <a href="#services">Vascular Studies</a>
-              <a href="#services">Hypertension Management</a>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Preventive Cardiology</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Cardiac Diagnostics</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Interventional Cardiology</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Heart Failure Management</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Vascular Studies</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Hypertension Management</InternalLink>
             </div>
             <div className="footer-col">
               <strong>Visit</strong>
@@ -1092,17 +1784,16 @@ export default function App() {
             </div>
             <div className="footer-col">
               <strong>Contact</strong>
-              <a href="#contact">Request Appointment</a>
-              <a href="#contact">Contact Us</a>
+              <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Request Appointment</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Contact Us</InternalLink>
             </div>
             <div className="footer-col">
               <strong>Navigate</strong>
-              <a href="#journey">Our Journey</a>
-              <a href="#services">Services</a>
-              <a href="#providers">Physicians</a>
-              <a href="#community">Clinical Care</a>
-              <a href="#news">Why SICA</a>
-              <a href="#contact">Request Appointment</a>
+              <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Services</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#providers' : '/#providers'} onNavigate={navigateTo}>Physicians</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#community' : '/#community'} onNavigate={navigateTo}>Clinical Care</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#news' : '/#news'} onNavigate={navigateTo}>Why SICA</InternalLink>
+              <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Request Appointment</InternalLink>
             </div>
           </div>
 
@@ -1111,11 +1802,6 @@ export default function App() {
             <p>© {currentYear} Southern Indiana Cardiology Associates.</p>
           </div>
         </footer>
-        <div className="footer-wordmark">
-          <div className="footer-wordmark-inner">
-            <span>SICA</span>
-          </div>
-        </div>
       </div>
     </div>
   )
