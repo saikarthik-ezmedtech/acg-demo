@@ -418,13 +418,13 @@ const physicians: Physician[] = [
     id: 'sandella',
     name: 'Dr. Surender K. Sandella, MD',
     cardName: 'Dr. Surender K. Sandella, MD',
-    role: 'Board-Certified Cardiologist',
+    role: 'Cardiologist',
     image: '/sica-assets/dr-surender-sandella.webp',
     description:
-      'Board-certified cardiologist focused on comprehensive heart care, cardiovascular prevention, diagnostics, and long-term patient management.',
+      'Cardiologist focused on comprehensive heart care, cardiovascular prevention, diagnostics, and long-term patient management.',
     profileHeading: 'Dr. Surender',
-    specialtySummary: 'Board-certified cardiologist specializing in nuclear cardiology, echocardiography, and cardiovascular diagnostics.',
-    homeHighlights: ['Board-certified cardiologist specializing in nuclear cardiology, echocardiography, and advanced cardiovascular diagnostics, dedicated to delivering accurate evaluations and comprehensive heart care for optimal patient outcomes.'],
+    specialtySummary: 'Cardiologist specializing in nuclear cardiology, echocardiography, and cardiovascular diagnostics.',
+    homeHighlights: ['Cardiologist specializing in nuclear cardiology, echocardiography, and advanced cardiovascular diagnostics, dedicated to delivering accurate evaluations and comprehensive heart care for optimal patient outcomes.'],
     experienceLabel: '25+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'Diagnostic expertise', 'Comprehensive heart care'],
     biography: [
@@ -1716,9 +1716,9 @@ export default function App() {
               <button type="button" className="button primary" onClick={() => setAppointmentOpen(true)}>
                 Request Appointment <ArrowIcon />
               </button>
-              <InternalLink className="button secondary" href="#contact" onNavigate={navigateTo}>
-                Contact Us
-              </InternalLink>
+              <a className="button secondary" href="tel:8129247065">
+                Contact Us <PhoneIcon />
+              </a>
             </div>
           </div>
           <div className="final-visual final-visual--three" aria-label="Modern cardiovascular care essentials arranged on a clean white surface">
