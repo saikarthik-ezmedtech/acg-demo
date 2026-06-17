@@ -218,8 +218,8 @@ const diagnosticTests = [
     title: 'Electrocardiogram (EKG)',
     visualLabel: 'Electrical activity tracing',
     media: {
-      src: '/sica-assets/diagnostic-ekg-room.png',
-      label: 'Cardiac diagnostic testing room with ECG monitor and stress treadmill',
+      src: '/sica-assets/diagnostic-ekg-real.png',
+      label: 'Electrocardiogram test in progress with leads and heart rhythm monitor',
     },
     what: 'A quick, non-invasive test that records the electrical activity of your heart using small stickers placed on the chest.',
     why: 'Used to check heart rhythm, look for signs of heart strain, and help evaluate symptoms such as chest discomfort, palpitations, or dizziness.',
@@ -270,8 +270,8 @@ const diagnosticTests = [
     title: 'Calcium Score Screening',
     visualLabel: 'CT coronary calcium scan',
     media: {
-      src: '/sica-assets/diagnostic-calcium-ct.png',
-      label: 'Cardiology diagnostic equipment used for imaging and risk evaluation',
+      src: '/sica-assets/diagnostic-calcium-ct-real.png',
+      label: 'CT coronary calcium scoring scanner in a cardiology imaging setting',
     },
     what: 'A CT scan that measures calcified plaque in the coronary arteries and helps estimate long-term coronary risk.',
     why: 'Useful for refining cardiovascular risk in selected patients and helping guide prevention planning.',
@@ -540,23 +540,45 @@ function HeroPhysicianCollage() {
 const whyChooseCards = [
   {
     title: 'Experienced Specialists',
-    meta: 'Physician-led care',
-    copy: 'Patients are cared for by cardiology specialists with experience across prevention, diagnosis, intervention, and chronic disease management.',
+    meta: 'Expert Care',
+    copy: 'Board-certified cardiologists delivering expert heart care and long-term cardiovascular management.',
+    image: '/sica-assets/diagnostic-monitoring-visit.png',
+    imageAlt: 'Cardiology consultation visit between clinician and patient',
   },
   {
     title: 'Advanced Diagnostics',
-    meta: 'Better clarity',
-    copy: 'Echo, stress testing, rhythm monitoring, vascular studies, and imaging help create a more complete cardiovascular picture.',
+    meta: 'Advanced Testing',
+    copy: 'Comprehensive cardiac testing with advanced imaging, stress testing, and rhythm monitoring.',
+    image: '/sica-assets/diagnostic-echo-room.png',
+    imageAlt: 'Echocardiography exam in a cardiology clinic',
   },
   {
     title: 'Personalized Treatment Plans',
-    meta: 'Care built around you',
-    copy: "Treatment recommendations are tailored to each patient's symptoms, history, risk factors, and long-term health goals.",
+    meta: 'Personalized Care',
+    copy: 'Care plans tailored to your symptoms, medical history, and long-term heart health goals.',
+    image: '/sica-assets/diagnostic-event-monitor.png',
+    imageAlt: 'Clinician reviewing heart rhythm information with a cardiology patient',
   },
   {
     title: 'Long-Term Heart Health',
-    meta: 'Ongoing management',
-    copy: 'SICA supports patients through prevention, follow-up, medication optimization, and long-term cardiovascular care.',
+    meta: 'Long-Term Management',
+    copy: 'Ongoing prevention, monitoring, and treatment to support lifelong cardiovascular wellness.',
+    image: '/sica-assets/diagnostic-holter-monitor.png',
+    imageAlt: 'Holter monitor placement for long-term heart rhythm tracking',
+  },
+  {
+    title: 'Convenient Testing Access',
+    meta: 'Convenient Access',
+    copy: 'In-office diagnostic testing designed for timely evaluations and faster care decisions.',
+    image: '/sica-assets/diagnostic-ekg-room.png',
+    imageAlt: 'Cardiology diagnostic room with ECG monitor and treadmill equipment',
+  },
+  {
+    title: 'Clear Follow-Through',
+    meta: 'Coordinated Follow-Up',
+    copy: 'Coordinated follow-up care with clear guidance at every stage of treatment.',
+    image: '/sica-assets/diagnostic-carotid-ultrasound.png',
+    imageAlt: 'Cardiology clinic performing vascular ultrasound follow-up testing',
   },
 ]
 
@@ -1606,13 +1628,14 @@ export default function App() {
           <div className="news-grid">
             {whyChooseCards.map((card) => (
               <article className="nc" key={card.title}>
+                <img className="nc-media" src={card.image} alt={card.imageAlt} loading="lazy" decoding="async" />
+                <div className="nc-scrim" />
                 <div className="nc-body">
                   <div className="ns">
-                    <span className="ns-tag def">SICA</span>
+                    <span className="ns-tag def">{card.meta}</span>
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.copy}</p>
-                  <div className="nc-link">{card.meta} <ArrowIcon /></div>
                 </div>
               </article>
             ))}
@@ -1740,7 +1763,7 @@ export default function App() {
               <button type="button" className="button primary" onClick={() => setAppointmentOpen(true)}>
                 Request Appointment <ArrowIcon />
               </button>
-              <a className="button secondary" href="tel:8129247065">
+              <a className="button secondary" href="tel:8129247065" aria-label="Call Southern Indiana Cardiology Associates at 812-924-7065">
                 Contact Us <PhoneIcon />
               </a>
             </div>
@@ -1785,7 +1808,7 @@ export default function App() {
             <div className="footer-col">
               <strong>Contact</strong>
               <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Request Appointment</InternalLink>
-              <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Contact Us</InternalLink>
+              <a href="tel:8129247065">Contact Us</a>
             </div>
             <div className="footer-col">
               <strong>Navigate</strong>
