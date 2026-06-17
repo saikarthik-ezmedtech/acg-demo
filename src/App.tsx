@@ -322,7 +322,7 @@ const diagnosticTests = [
 const profileSectionLinks = [
   { id: 'physician-overview', label: 'Overview' },
   { id: 'physician-philosophy', label: 'Philosophy of care' },
-  { id: 'physician-conditions', label: 'Conditions treated' },
+  { id: 'physician-conditions', label: 'Clinical focus and procedures' },
   { id: 'physician-education', label: 'Education' },
   { id: 'physician-certifications', label: 'Board certifications' },
   { id: 'physician-memberships', label: 'Professional memberships' },
@@ -334,70 +334,94 @@ const physicians: Physician[] = [
     id: 'srinivas',
     name: 'Dr. Srinivas Manchikalapudi, MD',
     cardName: 'Dr. Srini Manchi',
-    role: 'Cardiologist',
+    role: 'Interventional Cardiologist',
     image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
-      'Experienced cardiologist specializing in cardiovascular disease management, preventive cardiology, hypertension, coronary artery disease, and heart failure.',
+      'Board-certified interventional cardiologist with 25+ years of experience in diagnostic and interventional cardiology, advanced cardiac imaging, nuclear cardiology, PCI, DVT and pulmonary embolism treatment, and echocardiography.',
     profileHeading: 'Dr. Srini Manchi',
-    specialtySummary: 'Board Certified Cardiologist. Echocardiography, preventive cardiology, and cardiovascular disease management are central to his clinical focus.',
-    homeHighlights: ['Board-certified cardiologist with expertise in echocardiography, preventive cardiology, and comprehensive cardiovascular disease management, dedicated to delivering personalized heart care and long-term wellness solutions.'],
-    experienceLabel: 'Long-standing cardiology experience',
-    trustHighlights: ['Board Certified', 'Preventive cardiology focus', 'Cardiovascular disease management'],
+    specialtySummary: 'Board-certified interventional cardiologist with expertise in diagnostic and interventional cardiology, advanced cardiac imaging, nuclear cardiology, PCI, DVT and pulmonary embolism treatment, and echocardiography.',
+    homeHighlights: ['Board-certified interventional cardiologist with 25+ years of experience in diagnostic and interventional cardiology, advanced cardiac imaging, PCI, DVT and pulmonary embolism treatment, and echocardiography.'],
+    experienceLabel: '25+ years of cardiovascular experience',
+    trustHighlights: ['Board Certified', 'FACC and FSCAI', 'Coronary and vascular procedures'],
     biography: [
-      'Dr. Srinivas Manchikalapudi cares for patients across prevention, diagnosis, and long-term cardiovascular management. His practice emphasizes careful evaluation, practical treatment planning, and follow-up that stays connected over time.',
-      'His clinical focus includes echocardiography, hypertension, coronary artery disease, preventive cardiology, and ongoing management for chronic heart conditions. Patients benefit from a steady, relationship-based approach that balances day-to-day symptoms with long-term heart health goals.',
+      'Dr. Srinivas Manchikalapudi is a board-certified interventional cardiologist with more than 25 years of clinical experience in diagnostic and interventional cardiology, advanced cardiac imaging, and nuclear cardiology.',
+      'His clinical expertise includes coronary angiography, percutaneous coronary interventions, treatment of DVT and pulmonary embolism, cardiac catheterization, peripheral angiography and intervention, and echocardiography including transthoracic, stress, and transesophageal imaging.',
     ],
     philosophy:
-      'He approaches each visit with an emphasis on clarity, prevention, and continuity, helping patients understand what the findings mean, what the next step should be, and how to protect heart health over time.',
-    whyChoose: ['Long-term cardiovascular management', 'Preventive cardiology focus', 'Echocardiography expertise', 'Board-certified heart care'],
+      'He approaches each visit with an emphasis on evidence-based care, clear communication, and careful follow-through so patients understand their diagnosis, procedure options, and long-term cardiovascular plan.',
+    whyChoose: ['Coronary intervention expertise', 'DVT and pulmonary embolism treatment', 'Advanced cardiac imaging', 'Board-certified interventional care'],
     faqs: [
       {
-        question: 'What kinds of patients does Dr. Srini commonly see?',
-        answer: 'He commonly sees patients for prevention, blood pressure concerns, coronary artery disease, heart failure follow-up, and broader cardiovascular disease management.',
+        question: 'What procedures does Dr. Srini perform?',
+        answer: 'His procedures include cardiac catheterization, diagnostic coronary angiography, PCI, peripheral angiography and intervention, DVT and pulmonary embolism treatment, cardioversion, pericardiocentesis, endomyocardial biopsy, and temporary pacemaker placement.',
       },
       {
-        question: 'Does this profile support long-term heart care?',
-        answer: 'Yes. His care approach is especially suited to patients who need a clear long-term plan, ongoing follow-up, and coordinated chronic cardiovascular management.',
+        question: 'What kinds of PCI techniques are part of his practice?',
+        answer: 'His PCI experience includes balloon angioplasty, stenting, rotational atherectomy, laser atherectomy, shockwave lithotripsy, IVUS, IFR, and FFR.',
       },
       {
         question: 'When might echocardiography be part of my visit?',
-        answer: 'Echocardiography may be used when the care team needs more information about heart structure, pumping function, valve performance, or the cause of symptoms.',
+        answer: 'Echocardiography may be used when the care team needs more information about heart structure, pumping function, valve performance, or the cause of symptoms. His imaging experience includes transthoracic, stress, and transesophageal echocardiography.',
       },
     ],
-    education: ['Long-standing cardiology practice centered on prevention, diagnostics, and chronic cardiovascular management.'],
-    boardCertifications: ['Board Certified Cardiologist'],
-    specialInterests: ['Echocardiography', 'Preventive Cardiology', 'Cardiovascular Disease Management'],
+    education: [
+      'Fellowship, Interventional Cardiology - University of Louisville - Louisville, KY, July 2000 - June 2001',
+      'Fellowship, Cardiology - University of Louisville - Louisville, KY, July 1997 - June 2000',
+      'Basic Research Fellowship, Cardiology - University of Louisville - Louisville, KY, July 1996 - June 1997',
+      'Residency, Internal Medicine - University of Louisville - Louisville, KY, July 1993 - June 1996',
+    ],
+    boardCertifications: [
+      'Interventional Cardiology - Certified 2001; recertified 2011 and 2022',
+      'Cardiovascular Diseases - Certified 2000; recertified 2010 and 2021',
+      'Board of Nuclear Cardiology - Certified 1999',
+      'American Board of Internal Medicine - Certified 1996',
+    ],
+    specialInterests: [
+      'Percutaneous coronary interventions (PCI), including balloon angioplasty, stenting, rotational atherectomy, laser atherectomy, shockwave lithotripsy, IVUS, IFR, and FFR',
+      'Treatment of DVT and pulmonary embolism using INARI and Penumbra',
+      'Right and left heart catheterization and diagnostic coronary angiography',
+      'Peripheral angiography and intervention',
+      'Cardioversions',
+      'Pericardiocentesis',
+      'Endomyocardial biopsy',
+      'Nuclear cardiology stress testing and scan interpretation',
+      'Transthoracic, stress, and transesophageal echocardiography',
+      'Temporary pacemakers',
+    ],
     languages: ['Please contact the office for current language support options.'],
-    memberships: ['Additional professional membership details are available through the office.'],
+    memberships: [
+      'Fellow, American College of Cardiology (FACC)',
+      'Fellow, Society for Cardiovascular Angiography & Interventions (FSCAI)',
+    ],
   },
   {
     id: 'gondi',
     name: 'Dr. Bapineedu Gondi, MD',
     cardName: 'Dr. Bapineedu Gondi, MD',
-    role: 'Interventional Cardiologist',
+    role: 'Cardiologist',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
-      'Interventional cardiologist specializing in coronary interventions, cardiac catheterization, vascular disease treatment, and advanced cardiovascular procedures.',
+      'FACC cardiologist with cardiovascular disease fellowship training at the University of Rochester and a clinical focus spanning cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and long-term heart care.',
     profileHeading: 'Dr. Gondi',
-    specialtySummary: 'Interventional cardiologist specializing in coronary interventions, coronary artery disease, hypertension, heart failure, and atrial fibrillation.',
-    homeHighlights: ['Interventional cardiologist specializing in coronary interventions and the treatment of coronary artery disease, hypertension, heart failure, and atrial fibrillation, with a focus on advanced cardiovascular care and improved patient outcomes.'],
+    specialtySummary: 'FACC cardiologist with cardiovascular disease fellowship training and clinical interests in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular management.',
+    homeHighlights: ['FACC cardiologist with cardiovascular disease fellowship training at the University of Rochester and a clinical focus spanning cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and long-term heart care.'],
     experienceLabel: '40+ years of cardiovascular experience',
-    trustHighlights: ['Board Certified', 'Advanced procedures', 'Coronary and vascular expertise'],
+    trustHighlights: ['Board Certified', 'FACC', 'Cardiac imaging and critical care'],
     biography: [
-      'Dr. Bapineedu Gondi is an interventional cardiologist focused on coronary interventions, cardiac catheterization, vascular disease treatment, and complex cardiovascular evaluation. His profile is especially suited to patients who need both diagnostic clarity and procedure-based treatment planning.',
-      'He also cares for patients with coronary artery disease, hypertension, heart failure, and atrial fibrillation. His visits center on understanding the full cardiovascular picture, reviewing symptoms carefully, and helping patients move through testing, procedures, and follow-up with confidence.',
+      'Dr. Bapineedu Gondi is an FACC cardiologist with cardiovascular disease fellowship training from the University of Rochester Medical Center and internal medicine residency training from Cook County Health and Hospitals System.',
+      'His clinical focus spans cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, coronary artery disease, hypertension, heart failure, atrial fibrillation, and long-term cardiovascular management.',
     ],
     philosophy:
-      'His care approach combines experience, technical precision, and direct patient communication so that treatment plans feel clear, informed, and tailored to the person in front of him.',
-    whyChoose: ['Interventional expertise', 'Coronary artery disease management', 'Advanced cardiovascular procedures', 'Board-certified cardiovascular care'],
+      'His care approach combines experience, clinical judgment, and direct patient communication so that treatment plans feel clear, informed, and tailored to the person in front of him.',
+    whyChoose: ['FACC cardiology care', 'Cardiac imaging expertise', 'Cardiac critical care focus', 'Board-certified cardiovascular care'],
     faqs: [
       {
-        question: 'When would I see an interventional cardiologist?',
-        answer: 'Patients often see an interventional cardiologist when symptoms, test findings, or coronary artery disease concerns may require advanced evaluation, cardiac catheterization, or procedure-based treatment planning.',
+        question: 'What kinds of patients does Dr. Gondi commonly see?',
+        answer: 'He commonly sees patients with coronary artery disease, hypertension, heart failure, atrial fibrillation, and other cardiovascular concerns that need careful evaluation and follow-up.',
       },
       {
-        question: 'Does Dr. Gondi treat conditions beyond procedures?',
-        answer: 'Yes. He also manages hypertension, heart failure, atrial fibrillation, and broader coronary artery disease follow-up as part of ongoing cardiovascular care.',
+        question: 'Does Dr. Gondi support long-term cardiovascular care?',
+        answer: 'Yes. His care is centered on ongoing cardiovascular management, including symptoms, medications, risk factors, testing, and follow-up.',
       },
       {
         question: 'Will my visit include discussion of testing and next steps?',
@@ -410,38 +434,38 @@ const physicians: Physician[] = [
       'Guntur Medical College NTR, Class of 1975',
     ],
     boardCertifications: ['Internal Medicine', 'Cardiovascular Disease'],
-    specialInterests: ['Coronary Interventions', 'Coronary Artery Disease', 'Hypertension', 'Heart Failure', 'Atrial Fibrillation'],
+    specialInterests: ['Cardiac Electrophysiology', 'Cardiothoracic Imaging', 'Cardiac Critical Care', 'Coronary Artery Disease', 'Hypertension', 'Heart Failure', 'Atrial Fibrillation'],
     languages: ['Please contact the office for current language support options.'],
-    memberships: ['American College of Cardiology (ACC)'],
+    memberships: ['Fellow, American College of Cardiology (FACC)'],
   },
   {
     id: 'sandella',
     name: 'Dr. Surender K. Sandella, MD',
     cardName: 'Dr. Surender K. Sandella, MD',
-    role: 'Cardiologist',
+    role: 'Interventional Cardiologist',
     image: '/sica-assets/dr-surender-sandella.webp',
     description:
-      'Cardiologist focused on comprehensive heart care, cardiovascular prevention, diagnostics, and long-term patient management.',
+      'FACC interventional cardiologist with cardiovascular disease fellowship training at the University of Louisville and clinical interests in adult congenital heart disease, cardiac electrophysiology, and interventional cardiology.',
     profileHeading: 'Dr. Surender',
-    specialtySummary: 'Cardiologist specializing in nuclear cardiology, echocardiography, and cardiovascular diagnostics.',
-    homeHighlights: ['Cardiologist specializing in nuclear cardiology, echocardiography, and advanced cardiovascular diagnostics, dedicated to delivering accurate evaluations and comprehensive heart care for optimal patient outcomes.'],
+    specialtySummary: 'FACC interventional cardiologist with cardiovascular disease fellowship training and clinical interests in adult congenital heart disease, cardiac electrophysiology, interventional cardiology, and comprehensive heart care.',
+    homeHighlights: ['FACC interventional cardiologist with cardiovascular disease fellowship training at the University of Louisville and clinical interests in adult congenital heart disease, cardiac electrophysiology, and interventional cardiology.'],
     experienceLabel: '25+ years of cardiovascular experience',
-    trustHighlights: ['Board Certified', 'Diagnostic expertise', 'Comprehensive heart care'],
+    trustHighlights: ['Board Certified', 'FACC', 'Electrophysiology and interventional care'],
     biography: [
-      'Dr. Surender K. Sandella provides comprehensive heart care with a strong focus on cardiovascular prevention, diagnostics, and long-term management. His work often supports patients who need a detailed understanding of test findings and a structured path forward.',
-      'His clinical interests include nuclear cardiology, echocardiography, and cardiovascular diagnostics. Patients benefit from a balanced approach that combines careful interpretation, prevention planning, and ongoing support for changing cardiovascular needs.',
+      'Dr. Surender K. Sandella is an FACC interventional cardiologist with cardiovascular disease fellowship training from the University of Louisville School of Medicine, internal medicine residency training at Case Western Reserve University and University Hospitals Cleveland Medical Center, and internship training at Zucker School of Medicine at Hofstra/Northwell.',
+      'His clinical focus includes adult congenital heart disease, cardiac electrophysiology, interventional cardiology, and comprehensive long-term cardiovascular care.',
     ],
     philosophy:
       'He emphasizes thoughtful diagnosis, patient education, and treatment plans that connect advanced testing with clear, practical follow-up care.',
-    whyChoose: ['Nuclear cardiology expertise', 'Diagnostic clarity', 'Prevention and long-term care', 'Board-certified cardiovascular care'],
+    whyChoose: ['FACC interventional care', 'Adult congenital heart disease focus', 'Cardiac electrophysiology expertise', 'Board-certified cardiovascular care'],
     faqs: [
       {
         question: 'What is Dr. Surender’s clinical focus?',
-        answer: 'His focus includes comprehensive heart care, cardiovascular prevention, nuclear cardiology, echocardiography, and broader diagnostic evaluation.',
+        answer: 'His focus includes adult congenital heart disease, cardiac electrophysiology, interventional cardiology, and comprehensive cardiovascular care.',
       },
       {
         question: 'Who may benefit from this kind of profile?',
-        answer: 'Patients who need detailed cardiovascular testing, clearer interpretation of symptoms, or long-term management often benefit from this diagnostic-centered care approach.',
+        answer: 'Patients who need interventional cardiology care, adult congenital heart disease evaluation, electrophysiology expertise, or long-term cardiovascular management often benefit from this care approach.',
       },
       {
         question: 'Can testing and prevention be discussed in the same visit?',
@@ -455,9 +479,9 @@ const physicians: Physician[] = [
       'Osmania Medical College NTR UHS, Class of 1989',
     ],
     boardCertifications: ['Cardiovascular Disease', 'Interventional Cardiology'],
-    specialInterests: ['Nuclear Cardiology', 'Echocardiography', 'Cardiovascular Diagnostics'],
+    specialInterests: ['Adult Congenital Heart Disease', 'Cardiac Electrophysiology', 'Interventional Cardiology', 'Cardiovascular Disease'],
     languages: ['Please contact the office for current language support options.'],
-    memberships: ['American College of Cardiology (ACC)'],
+    memberships: ['Fellow, American College of Cardiology (FACC)'],
   },
 ]
 
@@ -1044,7 +1068,7 @@ function PhysicianProfilePage({
 
             <section id="physician-conditions" className="physician-profile-section">
               <div className="physician-section-heading physician-section-heading--left">
-                <h2>Conditions treated</h2>
+                <h2>Clinical focus and procedures</h2>
               </div>
               <ul className="physician-simple-list">
                 {physician.specialInterests.map((item) => (
