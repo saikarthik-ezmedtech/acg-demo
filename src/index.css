@@ -1208,7 +1208,7 @@ h3 {
 .phone-top {
   display: flex;
   justify-content: space-between;
-  color: rgba(23, 25, 28, 0.58);
+  color: rgba(23, 25, 28, 0.74);
   font-size: 12px;
   font-weight: 650;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -3248,6 +3248,10 @@ h3 {
   font-weight: 620;
 }
 
+.testimonial-section .eyebrow {
+  color: rgba(23, 25, 28, 0.78);
+}
+
 .office-section {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
@@ -4491,7 +4495,7 @@ img.cta-object {
 }
 
 .phone-service-hero span {
-  color: rgba(23, 25, 28, 0.52);
+  color: rgba(23, 25, 28, 0.72);
   font-size: 10px;
   font-weight: 760;
   text-transform: none;
