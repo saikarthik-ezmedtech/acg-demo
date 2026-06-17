@@ -4846,15 +4846,7 @@ img.cta-object {
   }
 
   .offers-mobile-phone {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 26px;
-  }
-
-  .offers-mobile-phone .phone-shell {
-    width: min(320px, 86vw);
-    height: auto;
-    min-height: 560px;
+    display: none;
   }
   
   .offers-left {
@@ -5582,11 +5574,32 @@ img.cta-object {
   }
 }
 
-@media (max-width: 1180px) and (min-width: 921px) {
+@media (max-width: 1260px) and (min-width: 1101px) {
+  .navigation {
+    width: min(96vw, 1180px);
+  }
+
   .nav_layout-2,
   .site-nav {
-    grid-template-columns: minmax(320px, auto) minmax(0, 1fr) auto;
-    gap: 10px;
+    width: 100%;
+    grid-template-columns: minmax(260px, auto) minmax(0, 1fr) auto;
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  .nav-brand-copy strong {
+    font-size: 20px;
+    max-width: 300px;
+  }
+
+  .nav_main-inner,
+  .site-nav nav {
+    gap: clamp(10px, 1vw, 14px);
+  }
+
+  .navigation_link,
+  .site-nav nav a {
+    font-size: 15px;
   }
 
   .nav-phone {
@@ -5602,9 +5615,14 @@ img.cta-object {
   .nav-phone span {
     display: none;
   }
+
+  .nav-cta {
+    padding-inline: 14px;
+    font-size: 14px;
+  }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1100px) {
   .navigation {
     width: calc(100vw - 24px);
     top: 14px;
