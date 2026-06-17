@@ -1,0 +1,53 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">CT coronary calcium scoring scan</title>
+  <desc id="desc">A patient lying on a CT scanner table in a bright cardiology imaging room.</desc>
+  <rect width="1600" height="1200" fill="#EFF6FB"/>
+  <rect x="0" y="0" width="1600" height="1200" fill="url(#bg)"/>
+  <rect x="1040" y="108" width="420" height="340" rx="18" fill="#DCE9F5"/>
+  <rect x="1072" y="146" width="356" height="266" rx="16" fill="#102A43"/>
+  <rect x="1100" y="180" width="300" height="100" rx="12" fill="#173F6B"/>
+  <ellipse cx="1250" cy="230" rx="98" ry="58" fill="#8EC5FF" opacity="0.85"/>
+  <ellipse cx="1250" cy="230" rx="54" ry="32" fill="#F5FBFF"/>
+  <rect x="1100" y="302" width="138" height="84" rx="12" fill="#1C4F84"/>
+  <rect x="1256" y="302" width="144" height="84" rx="12" fill="#1C4F84"/>
+  <rect x="120" y="164" width="760" height="760" rx="40" fill="#F8FCFF"/>
+  <circle cx="500" cy="540" r="310" fill="#E5EFF7"/>
+  <circle cx="500" cy="540" r="226" fill="#FDFEFF"/>
+  <circle cx="500" cy="540" r="196" fill="#E1EAF3"/>
+  <circle cx="500" cy="540" r="150" fill="#FCFEFF"/>
+  <rect x="178" y="250" width="124" height="124" rx="24" fill="#D7E3EF"/>
+  <circle cx="240" cy="312" r="44" fill="#BCCFE1"/>
+  <path d="M215 312H265M240 287V337" stroke="#6883A0" stroke-width="12" stroke-linecap="round"/>
+  <rect x="650" y="250" width="124" height="124" rx="24" fill="#D7E3EF"/>
+  <circle cx="712" cy="312" r="44" fill="#BCCFE1"/>
+  <path d="M688 312H736" stroke="#6883A0" stroke-width="12" stroke-linecap="round"/>
+  <rect x="356" y="980" width="930" height="80" rx="32" fill="#D9E5EF"/>
+  <rect x="424" y="930" width="706" height="118" rx="30" fill="#EEF5FB"/>
+  <rect x="452" y="942" width="646" height="94" rx="24" fill="#C5D5E4"/>
+  <ellipse cx="764" cy="984" rx="202" ry="30" fill="#B8C8D7"/>
+  <circle cx="660" cy="826" r="62" fill="#F2C3A2"/>
+  <rect x="628" y="860" width="310" height="104" rx="50" fill="#5C79A7"/>
+  <rect x="796" y="858" width="168" height="62" rx="31" fill="#5C79A7"/>
+  <rect x="570" y="878" width="104" height="56" rx="28" fill="#5C79A7"/>
+  <rect x="890" y="902" width="224" height="42" rx="21" fill="#6D88B1"/>
+  <rect x="564" y="1000" width="128" height="32" rx="16" fill="#AEBFCE"/>
+  <rect x="860" y="1000" width="128" height="32" rx="16" fill="#AEBFCE"/>
+  <circle cx="712" cy="830" r="7" fill="#F7FBFF"/>
+  <circle cx="736" cy="830" r="7" fill="#F7FBFF"/>
+  <circle cx="760" cy="830" r="7" fill="#F7FBFF"/>
+  <rect x="1218" y="528" width="72" height="292" rx="24" fill="#D3E0EC"/>
+  <rect x="1240" y="404" width="28" height="144" rx="14" fill="#C0D1E0"/>
+  <rect x="1160" y="560" width="188" height="54" rx="20" fill="#FDFEFF"/>
+  <rect x="1188" y="584" width="132" height="10" rx="5" fill="#B8CBE0"/>
+  <rect x="1188" y="624" width="132" height="10" rx="5" fill="#B8CBE0"/>
+  <rect x="1188" y="664" width="132" height="10" rx="5" fill="#B8CBE0"/>
+  <rect x="1188" y="704" width="132" height="10" rx="5" fill="#B8CBE0"/>
+  <rect x="0" y="1098" width="1600" height="102" fill="#E0EAF2"/>
+  <ellipse cx="792" cy="1102" rx="520" ry="42" fill="#D0DDE8"/>
+  <defs>
+    <linearGradient id="bg" x1="800" y1="0" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FCFF"/>
+      <stop offset="1" stop-color="#EAF3FA"/>
+    </linearGradient>
+  </defs>
+</svg>
