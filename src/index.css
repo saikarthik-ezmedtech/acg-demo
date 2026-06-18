@@ -4148,11 +4148,18 @@ img.cta-object {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 2.2fr repeat(5, 1fr);
+  grid-template-columns:
+    minmax(260px, 2.2fr)
+    minmax(210px, 1.2fr)
+    minmax(150px, 0.9fr)
+    minmax(190px, 1.05fr)
+    minmax(170px, 1fr)
+    minmax(170px, 1fr);
   gap: 40px;
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   width: 100%;
+  align-items: start;
 }
 
 .footer-brand-col {
@@ -4205,6 +4212,22 @@ img.cta-object {
   gap: 12px;
 }
 
+.footer-inline-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.footer-mini-stack {
+  display: grid;
+  gap: 4px;
+}
+
+.footer-col--services a,
+.footer-col--contact .footer-inline-text,
+.footer-col--legal .footer-link-button {
+  white-space: nowrap;
+}
+
 .footer-col strong {
   font-family: var(--font-heading);
   color: #ffffff;
@@ -4237,6 +4260,11 @@ img.cta-object {
   font-size: 13px;
   cursor: pointer;
   text-align: left;
+  white-space: nowrap;
+}
+
+.footer-secondary-row {
+  padding-top: 4px;
 }
 
 .footer-link-button:hover {
