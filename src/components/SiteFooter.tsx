@@ -34,13 +34,6 @@ export default function SiteFooter({
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Vascular Studies</InternalLink>
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Hypertension Management</InternalLink>
           </div>
-          <div className="footer-col footer-col--visit">
-            <strong>Visit</strong>
-            <div className="footer-mini-stack">
-              <span className="footer-inline-text">Southern Indiana</span>
-              <span className="footer-inline-text">Office details available by appointment</span>
-            </div>
-          </div>
           <div className="footer-col footer-col--contact">
             <strong>Contact</strong>
             <InternalLink href={isHomePath(pathname) ? '#contact' : '/#contact'} onNavigate={onNavigate}>Request Appointment</InternalLink>

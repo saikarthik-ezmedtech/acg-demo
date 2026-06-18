@@ -4149,12 +4149,11 @@ img.cta-object {
 .footer-top {
   display: grid;
   grid-template-columns:
-    minmax(260px, 2.2fr)
-    minmax(210px, 1.2fr)
-    minmax(150px, 0.9fr)
+    minmax(260px, 2.35fr)
+    minmax(210px, 1.25fr)
     minmax(190px, 1.05fr)
     minmax(170px, 1fr)
-    minmax(170px, 1fr);
+    minmax(180px, 1fr);
   gap: 40px;
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -4215,11 +4214,6 @@ img.cta-object {
 .footer-inline-text {
   display: inline-block;
   white-space: nowrap;
-}
-
-.footer-mini-stack {
-  display: grid;
-  gap: 4px;
 }
 
 .footer-col--services a,

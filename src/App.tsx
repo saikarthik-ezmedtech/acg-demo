@@ -2682,7 +2682,7 @@ export default function App() {
               <p className="footer-tagline">Southern Indiana Cardiology Associates</p>
               <p className="footer-sub">Comprehensive cardiovascular care for Southern Indiana.</p>
             </div>
-            <div className="footer-col">
+            <div className="footer-col footer-col--services">
               <strong>Services</strong>
               <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Preventive Cardiology</InternalLink>
               <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Cardiac Diagnostics</InternalLink>
@@ -2691,18 +2691,13 @@ export default function App() {
               <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Vascular Studies</InternalLink>
               <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Hypertension Management</InternalLink>
             </div>
-            <div className="footer-col">
-              <strong>Visit</strong>
-              <span>Southern Indiana</span>
-              <span>Office details available by appointment</span>
-            </div>
-            <div className="footer-col">
+            <div className="footer-col footer-col--contact">
               <strong>Contact</strong>
               <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Request Appointment</InternalLink>
-              <a href="tel:8129247065">Contact Us</a>
-              <span>Fax: 812-924-7094</span>
+              <a className="footer-inline-text" href="tel:8129247065">Contact Us</a>
+              <span className="footer-inline-text">Fax: 812-924-7094</span>
             </div>
-            <div className="footer-col">
+            <div className="footer-col footer-col--navigate">
               <strong>Navigate</strong>
               <InternalLink href={isHomePath(route.pathname) ? '#services' : '/#services'} onNavigate={navigateTo}>Services</InternalLink>
               <InternalLink href={isHomePath(route.pathname) ? '#providers' : '/#providers'} onNavigate={navigateTo}>Physicians</InternalLink>
@@ -2710,12 +2705,14 @@ export default function App() {
               <InternalLink href={isHomePath(route.pathname) ? '#news' : '/#news'} onNavigate={navigateTo}>Why SICA</InternalLink>
               <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Request Appointment</InternalLink>
             </div>
-            <div className="footer-col">
+            <div className="footer-col footer-col--legal">
               <strong>Legal</strong>
               <InternalLink href="/terms-of-use" onNavigate={navigateTo}>Terms of Use</InternalLink>
               <InternalLink href="/privacy-policy" onNavigate={navigateTo}>Privacy Policy</InternalLink>
               <InternalLink href="/cookie-policy" onNavigate={navigateTo}>Cookie Policy</InternalLink>
-              <button type="button" className="footer-link-button" onClick={() => setCookiePanelOpen(true)}>Cookie Preferences</button>
+              <div className="footer-secondary-row">
+                <button type="button" className="footer-link-button" onClick={() => setCookiePanelOpen(true)}>Cookie Preferences</button>
+              </div>
             </div>
           </div>
 
