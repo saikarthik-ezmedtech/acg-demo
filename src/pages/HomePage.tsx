@@ -285,6 +285,12 @@ export default function HomePage({
                 <a href="tel:8129247065">812-924-7065</a>
               </dd>
             </div>
+            <div>
+              <dt>Fax</dt>
+              <dd>
+                <a href="tel:8129247094">812-924-7094</a>
+              </dd>
+            </div>
           </dl>
           <div className="office-section__actions">
             <button type="button" className="button primary" onClick={onOpenAppointment}>

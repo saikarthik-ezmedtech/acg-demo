@@ -25,7 +25,7 @@ export default function SiteFooter({
             <p className="footer-tagline">Southern Indiana Cardiology Associates</p>
             <p className="footer-sub">Comprehensive cardiovascular care for Southern Indiana.</p>
           </div>
-          <div className="footer-col">
+          <div className="footer-col footer-col--services">
             <strong>Services</strong>
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Preventive Cardiology</InternalLink>
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Cardiac Diagnostics</InternalLink>
@@ -34,17 +34,13 @@ export default function SiteFooter({
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Vascular Studies</InternalLink>
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Hypertension Management</InternalLink>
           </div>
-          <div className="footer-col">
-            <strong>Visit</strong>
-            <span>Southern Indiana</span>
-            <span>Office details available by appointment</span>
-          </div>
-          <div className="footer-col">
+          <div className="footer-col footer-col--contact">
             <strong>Contact</strong>
             <InternalLink href={isHomePath(pathname) ? '#contact' : '/#contact'} onNavigate={onNavigate}>Request Appointment</InternalLink>
-            <a href="tel:8129247065">Contact Us</a>
+            <a className="footer-inline-text" href="tel:8129247065">Contact Us</a>
+            <span className="footer-inline-text">Fax: 812-924-7094</span>
           </div>
-          <div className="footer-col">
+          <div className="footer-col footer-col--navigate">
             <strong>Navigate</strong>
             <InternalLink href={isHomePath(pathname) ? '#services' : '/#services'} onNavigate={onNavigate}>Services</InternalLink>
             <InternalLink href={isHomePath(pathname) ? '#providers' : '/#providers'} onNavigate={onNavigate}>Physicians</InternalLink>
@@ -52,14 +48,16 @@ export default function SiteFooter({
             <InternalLink href={isHomePath(pathname) ? '#news' : '/#news'} onNavigate={onNavigate}>Why SICA</InternalLink>
             <InternalLink href={isHomePath(pathname) ? '#contact' : '/#contact'} onNavigate={onNavigate}>Request Appointment</InternalLink>
           </div>
-          <div className="footer-col">
+          <div className="footer-col footer-col--legal">
             <strong>Legal</strong>
             <InternalLink href="/terms-of-use" onNavigate={onNavigate}>Terms of Use</InternalLink>
             <InternalLink href="/privacy-policy" onNavigate={onNavigate}>Privacy Policy</InternalLink>
             <InternalLink href="/cookie-policy" onNavigate={onNavigate}>Cookie Policy</InternalLink>
-            <button type="button" className="footer-link-button" onClick={onOpenCookiePreferences}>
-              Cookie Preferences
-            </button>
+            <div className="footer-secondary-row">
+              <button type="button" className="footer-link-button" onClick={onOpenCookiePreferences}>
+                Cookie Preferences
+              </button>
+            </div>
           </div>
         </div>
 
