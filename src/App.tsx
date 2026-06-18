@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion'
 import Lenis from 'lenis'
+import { createPortal } from 'react-dom'
 import HeartbeatLine from './components/HeartbeatLine'
 
 const navItems = [
@@ -56,6 +57,9 @@ type Physician = {
   specialInterests: string[]
   languages: string[]
   memberships: string[]
+  heroName?: string
+  heroRole?: string
+  heroCredentials?: string
 }
 
 type LegalSection = {
@@ -579,6 +583,9 @@ const physicians: Physician[] = [
     name: 'Dr. Srini Manchi, MD, FACC',
     cardName: 'Dr. Srini Manchi, MD, FACC',
     role: 'Interventional Cardiologist',
+    heroName: 'Dr. Srini Manchi',
+    heroRole: 'Interventional Cardiologist',
+    heroCredentials: 'MD, FACC, FSCAI',
     image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
       'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology. Special expertise in coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, deep vein thrombosis (DVT), and pulmonary embolism management.',
@@ -643,6 +650,9 @@ const physicians: Physician[] = [
     name: 'Dr. Bapineedu Gondi, MD, FACC',
     cardName: 'Dr. Bapineedu Gondi, MD, FACC',
     role: 'Cardiologist',
+    heroName: 'Dr. Bapineedu Gondi',
+    heroRole: 'Cardiologist',
+    heroCredentials: 'MD, FACC',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
       'Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester. Special expertise in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular disease management.',
@@ -687,6 +697,9 @@ const physicians: Physician[] = [
     name: 'Dr. Surender K. Sandella, MD, FACC',
     cardName: 'Dr. Surender K. Sandella, MD, FACC',
     role: 'Interventional Cardiologist',
+    heroName: 'Dr. Surender K. Sandella',
+    heroRole: 'Interventional Cardiologist',
+    heroCredentials: 'MD, FACC',
     image: '/sica-assets/dr-surender-sandella.webp',
     description:
       'Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville. Certified in pacemaker and implantable cardioverter-defibrillator (ICD) management. Clinical interests include adult congenital heart disease, cardiac electrophysiology, device therapy, and advanced interventional cardiology.',
@@ -776,8 +789,11 @@ function HeroPhysicianCollage() {
         <figure className={`hero-portrait hero-portrait--${index + 1}`} key={`hero-${physician.name}`}>
           <img src={physician.image} alt={physician.name} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
           <figcaption>
-            <span>{physician.role}</span>
-            <strong>{physician.cardName}</strong>
+            <strong className="hero-portrait__name">{physician.heroName || physician.cardName}</strong>
+            <span className="hero-portrait__role">{physician.heroRole || physician.role}</span>
+            {physician.heroCredentials && (
+              <span className="hero-portrait__credentials">{physician.heroCredentials}</span>
+            )}
           </figcaption>
         </figure>
       ))}
@@ -2061,8 +2077,115 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const floatingControls = (
+    <>
+      {accessibilityOpen ? (
+        <aside className="accessibility-sidebar" aria-label="Accessibility settings">
+          <div className="accessibility-sidebar__header">
+            <p>Accessibility</p>
+            <button type="button" aria-label="Close accessibility sidebar" onClick={() => setAccessibilityOpen(false)}>
+              ×
+            </button>
+          </div>
+          <div className="accessibility-sidebar__font" aria-label="Text size controls">
+            <button type="button" onClick={() => adjustFontScale(-0.05)} disabled={accessibilitySettings.fontScale <= 0.9}>
+              A-
+            </button>
+            <span>{Math.round(accessibilitySettings.fontScale * 100)}%</span>
+            <button type="button" onClick={() => adjustFontScale(0.05)} disabled={accessibilitySettings.fontScale >= 1.3}>
+              A+
+            </button>
+          </div>
+          <div className="accessibility-sidebar__controls">
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.readableFont}
+              onClick={() => setAccessibilityToggle('readableFont')}
+            >
+              Readable Font
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.keyboardNavigation}
+              onClick={() => setAccessibilityToggle('keyboardNavigation')}
+            >
+              Keyboard Navigation
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.underlineLinks}
+              onClick={() => setAccessibilityToggle('underlineLinks')}
+            >
+              Underline Links
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.highlightLinks}
+              onClick={() => setAccessibilityToggle('highlightLinks')}
+            >
+              Highlight Links
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.grayscaleImages}
+              onClick={() => setAccessibilityToggle('grayscaleImages')}
+            >
+              Images Greyscale
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.invertColors}
+              onClick={() => setAccessibilityToggle('invertColors')}
+            >
+              Invert Colors
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.removeAnimations}
+              onClick={() => setAccessibilityToggle('removeAnimations')}
+            >
+              Remove Animations
+            </button>
+            <button
+              type="button"
+              aria-pressed={accessibilitySettings.highContrast}
+              onClick={() => setAccessibilityToggle('highContrast')}
+            >
+              High Contrast
+            </button>
+            <button type="button" onClick={clearCookieSettings}>Clear Cookies</button>
+          </div>
+          <button type="button" className="accessibility-sidebar__reset" onClick={resetAccessibilitySettings}>
+            Reset
+          </button>
+        </aside>
+      ) : (
+        <button
+          type="button"
+          aria-label="Accessibility Helper sidebar"
+          title="Accessibility Helper sidebar"
+          className="accessibility-fab"
+          onClick={() => setAccessibilityOpen(true)}
+        >
+          <span className="accessibility-fab__icon" aria-hidden="true">♿</span>
+        </button>
+      )}
+
+      <button
+        type="button"
+        aria-label="Scroll to top"
+        title="Scroll to top"
+        className="scroll-top-fab"
+        onClick={scrollToPageTop}
+      >
+        <span className="scroll-top-fab__icon" aria-hidden="true">↑</span>
+      </button>
+    </>
+  )
+
   return (
     <div className="site-shell">
+      <div className="site-shell__viewport">
       <div className="page-wipe" aria-hidden="true" />
       <header className="navigation">
         <div className={`nav_layout-2${navOpen ? ' is-open' : ''}`}>
@@ -2530,60 +2653,6 @@ export default function App() {
         </div>
       )}
 
-      {accessibilityOpen ? (
-        <aside className="accessibility-sidebar" aria-label="Accessibility settings">
-          <div className="accessibility-sidebar__header">
-            <p>Accessibility</p>
-            <button type="button" aria-label="Close accessibility sidebar" onClick={() => setAccessibilityOpen(false)}>
-              ×
-            </button>
-          </div>
-          <div className="accessibility-sidebar__font">
-            <button type="button" onClick={() => adjustFontScale(-0.05)} disabled={accessibilitySettings.fontScale <= 0.9}>
-              A-
-            </button>
-            <button type="button" onClick={() => adjustFontScale(0.05)} disabled={accessibilitySettings.fontScale >= 1.3}>
-              A+
-            </button>
-            <span>{Math.round(accessibilitySettings.fontScale * 100)}%</span>
-          </div>
-          <div className="accessibility-sidebar__controls">
-            <button type="button" onClick={() => setAccessibilityToggle('readableFont')}>Readable Font</button>
-            <button type="button" onClick={() => setAccessibilityToggle('keyboardNavigation')}>Keyboard Navigation</button>
-            <button type="button" onClick={() => setAccessibilityToggle('underlineLinks')}>Underline Links</button>
-            <button type="button" onClick={() => setAccessibilityToggle('highlightLinks')}>Highlight Links</button>
-            <button type="button" onClick={() => setAccessibilityToggle('grayscaleImages')}>Images Greyscale</button>
-            <button type="button" onClick={() => setAccessibilityToggle('invertColors')}>Invert Colors</button>
-            <button type="button" onClick={() => setAccessibilityToggle('removeAnimations')}>Remove Animations</button>
-            <button type="button" onClick={() => setAccessibilityToggle('highContrast')}>High Contrast</button>
-            <button type="button" onClick={clearCookieSettings}>Clear Cookies</button>
-          </div>
-          <button type="button" className="accessibility-sidebar__reset" onClick={resetAccessibilitySettings}>
-            Reset
-          </button>
-        </aside>
-      ) : (
-        <button
-          type="button"
-          aria-label="Accessibility Helper sidebar"
-          title="Accessibility Helper sidebar"
-          className="accessibility-fab"
-          onClick={() => setAccessibilityOpen(true)}
-        >
-          <span className="accessibility-fab__icon" aria-hidden="true">♿</span>
-        </button>
-      )}
-
-      <button
-        type="button"
-        aria-label="Scroll to top"
-        title="Scroll to top"
-        className="scroll-top-fab"
-        onClick={scrollToPageTop}
-      >
-        <span className="scroll-top-fab__icon" aria-hidden="true">↑</span>
-      </button>
-
       <div className="footer-wrap">
         <footer className="site-footer">
           {/* Footer content grid */}
@@ -2645,6 +2714,9 @@ export default function App() {
           </div>
         </footer>
       </div>
+      </div>
+
+      {typeof document !== 'undefined' ? createPortal(floatingControls, document.body) : floatingControls}
     </div>
   )
 }
