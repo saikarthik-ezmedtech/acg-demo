@@ -58,6 +58,250 @@ type Physician = {
   memberships: string[]
 }
 
+type LegalSection = {
+  title: string
+  paragraphs: string[]
+  listItems?: string[]
+  tone?: 'default' | 'notice' | 'warning'
+}
+
+type LegalPageContent = {
+  path: string
+  title: string
+  lastUpdated: string
+  intro: string
+  effectiveDate?: string
+  notice?: string
+  sections: LegalSection[]
+}
+
+type CookiePreferences = {
+  essential: true
+  functional: boolean
+  analytics: boolean
+  marketing: boolean
+}
+
+type AccessibilitySettings = {
+  fontScale: number
+  keyboardNavigation: boolean
+  readableFont: boolean
+  underlineLinks: boolean
+  highlightLinks: boolean
+  grayscaleImages: boolean
+  invertColors: boolean
+  removeAnimations: boolean
+  highContrast: boolean
+}
+
+const cookieStorageKey = 'sica-cookie-preferences'
+const accessibilityStorageKey = 'sica-accessibility-settings'
+
+const defaultCookiePreferences: CookiePreferences = {
+  essential: true,
+  functional: true,
+  analytics: true,
+  marketing: true,
+}
+
+const defaultAccessibilitySettings: AccessibilitySettings = {
+  fontScale: 1,
+  keyboardNavigation: false,
+  readableFont: false,
+  underlineLinks: false,
+  highlightLinks: false,
+  grayscaleImages: false,
+  invertColors: false,
+  removeAnimations: false,
+  highContrast: false,
+}
+
+const legalPages: LegalPageContent[] = [
+  {
+    path: '/terms-of-use',
+    title: 'Terms of Use & Medical Disclaimer',
+    effectiveDate: 'June 18, 2026',
+    lastUpdated: 'June 18, 2026',
+    intro: 'How Southern Indiana Cardiology Associates defines the use of this website and the medical-information boundaries around it.',
+    notice: 'Attorney review is recommended before publishing or relying on this page as final legal copy.',
+    sections: [
+      {
+        title: 'Acceptance of Terms',
+        paragraphs: [
+          'By accessing or using the Southern Indiana Cardiology Associates website, you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use this website.',
+          'These Terms of Use apply to all visitors, users, and others who access or use this website.',
+        ],
+      },
+      {
+        title: 'Medical Disclaimer',
+        tone: 'warning',
+        paragraphs: [
+          'The content on this website is provided for general informational purposes only. It does not constitute medical advice, diagnosis, or treatment.',
+          'Nothing on this website should be used as a substitute for professional medical advice from a licensed healthcare provider who has evaluated you and understands your medical history and circumstances.',
+        ],
+        listItems: [
+          'Information on this website is general in nature and may not apply to your individual health situation.',
+          'Reading information on this website does not establish a patient-provider relationship with Southern Indiana Cardiology Associates.',
+          'You should not delay seeking professional medical advice, disregard medical advice, or discontinue treatment based on information found on this website.',
+          'If you are experiencing a medical emergency, call 911 or go to the nearest emergency room immediately.',
+        ],
+      },
+      {
+        title: 'No Patient-Provider Relationship',
+        paragraphs: [
+          'Use of this website, including any appointment request or contact inquiry, does not by itself establish a patient-provider relationship.',
+          'A patient-provider relationship is established only after the practice has accepted you as a patient and appropriate clinical care has begun.',
+        ],
+      },
+      {
+        title: 'Third-Party Services and Links',
+        paragraphs: [
+          'This website may contain links to third-party websites, maps, patient tools, or external resources for convenience.',
+          'Southern Indiana Cardiology Associates does not control or guarantee the content, availability, privacy practices, or accuracy of those third-party services.',
+        ],
+      },
+      {
+        title: 'Intellectual Property',
+        paragraphs: [
+          'All content on this website, including text, graphics, images, logos, and overall site design, is owned by Southern Indiana Cardiology Associates or its content providers and is protected by applicable intellectual property laws.',
+          'You may not reproduce, distribute, modify, or republish content from this website without prior written permission.',
+        ],
+      },
+      {
+        title: 'Limitation of Liability',
+        paragraphs: [
+          'To the fullest extent permitted by applicable law, Southern Indiana Cardiology Associates and its providers, staff, and agents are not liable for damages arising from your use of or reliance on this website or its content.',
+          'This includes damages arising from errors or omissions, interruptions in service, or use of third-party resources linked from this website.',
+        ],
+      },
+      {
+        title: 'Accessibility',
+        paragraphs: [
+          'Southern Indiana Cardiology Associates is committed to making this website more accessible and usable for all visitors.',
+          'If you experience difficulty accessing any content on this website, please contact our office at 812-924-7065 so we can help.',
+        ],
+      },
+      {
+        title: 'Governing Law',
+        paragraphs: [
+          'These Terms of Use are governed by the laws of the State of Indiana, without regard to conflict-of-law principles.',
+          'Any disputes related to the use of this website will be handled in the appropriate courts serving Southern Indiana.',
+        ],
+      },
+      {
+        title: 'Changes to These Terms',
+        paragraphs: [
+          'We may update these Terms of Use when site features, legal requirements, or practice operations change.',
+          'Revised versions will be posted on this page with an updated effective date and last-updated date.',
+        ],
+      },
+      {
+        title: 'Contact Us',
+        paragraphs: [
+          'If you have questions about these Terms of Use, please contact Southern Indiana Cardiology Associates at 812-924-7065 or visit us at 2109 Green Valley Road, New Albany, Indiana 47150.',
+        ],
+      },
+    ],
+  },
+  {
+    path: '/cookie-policy',
+    title: 'Cookie Policy',
+    lastUpdated: 'April 27, 2021',
+    intro: 'How Southern Indiana Cardiology Associates uses cookies and similar technologies on this website.',
+    sections: [
+      {
+        title: 'What Are Cookies?',
+        paragraphs: [
+          'Cookies are small text files placed on your device when you visit a website. They help websites work properly, remember preferences, and provide insights into how the site is used.',
+        ],
+      },
+      {
+        title: 'How We Use Cookies',
+        paragraphs: [
+          'Essential cookies are required for core website functions such as page navigation, security, and remembering basic preferences.',
+          'Performance cookies help us understand how visitors use the site so we can improve speed, usability, and content quality.',
+          'Functional cookies remember certain choices, such as region or form preferences, to provide a smoother browsing experience.',
+          'Third-party cookies may be used by embedded services, maps, or tools provided by trusted third parties that support website functionality.',
+        ],
+      },
+      {
+        title: 'Managing Cookie Preferences',
+        paragraphs: [
+          'Most browsers allow you to review, block, or delete cookies. Disabling certain cookies may affect how parts of this website function.',
+          'If cookie preference controls are available on our website, you can use those controls to update your choices at any time.',
+        ],
+      },
+      {
+        title: 'Third-Party Services',
+        paragraphs: [
+          'Some website features may rely on third-party services. Those services may set their own cookies based on their privacy and cookie practices.',
+        ],
+      },
+      {
+        title: 'Policy Updates',
+        paragraphs: [
+          'We may update this Cookie Policy when website features or legal requirements change. Revised versions will be posted on this page with a new last-updated date.',
+        ],
+      },
+      {
+        title: 'Contact Us',
+        paragraphs: [
+          'For questions about this Cookie Policy, contact Southern Indiana Cardiology Associates at 812-924-7065.',
+        ],
+      },
+    ],
+  },
+  {
+    path: '/privacy-policy',
+    title: 'Privacy Policy',
+    lastUpdated: 'June 18, 2026',
+    intro: 'How Southern Indiana Cardiology Associates collects, uses, and protects website information.',
+    sections: [
+      {
+        title: 'Information We Collect',
+        paragraphs: [
+          'We may collect information you choose to provide through appointment requests, contact forms, phone calls, and other direct communications with our office.',
+          'We may also collect limited website usage information through cookies, analytics, and basic technical logs such as browser type, device information, and general traffic patterns.',
+        ],
+      },
+      {
+        title: 'How We Use Information',
+        paragraphs: [
+          'Information submitted through this website may be used to respond to inquiries, coordinate appointments, improve website performance, and support practice operations.',
+          'We use reasonable administrative and technical safeguards to protect information handled through our website and office workflows.',
+        ],
+      },
+      {
+        title: 'Cookies and Analytics',
+        paragraphs: [
+          'This website may use essential, functional, analytics, and other optional cookies to support site performance and improve visitor experience.',
+          'You can review or change your cookie settings through the cookie preferences controls available on this website.',
+        ],
+      },
+      {
+        title: 'Third-Party Services',
+        paragraphs: [
+          'Some website features, including maps, embedded media, or external tools, may be provided by third parties that maintain their own privacy practices.',
+          'When you interact with those services, their terms and privacy policies may apply in addition to ours.',
+        ],
+      },
+      {
+        title: 'Your Choices',
+        paragraphs: [
+          'You may contact our office if you have questions about information submitted through this website or if you need help with your website privacy preferences.',
+          'You can also manage cookies through your browser settings, although disabling some cookies may affect site functionality.',
+        ],
+      },
+      {
+        title: 'Contact Us',
+        paragraphs: [
+          'If you have questions about this Privacy Policy, contact Southern Indiana Cardiology Associates at 812-924-7065 or visit 2109 Green Valley Road, New Albany, Indiana 47150.',
+        ],
+      },
+    ],
+  },
+]
+
 const servicePhoneMeta: Record<string, { label: string; title: string; score: string; variant: ServiceVariant }> = {
   'preventive-cardiology': {
     label: 'Prevention plan',
@@ -332,20 +576,20 @@ const profileSectionLinks = [
 const physicians: Physician[] = [
   {
     id: 'srinivas',
-    name: 'Dr. Srinivas Manchikalapudi, MD',
-    cardName: 'Dr. Srini Manchi',
+    name: 'Dr. Srini Manchi, MD, FACC',
+    cardName: 'Dr. Srini Manchi, MD, FACC',
     role: 'Interventional Cardiologist',
     image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
-      'Board-certified interventional cardiologist with 25+ years of experience in diagnostic and interventional cardiology, advanced cardiac imaging, nuclear cardiology, PCI, DVT and pulmonary embolism treatment, and echocardiography.',
-    profileHeading: 'Dr. Srini Manchi',
-    specialtySummary: 'Board-certified interventional cardiologist with expertise in diagnostic and interventional cardiology, advanced cardiac imaging, nuclear cardiology, PCI, DVT and pulmonary embolism treatment, and echocardiography.',
-    homeHighlights: ['Board-certified interventional cardiologist with 25+ years of experience in diagnostic and interventional cardiology, advanced cardiac imaging, PCI, DVT and pulmonary embolism treatment, and echocardiography.'],
+      'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology. Special expertise in coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, deep vein thrombosis (DVT), and pulmonary embolism management.',
+    profileHeading: 'Dr. Srini Manchi, MD, FACC',
+    specialtySummary: 'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology, including coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, DVT, and pulmonary embolism management.',
+    homeHighlights: ['Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology, with special expertise in PCI, advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, DVT, and pulmonary embolism management.'],
     experienceLabel: '25+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'FACC and FSCAI', 'Coronary and vascular procedures'],
     biography: [
-      'Dr. Srinivas Manchikalapudi is a board-certified interventional cardiologist with more than 25 years of clinical experience in diagnostic and interventional cardiology, advanced cardiac imaging, and nuclear cardiology.',
-      'His clinical expertise includes coronary angiography, percutaneous coronary interventions, treatment of DVT and pulmonary embolism, cardiac catheterization, peripheral angiography and intervention, and echocardiography including transthoracic, stress, and transesophageal imaging.',
+      'Dr. Srini Manchi is a board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology.',
+      'His special expertise includes coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, deep vein thrombosis (DVT), and pulmonary embolism management.',
     ],
     philosophy:
       'He approaches each visit with an emphasis on evidence-based care, clear communication, and careful follow-through so patients understand their diagnosis, procedure options, and long-term cardiovascular plan.',
@@ -396,20 +640,20 @@ const physicians: Physician[] = [
   },
   {
     id: 'gondi',
-    name: 'Dr. Bapineedu Gondi, MD',
-    cardName: 'Dr. Bapineedu Gondi, MD',
+    name: 'Dr. Bapineedu Gondi, MD, FACC',
+    cardName: 'Dr. Bapineedu Gondi, MD, FACC',
     role: 'Cardiologist',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
-      'FACC cardiologist with cardiovascular disease fellowship training at the University of Rochester and a clinical focus spanning cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and long-term heart care.',
-    profileHeading: 'Dr. Gondi',
-    specialtySummary: 'FACC cardiologist with cardiovascular disease fellowship training and clinical interests in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular management.',
-    homeHighlights: ['FACC cardiologist with cardiovascular disease fellowship training at the University of Rochester and a clinical focus spanning cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and long-term heart care.'],
+      'Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester. Special expertise in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular disease management.',
+    profileHeading: 'Dr. Bapineedu Gondi, MD, FACC',
+    specialtySummary: 'Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester and special expertise in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular disease management.',
+    homeHighlights: ['Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester, focused on cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular disease management.'],
     experienceLabel: '40+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'FACC', 'Cardiac imaging and critical care'],
     biography: [
-      'Dr. Bapineedu Gondi is an FACC cardiologist with cardiovascular disease fellowship training from the University of Rochester Medical Center and internal medicine residency training from Cook County Health and Hospitals System.',
-      'His clinical focus spans cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, coronary artery disease, hypertension, heart failure, atrial fibrillation, and long-term cardiovascular management.',
+      'Dr. Bapineedu Gondi is a board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester.',
+      'His special expertise includes cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, and comprehensive cardiovascular disease management. He is committed to delivering personalized, evidence-based care focused on long-term heart health and improved patient outcomes.',
     ],
     philosophy:
       'His care approach combines experience, clinical judgment, and direct patient communication so that treatment plans feel clear, informed, and tailored to the person in front of him.',
@@ -440,20 +684,20 @@ const physicians: Physician[] = [
   },
   {
     id: 'sandella',
-    name: 'Dr. Surender K. Sandella, MD',
-    cardName: 'Dr. Surender K. Sandella, MD',
+    name: 'Dr. Surender K. Sandella, MD, FACC',
+    cardName: 'Dr. Surender K. Sandella, MD, FACC',
     role: 'Interventional Cardiologist',
     image: '/sica-assets/dr-surender-sandella.webp',
     description:
-      'FACC interventional cardiologist with cardiovascular disease fellowship training at the University of Louisville and clinical interests in adult congenital heart disease, cardiac electrophysiology, and interventional cardiology.',
-    profileHeading: 'Dr. Surender',
-    specialtySummary: 'FACC interventional cardiologist with cardiovascular disease fellowship training and clinical interests in adult congenital heart disease, cardiac electrophysiology, interventional cardiology, and comprehensive heart care.',
-    homeHighlights: ['FACC interventional cardiologist with cardiovascular disease fellowship training at the University of Louisville and clinical interests in adult congenital heart disease, cardiac electrophysiology, and interventional cardiology.'],
+      'Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville. Certified in pacemaker and implantable cardioverter-defibrillator (ICD) management. Clinical interests include adult congenital heart disease, cardiac electrophysiology, device therapy, and advanced interventional cardiology.',
+    profileHeading: 'Dr. Surender K. Sandella, MD, FACC',
+    specialtySummary: 'Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville, certified in pacemaker and ICD management, with clinical interests in adult congenital heart disease, cardiac electrophysiology, device therapy, and advanced interventional cardiology.',
+    homeHighlights: ['Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville, certified in pacemaker and ICD management, with clinical interests in adult congenital heart disease, cardiac electrophysiology, device therapy, and advanced interventional cardiology.'],
     experienceLabel: '25+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'FACC', 'Electrophysiology and interventional care'],
     biography: [
-      'Dr. Surender K. Sandella is an FACC interventional cardiologist with cardiovascular disease fellowship training from the University of Louisville School of Medicine, internal medicine residency training at Case Western Reserve University and University Hospitals Cleveland Medical Center, and internship training at Zucker School of Medicine at Hofstra/Northwell.',
-      'His clinical focus includes adult congenital heart disease, cardiac electrophysiology, interventional cardiology, and comprehensive long-term cardiovascular care.',
+      'Dr. Surender K. Sandella is a board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville.',
+      'He is certified in pacemaker and implantable cardioverter-defibrillator (ICD) management. His clinical interests include adult congenital heart disease, cardiac electrophysiology, device therapy, and advanced interventional cardiology.',
     ],
     philosophy:
       'He emphasizes thoughtful diagnosis, patient education, and treatment plans that connect advanced testing with clear, practical follow-up care.',
@@ -486,8 +730,8 @@ const physicians: Physician[] = [
 ]
 
 const physicianCards = [...physicians].sort((a, b) => {
-  const surnameA = a.name.replace(/, MD$/, '').split(' ').at(-1) ?? a.name
-  const surnameB = b.name.replace(/, MD$/, '').split(' ').at(-1) ?? b.name
+  const surnameA = a.name.split(',')[0].split(' ').at(-1) ?? a.name
+  const surnameB = b.name.split(',')[0].split(' ').at(-1) ?? b.name
   return surnameA.localeCompare(surnameB)
 })
 
@@ -517,6 +761,10 @@ function isDiagnosticTestingPath(pathname: string) {
   return pathname === getDiagnosticTestingPath()
 }
 
+function getLegalPage(pathname: string) {
+  return legalPages.find((page) => page.path === pathname) ?? null
+}
+
 function isHomePath(pathname: string) {
   return pathname === '/' || pathname === ''
 }
@@ -529,7 +777,7 @@ function HeroPhysicianCollage() {
           <img src={physician.image} alt={physician.name} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
           <figcaption>
             <span>{physician.role}</span>
-            <strong>{physician.cardName.replace(', MD', '')}</strong>
+            <strong>{physician.cardName}</strong>
           </figcaption>
         </figure>
       ))}
@@ -1282,6 +1530,66 @@ function DiagnosticTestingPage({ onNavigate }: { onNavigate: (href: string) => v
   )
 }
 
+function LegalPage({
+  page,
+  onNavigate,
+  onOpenCookiePreferences,
+}: {
+  page: LegalPageContent
+  onNavigate: (href: string) => void
+  onOpenCookiePreferences: () => void
+}) {
+  return (
+    <section className="legal-page">
+      <div className="legal-page-shell">
+        <div className="legal-page-hero">
+          <p className="eyebrow">Legal</p>
+          <h1>{page.title}</h1>
+          <p className="legal-page-meta">
+            {page.effectiveDate ? `Effective date: ${page.effectiveDate} | ` : ''}
+            Last updated: {page.lastUpdated}
+          </p>
+          <p className="legal-page-intro">{page.intro}</p>
+          {page.notice && <p className="legal-page-notice">{page.notice}</p>}
+        </div>
+
+        <article className="legal-card">
+          <div className="legal-card__stack">
+            {page.sections.map((section) => (
+              <section className="legal-section" key={section.title}>
+                <h2>{section.title}</h2>
+                <div className={`legal-section__copy${section.tone ? ` is-${section.tone}` : ''}`}>
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {section.listItems && (
+                    <ul>
+                      {section.listItems.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </section>
+            ))}
+          </div>
+        </article>
+
+        {page.path === '/cookie-policy' && (
+          <div className="legal-page-actions">
+            <button type="button" className="button primary" onClick={onOpenCookiePreferences}>
+              Change Cookie Preferences
+            </button>
+            <InternalLink className="button secondary" href="/privacy-policy" onNavigate={onNavigate}>
+              Privacy Policy
+            </InternalLink>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
 export default function App() {
   const { scrollYProgress } = useScroll()
   const heroLift = useTransform(scrollYProgress, [0, 0.18], [0, -90])
@@ -1292,13 +1600,53 @@ export default function App() {
   const [activeServiceIndex, setActiveServiceIndex] = useState(0)
   const [navOpen, setNavOpen] = useState(false)
   const [appointmentOpen, setAppointmentOpen] = useState(false)
+  const [cookiePreferences, setCookiePreferences] = useState<CookiePreferences>(() => {
+    const saved = window.localStorage.getItem(cookieStorageKey)
+    if (!saved) return defaultCookiePreferences
+
+    try {
+      const parsed = JSON.parse(saved) as Partial<CookiePreferences>
+      return {
+        essential: true,
+        functional: parsed.functional ?? defaultCookiePreferences.functional,
+        analytics: parsed.analytics ?? defaultCookiePreferences.analytics,
+        marketing: parsed.marketing ?? defaultCookiePreferences.marketing,
+      }
+    } catch {
+      return defaultCookiePreferences
+    }
+  })
+  const [cookiePanelOpen, setCookiePanelOpen] = useState(() => !window.localStorage.getItem(cookieStorageKey))
+  const [accessibilityOpen, setAccessibilityOpen] = useState(false)
+  const [accessibilitySettings, setAccessibilitySettings] = useState<AccessibilitySettings>(() => {
+    const saved = window.localStorage.getItem(accessibilityStorageKey)
+    if (!saved) return defaultAccessibilitySettings
+
+    try {
+      const parsed = JSON.parse(saved) as Partial<AccessibilitySettings>
+      return {
+        fontScale: typeof parsed.fontScale === 'number' ? parsed.fontScale : defaultAccessibilitySettings.fontScale,
+        keyboardNavigation: parsed.keyboardNavigation ?? defaultAccessibilitySettings.keyboardNavigation,
+        readableFont: parsed.readableFont ?? defaultAccessibilitySettings.readableFont,
+        underlineLinks: parsed.underlineLinks ?? defaultAccessibilitySettings.underlineLinks,
+        highlightLinks: parsed.highlightLinks ?? defaultAccessibilitySettings.highlightLinks,
+        grayscaleImages: parsed.grayscaleImages ?? defaultAccessibilitySettings.grayscaleImages,
+        invertColors: parsed.invertColors ?? defaultAccessibilitySettings.invertColors,
+        removeAnimations: parsed.removeAnimations ?? defaultAccessibilitySettings.removeAnimations,
+        highContrast: parsed.highContrast ?? defaultAccessibilitySettings.highContrast,
+      }
+    } catch {
+      return defaultAccessibilitySettings
+    }
+  })
   const cardRefs = useRef<(HTMLElement | null)[]>([])
   const lenisRef = useRef<Lenis | null>(null)
   const activePhysician = useMemo(() => getPhysicianFromPath(route.pathname), [route.pathname])
   const diagnosticTestingOpen = useMemo(() => isDiagnosticTestingPath(route.pathname), [route.pathname])
+  const activeLegalPage = useMemo(() => getLegalPage(route.pathname), [route.pathname])
 
   useEffect(() => {
-    if (activePhysician || diagnosticTestingOpen) return
+    if (activePhysician || diagnosticTestingOpen || activeLegalPage) return
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1317,7 +1665,7 @@ export default function App() {
     })
 
     return () => observer.disconnect()
-  }, [activePhysician, diagnosticTestingOpen])
+  }, [activePhysician, diagnosticTestingOpen, activeLegalPage])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -1357,12 +1705,19 @@ export default function App() {
       if (url.hash) {
         scrollToSection(url.hash.slice(1))
       } else {
+        lenisRef.current?.scrollTo(0, { immediate: true })
         window.scrollTo({ top: 0, behavior: 'auto' })
       }
     })
   }
 
   useEffect(() => {
+    if (accessibilitySettings.removeAnimations) {
+      lenisRef.current?.destroy()
+      lenisRef.current = null
+      return
+    }
+
     const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.85 })
     lenisRef.current = lenis
     let frame = 0
@@ -1379,7 +1734,7 @@ export default function App() {
       lenis.destroy()
       lenisRef.current = null
     }
-  }, [])
+  }, [accessibilitySettings.removeAnimations])
 
   useEffect(() => {
     const handlePopState = () => {
@@ -1397,8 +1752,108 @@ export default function App() {
       return () => cancelAnimationFrame(frame)
     }
 
+    lenisRef.current?.scrollTo(0, { immediate: true })
     window.scrollTo({ top: 0, behavior: 'auto' })
   }, [route.hash, route.pathname])
+
+  useEffect(() => {
+    window.localStorage.setItem(cookieStorageKey, JSON.stringify(cookiePreferences))
+  }, [cookiePreferences])
+
+  useEffect(() => {
+    window.localStorage.setItem(accessibilityStorageKey, JSON.stringify(accessibilitySettings))
+
+    const root = document.documentElement
+    root.style.setProperty('--accessibility-font-scale', String(accessibilitySettings.fontScale))
+    root.classList.toggle('accessible-keyboard-navigation', accessibilitySettings.keyboardNavigation)
+    root.classList.toggle('accessible-readable-font', accessibilitySettings.readableFont)
+    root.classList.toggle('accessible-underline-links', accessibilitySettings.underlineLinks)
+    root.classList.toggle('accessible-highlight-links', accessibilitySettings.highlightLinks)
+    root.classList.toggle('accessible-grayscale-images', accessibilitySettings.grayscaleImages)
+    root.classList.toggle('accessible-invert-colors', accessibilitySettings.invertColors)
+    root.classList.toggle('accessible-remove-animations', accessibilitySettings.removeAnimations)
+    root.classList.toggle('accessible-high-contrast', accessibilitySettings.highContrast)
+
+    return () => {
+      root.style.removeProperty('--accessibility-font-scale')
+      root.classList.remove(
+        'accessible-readable-font',
+        'accessible-keyboard-navigation',
+        'accessible-underline-links',
+        'accessible-highlight-links',
+        'accessible-grayscale-images',
+        'accessible-invert-colors',
+        'accessible-remove-animations',
+        'accessible-high-contrast',
+      )
+    }
+  }, [accessibilitySettings])
+
+  const updateCookiePreference = (key: Exclude<keyof CookiePreferences, 'essential'>, value: boolean) => {
+    setCookiePreferences((current) => ({
+      ...current,
+      [key]: value,
+    }))
+  }
+
+  const saveCookiePreferences = () => {
+    setCookiePanelOpen(false)
+  }
+
+  const acceptAllCookies = () => {
+    setCookiePreferences(defaultCookiePreferences)
+    setCookiePanelOpen(false)
+  }
+
+  const rejectOptionalCookies = () => {
+    setCookiePreferences({
+      essential: true,
+      functional: false,
+      analytics: false,
+      marketing: false,
+    })
+    setCookiePanelOpen(false)
+  }
+
+  const setAccessibilityToggle = (key: Exclude<keyof AccessibilitySettings, 'fontScale'>) => {
+    setAccessibilitySettings((current) => ({
+      ...current,
+      [key]: !current[key],
+    }))
+  }
+
+  const adjustFontScale = (delta: number) => {
+    setAccessibilitySettings((current) => ({
+      ...current,
+      fontScale: Math.min(1.3, Math.max(0.9, Number((current.fontScale + delta).toFixed(2)))),
+    }))
+  }
+
+  const resetAccessibilitySettings = () => {
+    setAccessibilitySettings(defaultAccessibilitySettings)
+    setAccessibilityOpen(false)
+  }
+
+  const clearCookieSettings = () => {
+    setCookiePreferences(defaultCookiePreferences)
+    window.localStorage.removeItem(cookieStorageKey)
+    document.cookie.split(';').forEach((cookie) => {
+      const [rawName] = cookie.split('=')
+      const name = rawName?.trim()
+      if (!name) return
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`
+    })
+    setCookiePanelOpen(true)
+  }
+
+  const scrollToPageTop = () => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { duration: 0.8 })
+      return
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <div className="site-shell">
@@ -1410,7 +1865,10 @@ export default function App() {
               <div className="logo brand-mark">
                 <img src="/sica-assets/sica-symbol.png" alt="Southern Indiana Cardiology Associates" />
                 <span className="nav-brand-copy">
-                  <strong>Southern Indiana Cardiology Associates</strong>
+                  <strong>
+                    <span>Southern Indiana</span>
+                    <span>Cardiology Associates</span>
+                  </strong>
                 </span>
               </div>
             </div>
@@ -1497,6 +1955,8 @@ export default function App() {
           <PhysicianProfilePage physician={activePhysician} onNavigate={navigateTo} onOpenAppointment={() => setAppointmentOpen(true)} />
         ) : diagnosticTestingOpen ? (
           <DiagnosticTestingPage onNavigate={navigateTo} />
+        ) : activeLegalPage ? (
+          <LegalPage page={activeLegalPage} onNavigate={navigateTo} onOpenCookiePreferences={() => setCookiePanelOpen(true)} />
         ) : (
           <>
         <section className="hero-section">
@@ -1780,6 +2240,144 @@ export default function App() {
 
       <AppointmentModal isOpen={appointmentOpen} onClose={() => setAppointmentOpen(false)} />
 
+      {cookiePanelOpen && (
+        <div className="cookie-preferences" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+          <div className="cookie-preferences__panel">
+            <div className="cookie-preferences__grid">
+              <div>
+                <h2>Cookie Preferences</h2>
+                <p>
+                  We use essential cookies to keep this website secure and accessible. Optional cookies help us improve
+                  site performance and understand how visitors use the website.
+                </p>
+                <p className="cookie-preferences__links">
+                  Read more in our{' '}
+                  <InternalLink href="/cookie-policy" onNavigate={navigateTo}>
+                    Cookie Policy
+                  </InternalLink>{' '}
+                  and{' '}
+                  <InternalLink href="/privacy-policy" onNavigate={navigateTo}>
+                    Privacy Policy
+                  </InternalLink>.
+                </p>
+
+                <div className="cookie-preferences__options">
+                  <label>
+                    <input type="checkbox" checked disabled />
+                    <span>
+                      <strong>Essential cookies</strong>
+                      <small>Always active for core site functionality.</small>
+                    </span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={cookiePreferences.functional}
+                      onChange={(event) => updateCookiePreference('functional', event.target.checked)}
+                    />
+                    <span>
+                      <strong>Functional cookies</strong>
+                      <small>Remember selected preferences for future visits.</small>
+                    </span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={cookiePreferences.analytics}
+                      onChange={(event) => updateCookiePreference('analytics', event.target.checked)}
+                    />
+                    <span>
+                      <strong>Analytics cookies</strong>
+                      <small>Help us measure traffic and improve pages.</small>
+                    </span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={cookiePreferences.marketing}
+                      onChange={(event) => updateCookiePreference('marketing', event.target.checked)}
+                    />
+                    <span>
+                      <strong>Marketing cookies</strong>
+                      <small>Support relevant outreach and campaign reporting.</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div className="cookie-preferences__actions">
+                <button type="button" className="button secondary" onClick={() => setCookiePanelOpen(false)}>
+                  Hide Settings
+                </button>
+                <button type="button" className="button secondary" onClick={rejectOptionalCookies}>
+                  Reject Optional
+                </button>
+                <button type="button" className="button primary" onClick={saveCookiePreferences}>
+                  Save Choices
+                </button>
+                <button type="button" className="button primary button-primary-alt" onClick={acceptAllCookies}>
+                  Accept All
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {accessibilityOpen ? (
+        <aside className="accessibility-sidebar" aria-label="Accessibility settings">
+          <div className="accessibility-sidebar__header">
+            <p>Accessibility</p>
+            <button type="button" aria-label="Close accessibility sidebar" onClick={() => setAccessibilityOpen(false)}>
+              ×
+            </button>
+          </div>
+          <div className="accessibility-sidebar__font">
+            <button type="button" onClick={() => adjustFontScale(-0.05)} disabled={accessibilitySettings.fontScale <= 0.9}>
+              A-
+            </button>
+            <button type="button" onClick={() => adjustFontScale(0.05)} disabled={accessibilitySettings.fontScale >= 1.3}>
+              A+
+            </button>
+            <span>{Math.round(accessibilitySettings.fontScale * 100)}%</span>
+          </div>
+          <div className="accessibility-sidebar__controls">
+            <button type="button" onClick={() => setAccessibilityToggle('readableFont')}>Readable Font</button>
+            <button type="button" onClick={() => setAccessibilityToggle('keyboardNavigation')}>Keyboard Navigation</button>
+            <button type="button" onClick={() => setAccessibilityToggle('underlineLinks')}>Underline Links</button>
+            <button type="button" onClick={() => setAccessibilityToggle('highlightLinks')}>Highlight Links</button>
+            <button type="button" onClick={() => setAccessibilityToggle('grayscaleImages')}>Images Greyscale</button>
+            <button type="button" onClick={() => setAccessibilityToggle('invertColors')}>Invert Colors</button>
+            <button type="button" onClick={() => setAccessibilityToggle('removeAnimations')}>Remove Animations</button>
+            <button type="button" onClick={() => setAccessibilityToggle('highContrast')}>High Contrast</button>
+            <button type="button" onClick={clearCookieSettings}>Clear Cookies</button>
+          </div>
+          <button type="button" className="accessibility-sidebar__reset" onClick={resetAccessibilitySettings}>
+            Reset
+          </button>
+        </aside>
+      ) : (
+        <button
+          type="button"
+          aria-label="Accessibility Helper sidebar"
+          title="Accessibility Helper sidebar"
+          className="accessibility-fab"
+          onClick={() => setAccessibilityOpen(true)}
+        >
+          <span className="accessibility-fab__icon" aria-hidden="true">♿</span>
+        </button>
+      )}
+
+      <button
+        type="button"
+        aria-label="Scroll to top"
+        title="Scroll to top"
+        className="scroll-top-fab"
+        onClick={scrollToPageTop}
+      >
+        <span className="scroll-top-fab__icon" aria-hidden="true">↑</span>
+      </button>
+
       <div className="footer-wrap">
         <footer className="site-footer">
           {/* Footer content grid */}
@@ -1818,10 +2416,25 @@ export default function App() {
               <InternalLink href={isHomePath(route.pathname) ? '#news' : '/#news'} onNavigate={navigateTo}>Why SICA</InternalLink>
               <InternalLink href={isHomePath(route.pathname) ? '#contact' : '/#contact'} onNavigate={navigateTo}>Request Appointment</InternalLink>
             </div>
+            <div className="footer-col">
+              <strong>Legal</strong>
+              <InternalLink href="/terms-of-use" onNavigate={navigateTo}>Terms of Use</InternalLink>
+              <InternalLink href="/privacy-policy" onNavigate={navigateTo}>Privacy Policy</InternalLink>
+              <InternalLink href="/cookie-policy" onNavigate={navigateTo}>Cookie Policy</InternalLink>
+              <button type="button" className="footer-link-button" onClick={() => setCookiePanelOpen(true)}>Cookie Preferences</button>
+            </div>
           </div>
 
           <div className="footer-legal-bar">
-            <p>Educational information only. Always consult a qualified healthcare provider for diagnosis and treatment.</p>
+            <p>
+              Educational information only. Always consult a qualified healthcare provider for diagnosis and treatment.
+              {' '}
+              <InternalLink href="/terms-of-use" onNavigate={navigateTo}>Terms</InternalLink>
+              {' · '}
+              <InternalLink href="/privacy-policy" onNavigate={navigateTo}>Privacy</InternalLink>
+              {' · '}
+              <InternalLink href="/cookie-policy" onNavigate={navigateTo}>Cookies</InternalLink>
+            </p>
             <p>© {currentYear} Southern Indiana Cardiology Associates.</p>
           </div>
         </footer>
