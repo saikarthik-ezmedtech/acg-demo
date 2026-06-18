@@ -1282,14 +1282,6 @@ function PhysicianProfilePage({
   return (
     <section className="physician-profile-page">
       <div className="physician-profile-shell">
-        <div className="physician-profile-breadcrumbs">
-          <InternalLink href="/#providers" onNavigate={onNavigate}>
-            Physicians
-          </InternalLink>
-          <span>/</span>
-          <strong>{physician.profileHeading}</strong>
-        </div>
-
         <div className="physician-profile-hero">
           <div className="physician-profile-hero__content">
             <h1>{physician.profileHeading}</h1>
@@ -1449,14 +1441,6 @@ function DiagnosticTestingPage({ onNavigate }: { onNavigate: (href: string) => v
   return (
     <section className="diagnostic-page">
       <div className="diagnostic-page-shell">
-        <div className="physician-profile-breadcrumbs">
-          <InternalLink href="/#services" onNavigate={onNavigate}>
-            Services
-          </InternalLink>
-          <span>/</span>
-          <strong>Diagnostic Testing</strong>
-        </div>
-
         <div className="diagnostic-page-hero">
           <div>
             <p className="eyebrow">Diagnostic Testing</p>
