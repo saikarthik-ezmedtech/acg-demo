@@ -1233,7 +1233,7 @@ function AppointmentModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
 
 function StarRow() {
   return (
-    <div className="star-row" aria-label="Five star experience">
+    <div className="star-row" role="img" aria-label="Five star experience">
       {Array.from({ length: 5 }).map((_, index) => (
         <svg key={index} viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2.2 14.9 8.4l6.7.8-4.9 4.7 1.3 6.6-6-3.3-6 3.3 1.3-6.6-4.9-4.7 6.7-.8L12 2.2Z" />
