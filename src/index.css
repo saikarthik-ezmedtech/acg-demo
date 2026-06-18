@@ -634,6 +634,21 @@ svg {
   box-shadow: 0 14px 28px rgba(217, 35, 46, 0.22);
 }
 
+.appointment-form input.is-invalid,
+.appointment-form textarea.is-invalid {
+  border-color: #D9232E !important;
+  box-shadow: 0 0 0 4px rgba(217, 35, 46, 0.12) !important;
+}
+
+.appointment-form-error {
+  display: block;
+  color: #D9232E;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 3px;
+  line-height: 1.2;
+}
+
 .hero-section {
   position: relative;
   display: grid;
