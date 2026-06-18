@@ -4,6 +4,18 @@ import type { Physician } from '../types/site'
 import InternalLink from '../components/InternalLink'
 import { ArrowIcon, PhoneIcon } from '../components/icons'
 
+function getPhysicianLastNameLabel(physician: Physician) {
+  const [namePart] = physician.name.split(',')
+  const lastName = namePart.trim().split(/\s+/).at(-1) ?? namePart.trim()
+  return `Dr. ${lastName}`
+}
+
+function getPhysicianProfileHeading(physician: Physician) {
+  const credentials = physician.name.split(',').slice(1).join(',').trim()
+  const label = getPhysicianLastNameLabel(physician)
+  return credentials ? `${label}, ${credentials}` : label
+}
+
 export default function PhysicianProfilePage({
   physician,
   onNavigate,
@@ -47,7 +59,7 @@ export default function PhysicianProfilePage({
       <div className="physician-profile-shell">
         <div className="physician-profile-hero">
           <div className="physician-profile-hero__content">
-            <h1>{physician.profileHeading}</h1>
+            <h1>{getPhysicianProfileHeading(physician)}</h1>
             <span className="physician-profile-hero__role">{physician.role}</span>
             <p>{physician.description}</p>
             <div className="physician-profile-hero__actions">
@@ -154,7 +166,7 @@ export default function PhysicianProfilePage({
           </main>
 
           <aside className="physician-profile-sidebar">
-            <nav className="physician-profile-sidebar__nav" aria-label={`${physician.profileHeading} profile sections`}>
+            <nav className="physician-profile-sidebar__nav" aria-label={`${getPhysicianProfileHeading(physician)} profile sections`}>
               <ol>
                 {profileSectionLinks.map((item) => (
                   <li key={item.id}>
@@ -182,7 +194,7 @@ export default function PhysicianProfilePage({
             <p className="eyebrow">Request an Appointment</p>
             <h2>Take the next step with trusted cardiovascular care.</h2>
             <p>
-              Request a visit with {physician.profileHeading} and our office will help coordinate the right next step
+              Request a visit with {getPhysicianLastNameLabel(physician)} and our office will help coordinate the right next step
               for evaluation, treatment, or follow-up.
             </p>
           </div>
@@ -207,9 +219,11 @@ export function HeroPhysicianCollage() {
         <figure className={`hero-portrait hero-portrait--${index + 1}`} key={`hero-${physician.name}`}>
           <img src={physician.image} alt={physician.name} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
           <figcaption>
-            <strong className="hero-portrait__name">{physician.name.split(',')[0]}</strong>
-            <span className="hero-portrait__credentials">{physician.name.split(',').slice(1).join(',').trim()}</span>
-            <span className="hero-portrait__role">{physician.role}</span>
+            <strong className="hero-portrait__name">{physician.heroName || physician.name.split(',')[0]}</strong>
+            <span className="hero-portrait__credentials">
+              {physician.heroCredentials || physician.name.split(',').slice(1).join(',').trim()}
+            </span>
+            <span className="hero-portrait__role">{physician.heroRole || physician.role}</span>
           </figcaption>
         </figure>
       ))}

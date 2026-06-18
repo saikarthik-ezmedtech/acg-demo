@@ -13,6 +13,9 @@ export type Physician = {
   role: string
   image: string
   cardName: string
+  heroName?: string
+  heroRole?: string
+  heroCredentials?: string
   description: string
   profileHeading: string
   specialtySummary: string

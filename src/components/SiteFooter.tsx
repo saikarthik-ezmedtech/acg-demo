@@ -43,6 +43,7 @@ export default function SiteFooter({
             <strong>Contact</strong>
             <InternalLink href={isHomePath(pathname) ? '#contact' : '/#contact'} onNavigate={onNavigate}>Request Appointment</InternalLink>
             <a href="tel:8129247065">Contact Us</a>
+            <span>Fax: 812-924-7094</span>
           </div>
           <div className="footer-col">
             <strong>Navigate</strong>
