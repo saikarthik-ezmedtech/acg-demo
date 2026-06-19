@@ -824,12 +824,12 @@ function HeroPhysicianCollage({ onNavigate }: { onNavigate: (href: string) => vo
           <img alt={physician.name} src={physician.image} loading={physician.id === 'gondi' ? 'eager' : 'lazy'} decoding="async" />
           <div>
             <span>{physician.role}</span>
-            <h3>
+            <h2>
               <span className="provider-name-main">{getPhysicianCardNameParts(physician).namePart}</span>
               {getPhysicianCardNameParts(physician).credentials && (
                 <span className="provider-name-credentials">{getPhysicianCardNameParts(physician).credentials}</span>
               )}
-            </h3>
+            </h2>
             <p>{physician.description}</p>
             <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={onNavigate}>
               View Full Profile <ArrowIcon />
@@ -1897,6 +1897,28 @@ export default function App() {
   })
   const cardRefs = useRef<(HTMLElement | null)[]>([])
   const lenisRef = useRef<Lenis | null>(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [bannerHeight, setBannerHeight] = useState(0)
+  const bannerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (!bannerRef.current) return
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setBannerHeight(entry.contentRect.height)
+      }
+    })
+    observer.observe(bannerRef.current)
+    return () => observer.disconnect()
+  }, [])
   const activePhysician = useMemo(() => getPhysicianFromPath(route.pathname), [route.pathname])
   const diagnosticTestingOpen = useMemo(() => isDiagnosticTestingPath(route.pathname), [route.pathname])
   const activeLegalPage = useMemo(() => getLegalPage(route.pathname), [route.pathname])
@@ -2221,7 +2243,24 @@ export default function App() {
     <div className="site-shell">
       <div className="site-shell__viewport">
       <div className="page-wipe" aria-hidden="true" />
-      <header className="navigation">
+      <aside ref={bannerRef} className="w-full top-banner border-b border-[rgba(10,58,120,0.08)] text-center relative z-[60]" aria-label="Announcement">
+        <div className="mx-auto max-w-7xl px-4 py-2.5 text-sm font-medium text-[#16306F]">
+          Trusted heart care from experienced cardiology specialists.{" "}
+          <button
+            type="button"
+            className="inline-flex cursor-pointer items-center gap-1 underline underline-offset-2 hover:opacity-70 font-semibold"
+            onClick={() => setAppointmentOpen(true)}
+          >
+            <span>Request an appointment</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="tabler-icon tabler-icon-arrow-right shrink-0">
+              <path d="M5 12l14 0"></path>
+              <path d="M13 18l6 -6"></path>
+              <path d="M13 6l6 6"></path>
+            </svg>
+          </button>
+        </div>
+      </aside>
+      <header className={`navigation${scrolled ? ' is-scrolled' : ''}`} style={scrolled ? {} : { top: `${bannerHeight + 10}px` }}>
         <div className={`nav_layout-2${navOpen ? ' is-open' : ''}`}>
           <InternalLink className="nav_home" href="/" onNavigate={navigateTo} aria-label="Southern Indiana Cardiology Associates home">
             <div className="nav_logo-container">

@@ -90,6 +90,10 @@ svg {
   display: none;
 }
 
+.top-banner {
+  background: #EEEDED;
+}
+
 
 .navigation {
   position: fixed;
@@ -98,6 +102,7 @@ svg {
   z-index: 50;
   width: min(92vw, 1180px);
   transform: translateX(-50%);
+  transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav_layout-2,
@@ -719,6 +724,7 @@ svg {
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
+  margin-top: -35px;
   padding: clamp(40px, 7vw, 84px) 0 12px;
   border: 0;
   border-radius: 0;
@@ -1961,6 +1967,7 @@ h3 {
   }
 }
 
+.provider-grid h2,
 .provider-grid h3 {
   margin: 0;
   color: var(--ink);
