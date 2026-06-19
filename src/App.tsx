@@ -588,15 +588,16 @@ const physicians: Physician[] = [
     heroCredentials: 'MD, FACC, FSCAI',
     image: '/sica-assets/dr-bapineedu-gondi.jpeg',
     description:
-      'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology. Special expertise in coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, deep vein thrombosis (DVT), and pulmonary embolism management.',
+      'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology. Special expertise in coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, Peripheral Vascular Disease, deep vein thrombosis (DVT), pulmonary embolism management, Atrial Fibrillation, and Congestive Heart Failure.',
     profileHeading: 'Dr. Srini Manchi, MD, FACC, FSCAI',
-    specialtySummary: 'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology, including coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, DVT, and pulmonary embolism management.',
-    homeHighlights: ['Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology, with special expertise in PCI, advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, DVT, and pulmonary embolism management.'],
+    specialtySummary:
+      'Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology, including coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, Peripheral Vascular Disease, DVT, pulmonary embolism management, Atrial Fibrillation, and Congestive Heart Failure.',
+    homeHighlights: ['Board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology, with special expertise in PCI, advanced cardiac imaging, echocardiography, nuclear cardiology, Peripheral Vascular Disease, DVT, pulmonary embolism management, Atrial Fibrillation, and Congestive Heart Failure.'],
     experienceLabel: '25+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'FACC and FSCAI', 'Coronary and vascular procedures'],
     biography: [
       'Dr. Srini Manchi is a board-certified interventional cardiologist with more than 25 years of experience in diagnostic and interventional cardiology.',
-      'His special expertise includes coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, peripheral vascular disease, deep vein thrombosis (DVT), and pulmonary embolism management.',
+      'His special expertise includes coronary interventions (PCI), advanced cardiac imaging, echocardiography, nuclear cardiology, Peripheral Vascular Disease, deep vein thrombosis (DVT), pulmonary embolism management, Atrial Fibrillation, and Congestive Heart Failure.',
     ],
     philosophy:
       'He approaches each visit with an emphasis on evidence-based care, clear communication, and careful follow-through so patients understand their diagnosis, procedure options, and long-term cardiovascular plan.',
@@ -642,28 +643,28 @@ const physicians: Physician[] = [
     languages: ['Please contact the office for current language support options.'],
     memberships: [
       'Fellow, American College of Cardiology (FACC)',
-      'Fellow, Society for Cardiovascular Angiography & Interventions (FSCAI)',
     ],
   },
   {
     id: 'gondi',
-    name: 'Dr. Bapineedu Gondi, MD, FACC, FSCAI',
-    cardName: 'Dr. Bapineedu Gondi, MD, FACC, FSCAI',
+    name: 'Dr. Bapineedu Gondi, MD, FACC',
+    cardName: 'Dr. Bapineedu Gondi, MD, FACC',
     role: 'Board-Certified Cardiologist',
     heroName: 'Dr. Bapineedu Gondi',
     heroRole: 'Board-Certified Cardiologist',
-    heroCredentials: 'MD, FACC, FSCAI',
+    heroCredentials: 'MD, FACC',
     image: '/sica-assets/dr-srinivas-manchikalapudi.jpeg',
     description:
-      'Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester. Special expertise in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, comprehensive cardiovascular disease management, and atrial fibrillation treatment.',
-    profileHeading: 'Dr. Bapineedu Gondi, MD, FACC, FSCAI',
-    specialtySummary: 'Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester and special expertise in cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, comprehensive cardiovascular disease management, and atrial fibrillation treatment.',
-    homeHighlights: ['Board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester, focused on cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, comprehensive cardiovascular disease management, and atrial fibrillation treatment.'],
+      'Board-certified cardiologist with fellowship training in Cardiovascular Disease from the University of Rochester. Special expertise in cardiothoracic imaging, cardiac critical care, comprehensive Cardiovascular Disease management, and Atrial Fibrillation treatment.',
+    profileHeading: 'Dr. Bapineedu Gondi, MD, FACC',
+    specialtySummary:
+      'Board-certified cardiologist with fellowship training in Cardiovascular Disease from the University of Rochester and special expertise in cardiothoracic imaging, cardiac critical care, comprehensive Cardiovascular Disease management, and Atrial Fibrillation treatment.',
+    homeHighlights: ['Board-certified cardiologist with fellowship training in Cardiovascular Disease from the University of Rochester, focused on cardiothoracic imaging, cardiac critical care, comprehensive Cardiovascular Disease management, and Atrial Fibrillation treatment.'],
     experienceLabel: '40+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'FACC', 'Cardiac imaging and critical care'],
     biography: [
-      'Dr. Bapineedu Gondi is a board-certified cardiologist with fellowship training in cardiovascular disease from the University of Rochester.',
-      'His special expertise includes cardiac electrophysiology, cardiothoracic imaging, cardiac critical care, comprehensive cardiovascular disease management, and atrial fibrillation treatment. He is committed to delivering personalized, evidence-based care focused on long-term heart health and improved patient outcomes.',
+      'Dr. Bapineedu Gondi is a board-certified cardiologist with fellowship training in Cardiovascular Disease from the University of Rochester.',
+      'His special expertise includes cardiothoracic imaging, cardiac critical care, comprehensive Cardiovascular Disease management, and Atrial Fibrillation treatment. He is committed to delivering personalized, evidence-based care focused on long-term heart health and improved patient outcomes.',
     ],
     philosophy:
       'His care approach combines experience, clinical judgment, and direct patient communication so that treatment plans feel clear, informed, and tailored to the person in front of him.',
@@ -671,7 +672,7 @@ const physicians: Physician[] = [
     faqs: [
       {
         question: 'What kinds of patients does Dr. Gondi commonly see?',
-        answer: 'He commonly sees patients with coronary artery disease, hypertension, heart failure, atrial fibrillation, and other cardiovascular concerns that need careful evaluation and follow-up.',
+        answer: 'He commonly sees patients with coronary artery disease, hypertension, Heart Failure, Atrial Fibrillation, and other cardiovascular concerns that need careful evaluation and follow-up.',
       },
       {
         question: 'Does Dr. Gondi support long-term cardiovascular care?',
@@ -688,7 +689,7 @@ const physicians: Physician[] = [
       'Guntur Medical College NTR, Class of 1975',
     ],
     boardCertifications: ['Internal Medicine', 'Cardiovascular Disease'],
-    specialInterests: ['Cardiac Electrophysiology', 'Cardiothoracic Imaging', 'Cardiac Critical Care', 'Coronary Artery Disease', 'Hypertension', 'Heart Failure', 'Atrial Fibrillation'],
+    specialInterests: ['Cardiothoracic Imaging', 'Cardiac Critical Care', 'Coronary Artery Disease', 'Hypertension', 'Heart Failure', 'Atrial Fibrillation'],
     languages: ['Please contact the office for current language support options.'],
     memberships: ['Fellow, American College of Cardiology (FACC)'],
   },
@@ -702,27 +703,28 @@ const physicians: Physician[] = [
     heroCredentials: 'MD, FACC, FSCAI',
     image: '/sica-assets/dr-surender-sandella.webp',
     description:
-      'Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville. Experienced in pacemaker and implantable cardioverter-defibrillator (ICD) management. Clinical interests include device therapy, atrial fibrillation treatment, peripheral artery disease (PAD), congestive heart failure, and advanced interventional cardiology.',
+      'Board certified interventional cardiologist. Special expertise in coronary interventions, peripheral interventions, pacemakers, ICD, Atrial Fibrillation management, advanced cardiac imaging, echo, nuclear cardiology, Watchman, PFO/ASD closure, DVT, and PE.',
     profileHeading: 'Dr. Surender Sandella, MD, FACC, FSCAI',
-    specialtySummary: 'Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville, experienced in pacemaker and ICD management, with clinical interests in device therapy, atrial fibrillation treatment, peripheral artery disease (PAD), congestive heart failure, and advanced interventional cardiology.',
-    homeHighlights: ['Board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville, experienced in pacemaker and ICD management, with clinical interests in device therapy, atrial fibrillation treatment, peripheral artery disease (PAD), congestive heart failure, and advanced interventional cardiology.'],
+    specialtySummary:
+      'Board certified interventional cardiologist with special expertise in coronary interventions, peripheral interventions, pacemakers, ICD, Atrial Fibrillation management, advanced cardiac imaging, echo, nuclear cardiology, Watchman, PFO/ASD closure, DVT, and PE.',
+    homeHighlights: ['Board certified interventional cardiologist with special expertise in coronary interventions, peripheral interventions, pacemakers, ICD, Atrial Fibrillation management, advanced cardiac imaging, echo, nuclear cardiology, Watchman, PFO/ASD closure, DVT, and PE.'],
     experienceLabel: '25+ years of cardiovascular experience',
     trustHighlights: ['Board Certified', 'FACC and FSCAI', 'Atrial fibrillation and interventional care'],
     biography: [
-      'Dr. Surender Sandella is a board-certified interventional cardiologist with fellowship training in cardiovascular disease from the University of Louisville.',
-      'He is experienced in pacemaker and implantable cardioverter-defibrillator (ICD) management. His clinical interests include device therapy, atrial fibrillation treatment, peripheral artery disease (PAD), congestive heart failure, and advanced interventional cardiology.',
+      'Dr. Surender Sandella is a board certified interventional cardiologist with special expertise in coronary interventions, peripheral interventions, pacemakers, ICD, Atrial Fibrillation management, advanced cardiac imaging, echo, nuclear cardiology, Watchman, PFO/ASD closure, DVT, and PE.',
+      'His clinical focus includes Interventional Cardiology procedures, Device Therapy, echocardiography, Atrial Fibrillation management, Peripheral Vascular Disease treatment, endomyocardial biopsy, Congestive Heart Failure, and Cardiovascular Disease care.',
     ],
     philosophy:
       'He emphasizes thoughtful diagnosis, patient education, and treatment plans that connect advanced testing with clear, practical follow-up care.',
-    whyChoose: ['FACC interventional care', 'Atrial fibrillation treatment', 'Peripheral artery disease (PAD) care', 'Board-certified cardiovascular care'],
+    whyChoose: ['Interventional Cardiology expertise', 'Atrial Fibrillation and Device Therapy', 'Peripheral Vascular Intervention', 'Board-certified cardiovascular care'],
     faqs: [
       {
         question: 'What is Dr. Sandella’s clinical focus?',
-        answer: 'His focus includes interventional cardiology, device therapy, atrial fibrillation treatment, peripheral artery disease (PAD), congestive heart failure, and comprehensive cardiovascular care.',
+        answer: 'His focus includes Interventional Cardiology, Device Therapy, echocardiography, Atrial Fibrillation management, Peripheral Vascular Intervention, Congestive Heart Failure, and comprehensive Cardiovascular Disease care.',
       },
       {
         question: 'Who may benefit from this kind of profile?',
-        answer: 'Patients who need interventional cardiology care, atrial fibrillation treatment, peripheral artery disease (PAD) evaluation, congestive heart failure management, or long-term cardiovascular follow-up often benefit from this care approach.',
+        answer: 'Patients who need coronary or peripheral interventions, pacemaker or ICD management, Atrial Fibrillation treatment, vascular procedures, or long-term cardiovascular follow-up often benefit from this care approach.',
       },
       {
         question: 'Can testing and prevention be discussed in the same visit?',
@@ -730,15 +732,27 @@ const physicians: Physician[] = [
       },
     ],
     education: [
-      'University of Louisville School of Medicine, Fellowship in Cardiovascular Disease, 1995 - 1998',
+      'University Of Louisville school of medicine, fellowship in interventional cardiology, 1999-2000',
       'Case Western Reserve University/University Hospitals Cleveland Medical Center, Residency in Internal Medicine, 1993 - 1995',
       'Zucker School of Medicine at Hofstra/Northwell, Internship in Internal Medicine, 1992 - 1993',
       'Osmania Medical College NTR UHS, Class of 1989',
     ],
     boardCertifications: ['Cardiovascular Disease', 'Interventional Cardiology'],
-    specialInterests: ['Interventional Cardiology', 'Device Therapy', 'Atrial Fibrillation Treatment', 'Peripheral Artery Disease (PAD)', 'Congestive Heart Failure', 'Cardiovascular Disease'],
+    specialInterests: [
+      'Interventional cardiology - cath, PCI',
+      'Device therapy - pacemaker, ICD, BiV',
+      'Echocardiography and transesophageal echocardiography',
+      'Atrial fibrillation - cardioversion, Watchman',
+      'Peripheral vascular disease - peripheral balloon angioplasty, atherectomy, and stents',
+      'Endomyocardial biopsy',
+      'CHF',
+      'Cardiovascular disease',
+    ],
     languages: ['Please contact the office for current language support options.'],
-    memberships: ['Fellow, American College of Cardiology (FACC)'],
+    memberships: [
+      'Fellow of the Society for Cardiovascular Angiography and Interventions ( FSCAI )',
+      'Fellow, American College of Cardiology (FACC)',
+    ],
   },
 ]
 
@@ -758,6 +772,14 @@ function getPhysicianProfileHeading(physician: Physician) {
   const credentials = physician.name.split(',').slice(1).join(',').trim()
   const label = getPhysicianLastNameLabel(physician)
   return credentials ? `${label}, ${credentials}` : label
+}
+
+function getPhysicianCardNameParts(physician: Physician) {
+  const [namePart, ...credentialParts] = physician.cardName.split(',')
+  return {
+    namePart: namePart.trim(),
+    credentials: credentialParts.join(',').trim(),
+  }
 }
 
 function getRouteState() {
@@ -794,20 +816,26 @@ function isHomePath(pathname: string) {
   return pathname === '/' || pathname === ''
 }
 
-function HeroPhysicianCollage() {
+function HeroPhysicianCollage({ onNavigate }: { onNavigate: (href: string) => void }) {
   return (
-    <div className="hero-physician-collage" aria-label="Southern Indiana Cardiology Associates physician team">
-      {physicianCards.map((physician, index) => (
-        <figure className={`hero-portrait hero-portrait--${index + 1}`} key={`hero-${physician.name}`}>
-          <img src={physician.image} alt={physician.name} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-          <figcaption>
-            <strong className="hero-portrait__name">{physician.heroName || physician.cardName}</strong>
-            <span className="hero-portrait__role">{physician.heroRole || physician.role}</span>
-            {physician.heroCredentials && (
-              <span className="hero-portrait__credentials">{physician.heroCredentials}</span>
-            )}
-          </figcaption>
-        </figure>
+    <div id="providers" className="provider-grid hero-provider-grid" aria-label="Southern Indiana Cardiology Associates physician team">
+      {physicianCards.map((physician) => (
+        <article key={physician.name}>
+          <img alt={physician.name} src={physician.image} loading={physician.id === 'gondi' ? 'eager' : 'lazy'} decoding="async" />
+          <div>
+            <span>{physician.role}</span>
+            <h3>
+              <span className="provider-name-main">{getPhysicianCardNameParts(physician).namePart}</span>
+              {getPhysicianCardNameParts(physician).credentials && (
+                <span className="provider-name-credentials">{getPhysicianCardNameParts(physician).credentials}</span>
+              )}
+            </h3>
+            <p>{physician.description}</p>
+            <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={onNavigate}>
+              View Full Profile <ArrowIcon />
+            </InternalLink>
+          </div>
+        </article>
       ))}
     </div>
   )
@@ -1656,11 +1684,6 @@ function PhysicianProfilePage({
                 ))}
               </ol>
             </nav>
-            <div className="physician-profile-sidebar__cta">
-              <button type="button" className="button primary" onClick={onOpenAppointment}>
-                Request Appointment <ArrowIcon />
-              </button>
-            </div>
           </aside>
         </div>
 
@@ -1777,7 +1800,6 @@ function LegalPage({
     <section className="legal-page">
       <div className="legal-page-shell">
         <div className="legal-page-hero">
-          <p className="eyebrow">Legal</p>
           <h1>{page.title}</h1>
           <p className="legal-page-meta">
             {page.effectiveDate ? `Effective date: ${page.effectiveDate} | ` : ''}
@@ -2319,43 +2341,11 @@ export default function App() {
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
-                <div className="hero-actions">
-                  <button type="button" className="button primary" onClick={() => setAppointmentOpen(true)}>
-                    Request Appointment <ArrowIcon />
-                  </button>
-                  <InternalLink className="button secondary" href="#providers" onNavigate={navigateTo}>
-                    Meet Our Physicians
-                  </InternalLink>
-                </div>
+                <HeroPhysicianCollage onNavigate={navigateTo} />
               </Reveal>
-            </div>
-            <div className="hero-visual">
-              <HeroPhysicianCollage />
             </div>
           </div>
           <HeartbeatLine className="hero-heartbeat" />
-        </section>
-
-        <section id="providers" className="providers-section">
-          <div className="section-heading">
-            <p className="eyebrow">Our Physicians</p>
-            <h2>Meet the Southern Indiana Cardiology Associates team.</h2>
-          </div>
-          <div className="provider-grid">
-            {physicianCards.map((physician) => (
-              <article key={physician.name}>
-                <img alt={physician.name} src={physician.image} />
-                <div>
-                  <span>{physician.role}</span>
-                  <h3>{physician.cardName}</h3>
-                  <p>{physician.description}</p>
-                  <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={navigateTo}>
-                    View Full Profile <ArrowIcon />
-                  </InternalLink>
-                </div>
-              </article>
-            ))}
-          </div>
         </section>
 
         <section id="services" className="offers-section">
@@ -2553,14 +2543,10 @@ export default function App() {
         <section className="privacy-section">
           <div className="privacy-card">
             <div className="privacy-lock"></div>
-            <p className="eyebrow">Built for trust</p>
-            <h2>Secure, private, and intentionally calm.</h2>
-            <p>Cardiovascular care is personal. SICA creates a visit experience built around privacy, clarity, accuracy, and steady follow-up.</p>
           </div>
         </section>
         <section id="contact" className="final-cta">
           <div className="final-copy">
-            <p className="eyebrow">Ready when you are</p>
             <h2>Ready to Take Control of Your Heart Health?</h2>
             <p>
               Schedule a consultation with Southern Indiana Cardiology Associates and receive expert cardiovascular

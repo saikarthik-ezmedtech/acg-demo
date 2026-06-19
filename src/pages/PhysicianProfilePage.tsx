@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { physicianCards, profileSectionLinks } from '../data/siteContent'
+import { getPhysicianPath } from '../lib/routing'
 import type { Physician } from '../types/site'
 import InternalLink from '../components/InternalLink'
 import { ArrowIcon, PhoneIcon } from '../components/icons'
@@ -14,6 +15,14 @@ function getPhysicianProfileHeading(physician: Physician) {
   const credentials = physician.name.split(',').slice(1).join(',').trim()
   const label = getPhysicianLastNameLabel(physician)
   return credentials ? `${label}, ${credentials}` : label
+}
+
+function getPhysicianCardNameParts(physician: Physician) {
+  const [namePart, ...credentialParts] = physician.cardName.split(',')
+  return {
+    namePart: namePart.trim(),
+    credentials: credentialParts.join(',').trim(),
+  }
 }
 
 export default function PhysicianProfilePage({
@@ -181,11 +190,6 @@ export default function PhysicianProfilePage({
                 ))}
               </ol>
             </nav>
-            <div className="physician-profile-sidebar__cta">
-              <button type="button" className="button primary" onClick={onOpenAppointment}>
-                Request Appointment <ArrowIcon />
-              </button>
-            </div>
           </aside>
         </div>
 
@@ -212,20 +216,26 @@ export default function PhysicianProfilePage({
   )
 }
 
-export function HeroPhysicianCollage() {
+export function HeroPhysicianCollage({ onNavigate }: { onNavigate: (href: string) => void }) {
   return (
-    <div className="hero-physician-collage" aria-label="Southern Indiana Cardiology Associates physician team">
-      {physicianCards.map((physician, index) => (
-        <figure className={`hero-portrait hero-portrait--${index + 1}`} key={`hero-${physician.name}`}>
-          <img src={physician.image} alt={physician.name} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-          <figcaption>
-            <strong className="hero-portrait__name">{physician.heroName || physician.name.split(',')[0]}</strong>
-            <span className="hero-portrait__credentials">
-              {physician.heroCredentials || physician.name.split(',').slice(1).join(',').trim()}
-            </span>
-            <span className="hero-portrait__role">{physician.heroRole || physician.role}</span>
-          </figcaption>
-        </figure>
+    <div id="providers" className="provider-grid hero-provider-grid" aria-label="Southern Indiana Cardiology Associates physician team">
+      {physicianCards.map((physician) => (
+        <article key={physician.name}>
+          <img alt={physician.name} src={physician.image} loading={physician.id === 'gondi' ? 'eager' : 'lazy'} decoding="async" />
+          <div>
+            <span>{physician.role}</span>
+            <h3>
+              <span className="provider-name-main">{getPhysicianCardNameParts(physician).namePart}</span>
+              {getPhysicianCardNameParts(physician).credentials && (
+                <span className="provider-name-credentials">{getPhysicianCardNameParts(physician).credentials}</span>
+              )}
+            </h3>
+            <p>{physician.description}</p>
+            <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={onNavigate}>
+              View Full Profile <ArrowIcon />
+            </InternalLink>
+          </div>
+        </article>
       ))}
     </div>
   )

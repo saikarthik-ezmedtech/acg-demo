@@ -14,7 +14,6 @@ export default function LegalPage({
     <section className="legal-page">
       <div className="legal-page-shell">
         <div className="legal-page-hero">
-          <p className="eyebrow">Legal</p>
           <h1>{page.title}</h1>
           <p className="legal-page-meta">
             {page.effectiveDate ? `Effective date: ${page.effectiveDate} | ` : ''}

@@ -234,7 +234,7 @@ svg {
 .site-nav nav a {
   color: rgba(17, 24, 39, 0.86);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   white-space: nowrap;
   transition: color 180ms ease;
@@ -708,23 +708,24 @@ svg {
   z-index: 3;
   display: grid;
   width: min(1320px, 100%);
-  grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(28px, 4vw, 40px);
 }
 
 .hero-content {
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 680px;
-  padding: 12px 0;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 84px) 0 12px;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
-  text-align: left;
+  text-align: center;
   transform: none;
 }
 
@@ -734,14 +735,20 @@ svg {
 }
 
 .hero-content h1 {
+  display: inline-block;
   color: #ffffff;
   font-size: clamp(20px, 1.8vw, 28px);
-  line-height: 1.02;
+  line-height: 1.08;
   max-width: 100%;
+  text-align: left;
 }
 
 .hero-content h1 span {
   display: block;
+}
+
+.hero-content h1 span + span {
+  margin-top: 0.08em;
 }
 
 @media (min-width: 921px) {
@@ -755,26 +762,25 @@ svg {
   font-size: clamp(15px, 1.1vw, 17px);
   line-height: 1.45;
   max-width: 600px;
+  margin-inline: auto;
+  text-align: center;
 }
 
-.hero-visual {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 580px;
-  justify-self: end;
+.hero-actions {
+  margin-bottom: clamp(24px, 3vw, 32px);
 }
 
 .hero-physician-collage {
   position: relative;
   isolation: isolate;
   display: grid;
-  min-height: clamp(456px, 45vw, 596px);
-  grid-template-columns: minmax(0, 1.08fr) minmax(170px, 0.82fr);
-  grid-template-rows: repeat(2, minmax(200px, 1fr));
-  gap: 12px;
+  width: 100%;
+  min-height: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
   overflow: hidden;
-  padding: 12px;
+  margin-top: 0;
+  padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 30px;
   background:
@@ -801,10 +807,11 @@ svg {
   border-radius: 20px;
   background: #0c1525;
   box-shadow: 0 16px 40px rgba(7, 12, 24, 0.22);
+  aspect-ratio: 0.92 / 1.08;
 }
 
 .hero-portrait--1 {
-  grid-row: 1 / -1;
+  grid-row: auto;
 }
 
 .hero-portrait img {
@@ -1901,6 +1908,10 @@ h3 {
     linear-gradient(180deg, #EFFAFD 0%, #F8FDFF 62%, #FFFFFF 100%);
 }
 
+.hero-provider-grid {
+  margin-top: clamp(26px, 4vw, 40px);
+}
+
 .provider-grid {
   display: grid;
   width: min(1180px, 100%);
@@ -1910,6 +1921,9 @@ h3 {
 }
 
 .provider-grid article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   border-radius: 28px;
   background: var(--paper);
@@ -1925,31 +1939,73 @@ h3 {
 
 .provider-grid div {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
   padding: 28px;
+  text-align: left;
 }
 
-.provider-grid span {
+.provider-grid div > span {
   color: var(--moss);
-  font-size: 13px;
+  font-size: 14.5px;
   font-weight: 720;
   line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 1180px) {
+  .provider-grid div > span {
+    white-space: nowrap;
+  }
 }
 
 .provider-grid h3 {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(23px, 2vw, 29px);
+  font-size: 23.78px;
   font-weight: 700;
-  line-height: 1.16;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.provider-name-main,
+.provider-name-credentials {
+  display: block;
+  color: var(--ink);
+}
+
+.provider-name-main {
+  font-size: 23.78px;
+  font-weight: 700;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.provider-name-credentials {
+  margin-top: 0.16em;
+  font-size: 23.3px;
+  font-weight: 700;
+  line-height: 1.12;
+  white-space: normal;
 }
 
 .provider-grid p {
+  flex: 1 1 auto;
   margin: 2px 0 0;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.72;
+  font-size: clamp(14.5px, 1vw, 16.5px);
+  line-height: 1.62;
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+  word-spacing: -0.02em;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
 }
 
 .provider-highlights {
@@ -1964,11 +2020,54 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: auto;
   color: #0A3A78;
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
+}
+
+:where(
+  .story-copy p,
+  .story-card p,
+  .section-heading p,
+  .offer-copy,
+  .offer-details-list li,
+  .provider-highlights,
+  .physician-profile-copy p,
+  .physician-simple-list li,
+  .physician-simple-timeline__item p,
+  .physician-faq-card--simple p,
+  .physician-profile-hero__content > p,
+  .diagnostic-page-hero p,
+  .diagnostic-zigzag-card__copy p,
+  .diagnostic-zigzag-card__content li,
+  .legal-page-meta,
+  .legal-page-intro,
+  .legal-page-notice,
+  .legal-section__copy p,
+  .legal-section__copy li,
+  .amma-copy p,
+  .final-copy p,
+  .footer-tagline,
+  .footer-col span,
+  .footer-col a,
+  .footer-inline-text,
+  .footer-legal-bar p,
+  .community-section .section-heading p,
+  .news-section .section-heading p
+) {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+  word-spacing: normal;
+}
+
+.hero-content :where(h1, .hero-copy) {
+  text-align: center;
 }
 
 .physician-profile-page {
@@ -3435,52 +3534,52 @@ h3 {
 }
 
 .legal-page {
-  padding: 124px 24px 88px;
+  padding: 124px 32px 88px;
   background: linear-gradient(180deg, #f7fbfd 0%, #eef6fa 100%);
 }
 
 .legal-page-shell {
-  width: min(1680px, calc(100vw - 48px));
+  width: min(1320px, calc(100vw - 80px));
   margin: 0 auto;
 }
 
 .legal-page-hero {
   width: 100%;
   max-width: none;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .legal-page-hero h1 {
   margin: 0;
   color: #1a4155;
-  font-size: clamp(2.15rem, 3.7vw, 4rem);
-  line-height: 0.98;
+  font-size: clamp(3rem, 3.8vw, 50px);
+  line-height: 1;
 }
 
 .legal-page-meta {
-  margin: 6px 0 0;
-  font-size: 0.9rem;
+  margin: 2px 0 0;
+  font-size: 16px;
   font-weight: 600;
   color: #5a6b78;
 }
 
 .legal-page-intro {
-  margin: 8px 0 0;
-  max-width: 1200px;
+  margin: 6px 0 0;
+  max-width: 1080px;
   color: #415460;
-  font-size: 0.94rem;
-  line-height: 1.64;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .legal-page-notice {
-  margin: 10px 0 0;
-  padding: 16px 18px;
+  margin: 8px 0 0;
+  padding: 18px 22px;
   border: 1px solid #ead39c;
   border-radius: 18px;
   background: #fff9e9;
   color: #734e0f;
-  font-size: 0.92rem;
-  line-height: 1.58;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .legal-card {
@@ -3493,8 +3592,8 @@ h3 {
 
 .legal-card__stack {
   display: grid;
-  gap: 32px;
-  padding: 32px;
+  gap: 24px;
+  padding: 40px 46px;
 }
 
 .legal-section h2 {
@@ -3504,12 +3603,12 @@ h3 {
 }
 
 .legal-section__copy {
-  margin-top: 18px;
+  margin-top: 12px;
   display: grid;
-  gap: 16px;
+  gap: 12px;
   color: #445561;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .legal-section__copy p,
@@ -6520,13 +6619,8 @@ img.cta-object {
     font-size: clamp(22px, 4.8vw, 30px);
   }
 
-  .hero-visual {
-    max-width: 680px;
-    justify-self: center;
-  }
-
   .hero-physician-collage {
-    min-height: clamp(380px, 66vw, 510px);
+    min-height: 0;
   }
 
   .story-stage,
@@ -6876,14 +6970,9 @@ img.cta-object {
     justify-content: flex-start;
   }
 
-  .hero-visual {
-    max-width: 100%;
-  }
-
   .hero-physician-collage {
     min-height: 0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
     gap: 10px;
     padding: 10px;
     border-radius: 22px;
@@ -6891,13 +6980,11 @@ img.cta-object {
 
   .hero-portrait {
     border-radius: 14px;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 11;
   }
 
   .hero-portrait--1 {
-    grid-column: 1 / -1;
     grid-row: auto;
-    aspect-ratio: 16 / 11;
   }
 
   .hero-portrait figcaption {

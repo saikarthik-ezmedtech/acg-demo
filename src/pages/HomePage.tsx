@@ -4,8 +4,8 @@ import HeartbeatLine from '../components/HeartbeatLine'
 import ServicePhoneMockup from '../components/ServicePhoneMockup'
 import InternalLink from '../components/InternalLink'
 import { ArrowIcon, MapPinIcon, PhoneIcon } from '../components/icons'
-import { experienceNotes, physicianCards, serviceFeatures, whyChooseCards } from '../data/siteContent'
-import { getDiagnosticTestingPath, getPhysicianPath } from '../lib/routing'
+import { experienceNotes, serviceFeatures, whyChooseCards } from '../data/siteContent'
+import { getDiagnosticTestingPath } from '../lib/routing'
 import { HeroPhysicianCollage } from './PhysicianProfilePage'
 
 const reveal: Variants = {
@@ -83,43 +83,11 @@ export default function HomePage({
               </p>
             </Reveal>
             <Reveal delay={0.24}>
-              <div className="hero-actions">
-                <button type="button" className="button primary" onClick={onOpenAppointment}>
-                  Request Appointment <ArrowIcon />
-                </button>
-                <InternalLink className="button secondary" href="#providers" onNavigate={onNavigate}>
-                  Meet Our Physicians
-                </InternalLink>
-              </div>
+              <HeroPhysicianCollage onNavigate={onNavigate} />
             </Reveal>
-          </div>
-          <div className="hero-visual">
-            <HeroPhysicianCollage />
           </div>
         </div>
         <HeartbeatLine className="hero-heartbeat" />
-      </section>
-
-      <section id="providers" className="providers-section">
-        <div className="section-heading">
-          <p className="eyebrow">Our Physicians</p>
-          <h2>Meet the Southern Indiana Cardiology Associates team.</h2>
-        </div>
-        <div className="provider-grid">
-          {physicianCards.map((physician) => (
-            <article key={physician.name}>
-              <img alt={physician.name} src={physician.image} />
-              <div>
-                <span>{physician.role}</span>
-                <h3>{physician.cardName}</h3>
-                <p>{physician.description}</p>
-                <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={onNavigate}>
-                  View Full Profile <ArrowIcon />
-                </InternalLink>
-              </div>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section id="services" className="offers-section">
@@ -319,15 +287,11 @@ export default function HomePage({
       <section className="privacy-section">
         <div className="privacy-card">
           <div className="privacy-lock" />
-          <p className="eyebrow">Built for trust</p>
-          <h2>Secure, private, and intentionally calm.</h2>
-          <p>Cardiovascular care is personal. SICA creates a visit experience built around privacy, clarity, accuracy, and steady follow-up.</p>
         </div>
       </section>
 
       <section id="contact" className="final-cta">
         <div className="final-copy">
-          <p className="eyebrow">Ready when you are</p>
           <h2>Ready to Take Control of Your Heart Health?</h2>
           <p>
             Schedule a consultation with Southern Indiana Cardiology Associates and receive expert cardiovascular care
