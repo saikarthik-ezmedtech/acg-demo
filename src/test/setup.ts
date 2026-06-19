@@ -60,3 +60,12 @@ class MockIntersectionObserver {
 
 // @ts-expect-error test env shim
 global.IntersectionObserver = MockIntersectionObserver
+
+class MockResizeObserver {
+  observe = vi.fn()
+  unobserve = vi.fn()
+  disconnect = vi.fn()
+}
+
+// @ts-expect-error test env shim
+global.ResizeObserver = MockResizeObserver
