@@ -224,12 +224,12 @@ export function HeroPhysicianCollage({ onNavigate }: { onNavigate: (href: string
           <img alt={physician.name} src={physician.image} loading={physician.id === 'gondi' ? 'eager' : 'lazy'} decoding="async" />
           <div>
             <span>{physician.role}</span>
-            <h3>
+            <h2>
               <span className="provider-name-main">{getPhysicianCardNameParts(physician).namePart}</span>
               {getPhysicianCardNameParts(physician).credentials && (
                 <span className="provider-name-credentials">{getPhysicianCardNameParts(physician).credentials}</span>
               )}
-            </h3>
+            </h2>
             <p>{physician.description}</p>
             <InternalLink className="provider-link" href={getPhysicianPath(physician.id)} onNavigate={onNavigate}>
               View Full Profile <ArrowIcon />
