@@ -1996,7 +1996,11 @@ export default function App() {
       return
     }
 
-    const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.85 })
+    const lenis = new Lenis({
+      lerp: 0.06,
+      wheelMultiplier: 1.0,
+      syncTouch: true,
+    })
     lenisRef.current = lenis
     let frame = 0
 
