@@ -1961,6 +1961,7 @@ h3 {
   }
 }
 
+.provider-grid h2,
 .provider-grid h3 {
   margin: 0;
   color: var(--ink);
