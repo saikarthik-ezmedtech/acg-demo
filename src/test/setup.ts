@@ -67,5 +67,5 @@ class MockResizeObserver {
   disconnect = vi.fn()
 }
 
-// @ts-expect-error test env shim
+// @ts-ignore test env shim
 global.ResizeObserver = MockResizeObserver

@@ -928,6 +928,17 @@ function PhoneIcon() {
   )
 }
 
+function AccessibilityIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: '1em', height: '1em' }}>
+      <circle cx="16" cy="4" r="1.5" fill="currentColor" />
+      <path d="M12 12h5" />
+      <path d="M8 16a4 4 0 1 0 8 0v-4" />
+      <path d="M12 5v7a2 2 0 0 1-2 2H4" />
+    </svg>
+  )
+}
+
 function CalendarIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1898,12 +1909,14 @@ export default function App() {
   const cardRefs = useRef<(HTMLElement | null)[]>([])
   const lenisRef = useRef<Lenis | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false)
   const [bannerHeight, setBannerHeight] = useState(0)
   const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
+      setShowScrollTop(window.scrollY > 200)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -2227,19 +2240,21 @@ export default function App() {
           className="accessibility-fab"
           onClick={() => setAccessibilityOpen(true)}
         >
-          <span className="accessibility-fab__icon" aria-hidden="true">♿</span>
+          <span className="accessibility-fab__icon" aria-hidden="true"><AccessibilityIcon /></span>
         </button>
       )}
 
-      <button
-        type="button"
-        aria-label="Scroll to top"
-        title="Scroll to top"
-        className="scroll-top-fab"
-        onClick={scrollToPageTop}
-      >
-        <span className="scroll-top-fab__icon" aria-hidden="true">↑</span>
-      </button>
+      {showScrollTop && (
+        <button
+          type="button"
+          aria-label="Scroll to top"
+          title="Scroll to top"
+          className="scroll-top-fab"
+          onClick={scrollToPageTop}
+        >
+          <span className="scroll-top-fab__icon" aria-hidden="true">↑</span>
+        </button>
+      )}
     </>
   )
 
@@ -2247,12 +2262,12 @@ export default function App() {
     <div className="site-shell">
       <div className="site-shell__viewport">
       <div className="page-wipe" aria-hidden="true" />
-      <aside ref={bannerRef} className="w-full top-banner border-b border-[rgba(10,58,120,0.08)] text-center relative z-[60]" aria-label="Announcement">
-        <div className="mx-auto max-w-7xl px-4 py-2.5 text-sm font-medium text-[#16306F]">
+      <aside ref={bannerRef} className="w-full top-banner border-b border-[rgba(255,255,255,0.08)] text-center relative z-[60]" aria-label="Announcement">
+        <div className="mx-auto max-w-7xl px-4 text-[13px] font-medium text-white">
           Trusted heart care from experienced cardiology specialists.{" "}
           <button
             type="button"
-            className="inline-flex cursor-pointer items-center gap-1 underline underline-offset-2 hover:opacity-70 font-semibold"
+            className="inline-flex cursor-pointer items-center gap-1 underline underline-offset-2 hover:opacity-70 font-semibold text-[#E8F3FF]"
             onClick={() => setAppointmentOpen(true)}
           >
             <span>Request an appointment</span>
@@ -2373,14 +2388,11 @@ export default function App() {
           <div className="hero-shell">
             <div className="hero-content">
               <Reveal delay={0.08}>
-                <h1>
-                  <span>Expert Cardiovascular Care.</span>
-                  <span>Experienced Specialists.</span>
-                </h1>
+                <h1>Expert Cardiovascular Care. Experienced Specialists.</h1>
               </Reveal>
               <Reveal delay={0.16}>
                 <p className="hero-copy">
-                  Now welcoming new patients for comprehensive cardiovascular evaluation, treatment, and long-term heart health management.
+                  Comprehensive cardiovascular care focused on diagnosis, treatment, and long-term heart health.
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
