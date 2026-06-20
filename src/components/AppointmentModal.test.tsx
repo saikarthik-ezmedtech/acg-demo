@@ -31,10 +31,11 @@ describe('AppointmentModal', () => {
 
     expect(await screen.findByText(/request received/i)).toBeInTheDocument()
     expect(globalThis.fetch).toHaveBeenCalledWith(
-      '/api/appointments',
+      'https://ffqy4uu5g5.execute-api.us-east-1.amazonaws.com/appointments',
       expect.objectContaining({
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           first_name: 'Ada',
           last_name: 'Lovelace',
@@ -48,11 +49,7 @@ describe('AppointmentModal', () => {
 
   it('handles API submit errors', async () => {
     vi.mocked(globalThis.fetch).mockImplementationOnce(() =>
-      Promise.resolve({
-        ok: false,
-        status: 500,
-        statusText: 'Internal Server Error',
-      } as Response)
+      Promise.reject(new Error('Failed to request appointment. Please try again.'))
     )
 
     const user = userEvent.setup()

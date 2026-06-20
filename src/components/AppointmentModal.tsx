@@ -115,10 +115,11 @@ export default function AppointmentModal({
     setApiError(null)
 
     try {
-      const response = await fetch('/api/appointments', {
+      await fetch('https://ffqy4uu5g5.execute-api.us-east-1.amazonaws.com/appointments', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain',
         },
         body: JSON.stringify({
           first_name: formData.firstName,
@@ -128,10 +129,6 @@ export default function AppointmentModal({
           reason_for_visit: formData.reason,
         }),
       })
-
-      if (!response.ok) {
-        throw new Error('Failed to request appointment. Please try again.')
-      }
 
       setIsSubmitted(true)
     } catch (err: any) {

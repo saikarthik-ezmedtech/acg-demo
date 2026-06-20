@@ -2,10 +2,6 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://ffqy4uu5g5.execute-api.us-east-1.amazonaws.com/:path*"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
