@@ -115,7 +115,7 @@ export default function AppointmentModal({
     setApiError(null)
 
     try {
-      const response = await fetch('https://ffqy4uu5g5.execute-api.us-east-1.amazonaws.com/appointments', {
+      const response = await fetch('/api/appointments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

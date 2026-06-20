@@ -31,7 +31,7 @@ describe('AppointmentModal', () => {
 
     expect(await screen.findByText(/request received/i)).toBeInTheDocument()
     expect(globalThis.fetch).toHaveBeenCalledWith(
-      'https://ffqy4uu5g5.execute-api.us-east-1.amazonaws.com/appointments',
+      '/api/appointments',
       expect.objectContaining({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
