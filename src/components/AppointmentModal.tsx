@@ -21,6 +21,8 @@ export default function AppointmentModal({
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [touched, setTouched] = useState<Record<string, boolean>>({})
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [apiError, setApiError] = useState<string | null>(null)
 
   const validateField = (name: string, value: string) => {
     let error = ''
@@ -91,7 +93,7 @@ export default function AppointmentModal({
     setErrors((prev) => ({ ...prev, [name]: validateField(name, formData[name]) }))
   }
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
 
     const nextErrors: Record<string, string> = {}
@@ -109,11 +111,45 @@ export default function AppointmentModal({
       return
     }
 
-    setIsSubmitted(true)
+    setIsSubmitting(true)
+    setApiError(null)
+
+    try {
+      const response = await fetch('https://ffqy4uu5g5.execute-api.us-east-1.amazonaws.com/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          phone_number: formData.phone,
+          email: formData.email,
+          reason_for_visit: formData.reason,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to request appointment. Please try again.')
+      }
+
+      setIsSubmitted(true)
+    } catch (err: any) {
+      setApiError(err.message || 'An unexpected error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   useEffect(() => {
     if (!isOpen) return
+
+    setFormData(initialFormData)
+    setErrors({})
+    setTouched({})
+    setIsSubmitted(false)
+    setApiError(null)
+    setIsSubmitting(false)
 
     const scrollY = window.scrollY
     const onKeyDown = (event: KeyboardEvent) => {
@@ -306,8 +342,13 @@ export default function AppointmentModal({
             />
             {touched.reason && errors.reason && <span className="appointment-form-error">{errors.reason}</span>}
           </label>
-          <button type="submit" className="button primary appointment-form__submit">
-            Send Request
+          {apiError && (
+            <div className="appointment-form-error" style={{ marginBottom: '16px', textAlign: 'center', fontWeight: '500' }}>
+              {apiError}
+            </div>
+          )}
+          <button type="submit" className="button primary appointment-form__submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending Request...' : 'Send Request'}
           </button>
         </form>
       </div>
