@@ -1,4 +1,5 @@
 import type { AccessibilitySettings } from '../types/site'
+import { AccessibilityIcon } from './icons'
 
 type AccessibilityPanelProps = {
   accessibilityOpen: boolean
@@ -82,7 +83,7 @@ export default function AccessibilityPanel({
       onClick={() => onToggleOpen(true)}
     >
       <span className="accessibility-fab__icon" aria-hidden="true">
-        ♿
+        <AccessibilityIcon />
       </span>
     </button>
   )

@@ -71,15 +71,11 @@ export default function HomePage({
         <div className="hero-shell">
           <div className="hero-content">
             <Reveal delay={0.08}>
-              <h1>
-                <span>Expert Cardiovascular Care.</span>
-                <span>Experienced Specialists.</span>
-              </h1>
+              <h1>Expert Cardiovascular Care. Experienced Specialists.</h1>
             </Reveal>
             <Reveal delay={0.16}>
               <p className="hero-copy">
-                Now welcoming new patients for comprehensive cardiovascular evaluation, treatment, and long-term heart
-                health management.
+                Comprehensive cardiovascular care focused on diagnosis, treatment, and long-term heart health.
               </p>
             </Reveal>
             <Reveal delay={0.24}>

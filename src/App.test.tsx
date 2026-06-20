@@ -81,7 +81,10 @@ describe('App', () => {
       expect((globalThis as { __lenisInstances?: unknown[] }).__lenisInstances).toHaveLength(0)
     })
 
-    await user.click(screen.getByLabelText(/scroll to top/i))
+    Object.defineProperty(window, 'scrollY', { value: 250, configurable: true })
+    window.dispatchEvent(new Event('scroll'))
+
+    await user.click(await screen.findByLabelText(/scroll to top/i))
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' })
   })
 
@@ -98,7 +101,10 @@ describe('App', () => {
     expect(screen.getByRole('dialog', { name: /cookie preferences/i })).toBeInTheDocument()
     expect(window.localStorage.getItem('sica-cookie-preferences')).toBeNull()
 
-    await user.click(screen.getByLabelText(/scroll to top/i))
+    Object.defineProperty(window, 'scrollY', { value: 250, configurable: true })
+    window.dispatchEvent(new Event('scroll'))
+
+    await user.click(await screen.findByLabelText(/scroll to top/i))
     const instances = (globalThis as { __lenisInstances?: Array<{ scrollTo: ReturnType<typeof vi.fn> }> }).__lenisInstances ?? []
     expect(instances[0]?.scrollTo).toHaveBeenCalledWith(0, { duration: 0.8 })
   })
