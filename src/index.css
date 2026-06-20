@@ -91,7 +91,9 @@ svg {
 
 .top-banner {
   background: #0F3D75;
-  height: 34px;
+  min-height: 34px;
+  height: auto;
+  padding: 6px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3503,6 +3505,10 @@ h3 {
   color: rgba(255, 255, 255, 0.68);
 }
 
+.privacy-card h2 {
+  margin-bottom: 10px;
+}
+
 .privacy-card h2,
 .privacy-card p {
   position: relative;
@@ -6612,7 +6618,7 @@ img.cta-object {
 
   .hero-section {
     min-height: 100svh;
-    padding-top: 108px;
+    padding-top: 158px;
     padding-bottom: 60px;
   }
 
@@ -6624,6 +6630,8 @@ img.cta-object {
   .hero-content {
     max-width: 760px;
     transform: none;
+    text-align: center;
+    margin: 0 auto;
   }
 
   .hero-content h1 {
@@ -6850,7 +6858,7 @@ img.cta-object {
 
   .hero-section {
     min-height: 100svh;
-    padding-top: 96px;
+    padding-top: 146px;
     padding-bottom: 52px;
   }
 
@@ -6869,6 +6877,7 @@ img.cta-object {
   .hero-content .hero-copy {
     font-size: 13.5px;
     line-height: 1.45;
+    text-align: left;
   }
 
   .cardiology-services-section {

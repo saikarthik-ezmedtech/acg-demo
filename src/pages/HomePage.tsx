@@ -23,8 +23,7 @@ function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }
     <motion.div
       variants={reveal}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.28 }}
+      animate="visible"
       transition={{ delay }}
     >
       {children}
@@ -113,8 +112,7 @@ export default function HomePage({
                 data-index={index}
                 className={`offer-scroll-card ${index === activeServiceIndex ? 'is-active' : ''}`}
                 initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
               >
                 <div className="offer-row-content">
@@ -282,6 +280,13 @@ export default function HomePage({
 
       <section className="privacy-section">
         <div className="privacy-card">
+          <div className="privacy-content">
+            <h2>Your Health Data, Secure & Protected</h2>
+            <p>
+              We maintain strict HIPAA compliance and use industry-standard encryption to protect your personal health
+              information. You can trust that your medical records and communication are always safe with us.
+            </p>
+          </div>
           <div className="privacy-lock" />
         </div>
       </section>

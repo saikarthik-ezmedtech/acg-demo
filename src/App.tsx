@@ -901,8 +901,7 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     <motion.div
       variants={reveal}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.28 }}
+      animate="visible"
       transition={{ delay }}
     >
       {children}
@@ -2279,7 +2278,7 @@ export default function App() {
           </button>
         </div>
       </aside>
-      <header className={`navigation${scrolled ? ' is-scrolled' : ''}`} style={scrolled ? {} : { top: `${bannerHeight + 10}px` }}>
+      <header className={`navigation${scrolled ? ' is-scrolled' : ''}`} style={scrolled ? {} : { top: `${bannerHeight + 20}px` }}>
         <div className={`nav_layout-2${navOpen ? ' is-open' : ''}`}>
           <InternalLink className="nav_home" href="/" onNavigate={navigateTo} aria-label="Southern Indiana Cardiology Associates home">
             <div className="nav_logo-container">
@@ -2428,8 +2427,7 @@ export default function App() {
                   data-index={index}
                   className={`offer-scroll-card ${index === activeServiceIndex ? 'is-active' : ''}`}
                   initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, ease: 'easeOut' }}
                 >
                   <div className="offer-row-content">
@@ -2597,6 +2595,13 @@ export default function App() {
 
         <section className="privacy-section">
           <div className="privacy-card">
+            <div className="privacy-content">
+              <h2>Your Health Data, Secure & Protected</h2>
+              <p>
+                We maintain strict HIPAA compliance and use industry-standard encryption to protect your personal health
+                information. You can trust that your medical records and communication are always safe with us.
+              </p>
+            </div>
             <div className="privacy-lock"></div>
           </div>
         </section>
