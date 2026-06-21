@@ -622,6 +622,7 @@ svg {
   color: #16306F;
   background: #ffffff;
   outline: none;
+  font-size: 16px;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
