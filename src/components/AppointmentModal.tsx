@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from 'react'
+import { useEffect, useState, useRef, type FormEvent } from 'react'
 import type React from 'react'
 import { CalendarIcon } from './icons'
 
@@ -138,19 +138,28 @@ export default function AppointmentModal({
     }
   }
 
+  const onCloseRef = useRef(onClose)
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(initialFormData)
+      setErrors({})
+      setTouched({})
+      setIsSubmitted(false)
+      setApiError(null)
+      setIsSubmitting(false)
+    }
+  }, [isOpen])
+
   useEffect(() => {
     if (!isOpen) return
 
-    setFormData(initialFormData)
-    setErrors({})
-    setTouched({})
-    setIsSubmitted(false)
-    setApiError(null)
-    setIsSubmitting(false)
-
     const scrollY = window.scrollY
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose()
+      if (event.key === 'Escape') onCloseRef.current()
     }
 
     document.addEventListener('keydown', onKeyDown)
@@ -173,7 +182,7 @@ export default function AppointmentModal({
       document.body.style.width = ''
       window.scrollTo(0, scrollY)
     }
-  }, [isOpen, onClose])
+  }, [isOpen])
 
   if (!isOpen) return null
 
