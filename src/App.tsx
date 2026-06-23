@@ -1947,7 +1947,7 @@ export default function App() {
       <div className="page-wipe" aria-hidden="true" />
       <aside ref={bannerRef} className="w-full top-banner border-b border-[rgba(255,255,255,0.08)] text-center relative z-[60]" aria-label="Announcement">
         <div className="mx-auto max-w-7xl px-4 text-[13px] font-medium text-white">
-          Trusted heart care from experienced cardiology specialists.{" "}
+          Now accepting patients ahead of our August 2026 opening.{" "}
           <button
             type="button"
             className="inline-flex cursor-pointer items-center gap-1 underline underline-offset-2 hover:opacity-70 font-semibold text-[#E8F3FF]"
